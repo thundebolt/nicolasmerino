@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Retoque · Edición en vivo para WordPress</title>
+<meta name="description" content="Retoque es un plugin de WordPress hecho por Nicolás Merino: tus clientes cambian textos, fotos y botones tocando su propio sitio, y te dejan notas en cualquier parte de la página. Pruébalo en vivo.">
+<meta name="theme-color" content="#0E1116">
+<meta property="og:title" content="Retoque · Edición en vivo para WordPress">
+<meta property="og:description" content="Tus clientes editan su sitio tocando la página y te dejan notas donde quieren un cambio. Demo interactiva.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ---------- Variables (mismo diseño oscuro del portafolio) ---------- */
+  :root {
+    color-scheme: dark;
+    --fondo: #0E1116;
+    --fondo-alterno: #12161C;
+    --superficie: #161B22;
+    --tinta: #E6EDF3;
+    --tinta-suave: #9BA7B4;
+    --linea: #232A33;
+    --linea-fuerte: #3A4450;
+    --acento: #B8F35A;
+    --acento-claro: #D4FA94;
+    --texto-acento: #0E1116;
+    --ambar: #F59E0B;
+    --fuente-titulos: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+    --fuente-texto: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --fuente-mono: "JetBrains Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+  body { margin: 0; background: var(--fondo); color: var(--tinta); font-family: var(--fuente-texto); font-size: 1.0625rem; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3 { font-family: var(--fuente-titulos); margin: 0; letter-spacing: -0.02em; line-height: 1.1; }
+  p { margin: 0 0 1em; }
+  a { color: var(--acento); }
+  a:hover { color: var(--acento-claro); }
+  :focus-visible { outline: 3px solid var(--acento); outline-offset: 3px; border-radius: 4px; }
+  code { font-family: var(--fuente-mono); font-size: 0.9em; }
+
+  .contenedor { width: min(1240px, 100% - 2.5rem); margin-inline: auto; }
+  .seccion { padding: clamp(4rem, 9vw, 6rem) 0; }
+  .seccion-alterna { background: var(--fondo-alterno); border-block: 1px solid var(--linea); }
+  .rotulo { margin: 0 0 0.75rem; font-family: var(--fuente-mono); font-size: 0.875rem; color: var(--acento); }
+  .titulo-seccion { font-size: clamp(2rem, 4vw, 2.75rem); margin-bottom: 1rem; }
+  .entrada { color: var(--tinta-suave); max-width: 62ch; margin-bottom: 2.5rem; }
+
+  .saltar { position: absolute; left: 1rem; top: -4rem; z-index: 100; background: var(--acento); color: var(--texto-acento); padding: 0.6rem 1rem; border-radius: 6px; font-weight: 600; text-decoration: none; }
+  .saltar:focus { top: 1rem; }
+
+  /* ---------- Barra ---------- */
+  .barra { position: sticky; top: 0; z-index: 50; background: rgba(14, 17, 22, 0.88); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--linea); }
+  .barra .contenedor { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 0.9rem 0; }
+  .marca { font-family: var(--fuente-mono); font-weight: 500; font-size: 0.95rem; color: var(--tinta); text-decoration: none; white-space: nowrap; }
+  .marca span { color: var(--acento); }
+  .barra nav { display: flex; align-items: center; gap: 1.5rem; font-size: 0.95rem; }
+  .barra nav a { color: var(--tinta-suave); text-decoration: none; white-space: nowrap; }
+  .barra nav a:hover { color: var(--tinta); }
+  .barra nav .nav-contacto { color: var(--texto-acento); background: var(--acento); padding: 0.4rem 0.9rem; border-radius: 6px; font-weight: 600; }
+  .barra nav .nav-contacto:hover { color: var(--texto-acento); background: var(--acento-claro); }
+
+  /* ---------- Botones ---------- */
+  .acciones { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .boton { display: inline-flex; align-items: center; min-height: 48px; padding: 0.8rem 1.5rem; border-radius: 8px; font-weight: 600; text-decoration: none; background: var(--acento); color: var(--texto-acento); border: 1px solid var(--acento); transition: transform 0.15s ease, background-color 0.15s ease; }
+  .boton:hover { color: var(--texto-acento); background: var(--acento-claro); transform: translateY(-2px); }
+  .boton.secundario { background: transparent; color: var(--tinta); border-color: var(--linea-fuerte); }
+  .boton.secundario:hover { border-color: var(--tinta); color: var(--tinta); }
+
+  /* ---------- Portada ---------- */
+  .portada { padding: clamp(3.5rem, 8vw, 5.5rem) 0 clamp(2.5rem, 5vw, 3.5rem); }
+  .portada .contenedor { display: flex; flex-wrap: wrap; gap: 2.5rem 3.5rem; align-items: flex-end; }
+  .portada-texto { flex: 1 1 560px; min-width: 0; }
+  .insignia { display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: 1.25rem; padding: 0.3rem 0.8rem; border: 1px solid var(--linea-fuerte); border-radius: 999px; font-family: var(--fuente-mono); font-size: 0.8rem; color: var(--tinta-suave); }
+  .insignia b { color: var(--acento); font-weight: 500; }
+  .portada h1 { font-size: clamp(2.4rem, 5.6vw, 4rem); line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 1.25rem; }
+  .portada h1 em { font-style: normal; color: var(--acento); }
+  .portada .bajada { color: var(--tinta-suave); font-size: 1.2rem; max-width: 60ch; margin-bottom: 2rem; }
+  .resumen { flex: 1 1 320px; min-width: 0; display: grid; gap: 0.75rem; margin: 0; padding: 0; list-style: none; }
+  .resumen li { display: flex; gap: 0.75rem; align-items: flex-start; padding: 1rem 1.1rem; border: 1px solid var(--linea); border-radius: 12px; background: var(--superficie); }
+  .resumen .icono { flex: none; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 9px; background: #111827; color: var(--acento); }
+  .resumen strong { display: block; font-family: var(--fuente-titulos); font-size: 1.05rem; }
+  .resumen span { color: var(--tinta-suave); font-size: 0.95rem; }
+
+  /* ---------- Demo ---------- */
+  .demo { padding: 0 0 clamp(4rem, 9vw, 6rem); }
+  .demo-rejilla { display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: flex-start; }
+  .guia { flex: 1 1 280px; min-width: 0; display: flex; flex-direction: column; gap: 1rem; }
+  .ventana { flex: 999 1 640px; min-width: 0; border: 1px solid var(--linea); border-radius: 14px; overflow: hidden; background: var(--superficie); box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.7); }
+  .ventana-barra { display: flex; align-items: center; gap: 0.75rem; padding: 0.65rem 0.9rem; border-bottom: 1px solid var(--linea); }
+  .ventana-barra i { flex: none; width: 11px; height: 11px; border-radius: 50%; background: var(--linea-fuerte); }
+  .direccion { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 0.25rem 0.8rem; border-radius: 999px; background: var(--fondo); font-family: var(--fuente-mono); font-size: 0.78rem; color: var(--tinta-suave); }
+  .ventana-barra a { flex: none; font-size: 0.85rem; font-weight: 600; text-decoration: none; white-space: nowrap; }
+  .ventana iframe { display: block; width: 100%; height: min(780px, calc(100svh - 140px)); min-height: 560px; border: 0; background: #f4f7fb; }
+
+  .caja { padding: 1.25rem; border: 1px solid var(--linea); border-radius: 14px; background: var(--superficie); }
+  .caja h2 { font-size: 1.15rem; margin-bottom: 0.4rem; }
+  .caja > p { color: var(--tinta-suave); font-size: 0.95rem; margin-bottom: 1rem; }
+  .segmentos { display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem; padding: 0.3rem; border-radius: 10px; background: var(--fondo); }
+  .segmentos button { min-height: 44px; border: 0; border-radius: 8px; background: transparent; color: var(--tinta-suave); font: inherit; font-weight: 600; font-size: 0.95rem; cursor: pointer; }
+  .segmentos button[aria-pressed="true"] { background: var(--acento); color: var(--texto-acento); }
+  .rol-detalle { margin: 0.85rem 0 0; color: var(--tinta-suave); font-size: 0.9rem; }
+
+  .progreso { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: 0.75rem; }
+  .progreso h2 { margin: 0; }
+  .progreso span { font-family: var(--fuente-mono); font-size: 0.8rem; color: var(--tinta-suave); white-space: nowrap; }
+  .pasos { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; counter-reset: paso; }
+  .paso { position: relative; padding: 0.75rem 0.85rem 0.75rem 3rem; border-radius: 10px; background: var(--fondo); border: 1px solid transparent; counter-increment: paso; transition: border-color 0.2s ease; }
+  .paso::before { content: counter(paso); position: absolute; left: 0.8rem; top: 0.8rem; width: 1.6rem; height: 1.6rem; border-radius: 50%; display: grid; place-items: center; background: var(--linea); color: var(--tinta); font-family: var(--fuente-mono); font-size: 0.8rem; }
+  .paso strong { display: block; font-size: 0.95rem; }
+  .paso span { display: block; color: var(--tinta-suave); font-size: 0.875rem; line-height: 1.45; }
+  .paso.es-hecho { border-color: rgba(184, 243, 90, 0.45); }
+  .paso.es-hecho::before { content: "✓"; background: var(--acento); color: var(--texto-acento); font-weight: 700; }
+  .paso[hidden] { display: none; }
+  .aviso-demo { margin: 0.25rem 0 0; font-size: 0.85rem; color: var(--tinta-suave); }
+
+  /* ---------- Tarjetas ---------- */
+  .tarjetas { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.25rem; }
+  .tarjeta { padding: 1.5rem; border: 1px solid var(--linea); border-radius: 12px; background: var(--superficie); }
+  .tarjeta .icono { display: inline-grid; place-items: center; width: 40px; height: 40px; margin-bottom: 0.9rem; border-radius: 10px; background: #111827; color: var(--acento); }
+  .tarjeta h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+  .tarjeta p { margin: 0; color: var(--tinta-suave); font-size: 0.98rem; }
+
+  /* ---------- Flujo de notas ---------- */
+  .flujo { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.25rem; margin: 0 0 2rem; padding: 0; list-style: none; counter-reset: flujo; }
+  .flujo li { position: relative; padding: 1.5rem 1.5rem 1.5rem 1.5rem; border-top: 3px solid var(--acento); background: var(--superficie); border-radius: 0 0 12px 12px; counter-increment: flujo; }
+  .flujo li::before { content: "0" counter(flujo); display: block; margin-bottom: 0.6rem; font-family: var(--fuente-mono); font-size: 0.85rem; color: var(--acento); }
+  .flujo h3 { font-size: 1.15rem; margin-bottom: 0.4rem; }
+  .flujo p { margin: 0; color: var(--tinta-suave); font-size: 0.98rem; }
+  .estados { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 1rem; color: var(--tinta-suave); font-size: 0.95rem; }
+  .estado { display: inline-block; padding: 2px 10px; border-radius: 99px; font: 700 0.72rem/1.7 system-ui, sans-serif; letter-spacing: 0.04em; text-transform: uppercase; }
+  .estado--borrador { background: #fef3c7; color: #92400e; }
+  .estado--pendiente { background: #dbeafe; color: #1e40af; }
+  .estado--hecho { background: #dcfce7; color: #166534; }
+
+  /* ---------- Etapas ---------- */
+  .etapas { display: flex; flex-direction: column; }
+  .etapa { display: flex; flex-wrap: wrap; gap: 0.4rem 2rem; padding: 1.5rem 0; border-top: 1px solid var(--linea); }
+  .etapa:last-child { border-bottom: 1px solid var(--linea); }
+  .etapa h3 { flex: 0 0 300px; font-size: 1.2rem; }
+  .etapa p { flex: 1 1 420px; min-width: 0; margin: 0; color: var(--tinta-suave); max-width: 70ch; }
+
+  /* ---------- Técnico ---------- */
+  .tecnico { display: flex; flex-wrap: wrap; gap: 2rem 3rem; align-items: flex-start; }
+  .tecnico-texto { flex: 1 1 380px; min-width: 0; }
+  .tecnico-texto ul { margin: 0; padding-left: 1.1rem; color: var(--tinta-suave); }
+  .tecnico-texto li { margin-bottom: 0.5rem; }
+  .tecnico-texto li::marker { color: var(--acento); }
+  .codigo { flex: 1 1 520px; min-width: 0; border: 1px solid var(--linea); border-radius: 12px; background: var(--superficie); overflow: hidden; }
+  .codigo-barra { padding: 0.7rem 1rem; border-bottom: 1px solid var(--linea); font-family: var(--fuente-mono); font-size: 0.8rem; color: var(--tinta-suave); }
+  .codigo pre { margin: 0; padding: 1.25rem 1.4rem; overflow-x: auto; font-family: var(--fuente-mono); font-size: 0.85rem; line-height: 1.8; color: #C9D3DD; }
+  .codigo .c { color: #7D8A97; }
+  .codigo .f { color: var(--acento); }
+  .codigo .s { color: #F2C88B; }
+
+  /* ---------- Contacto ---------- */
+  .contacto-caja { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 2rem; padding: clamp(2rem, 6vw, 4rem); border-radius: 16px; background: var(--acento); color: var(--texto-acento); }
+  .contacto-caja > div { flex: 1 1 420px; min-width: 0; }
+  .contacto-caja h2 { font-size: clamp(2rem, 4.5vw, 3rem); line-height: 1.05; margin-bottom: 0.75rem; }
+  .contacto-caja p { margin: 0; font-size: 1.1rem; max-width: 50ch; }
+  .contacto-caja .boton { background: var(--texto-acento); color: var(--tinta); border-color: var(--texto-acento); }
+  .contacto-caja .boton:hover { background: #232A33; color: var(--tinta); }
+  .contacto-caja .boton.secundario { background: transparent; color: var(--texto-acento); border: 2px solid var(--texto-acento); }
+  .contacto-caja .boton.secundario:hover { background: rgba(14, 17, 22, 0.08); color: var(--texto-acento); }
+  .contacto-caja :focus-visible { outline-color: var(--texto-acento); }
+
+  footer { border-top: 1px solid var(--linea); }
+  footer .contenedor { padding: 1.5rem 0; font-family: var(--fuente-mono); font-size: 0.8rem; color: var(--tinta-suave); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .boton, .paso { transition: none; }
+  }
+  @media (max-width: 640px) {
+    .barra nav a:not(.nav-contacto):not(.nav-volver) { display: none; }
+    .etapa h3 { flex-basis: 100%; }
+    .ventana iframe { min-height: 520px; height: calc(100svh - 130px); }
+  }
+</style>
+</head>
+<body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="barra">
+  <div class="contenedor">
+    <a class="marca" href="./">nicolas<span>.</span>merino</a>
+    <nav aria-label="Secciones">
+      <a class="nav-volver" href="./">← Portafolio</a>
+      <a href="#demo">Demo</a>
+      <a href="#funciones">Funciones</a>
+      <a href="#desarrollo">Durante el desarrollo</a>
+      <a class="nav-contacto" href="#contacto">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenido">
+  <!-- Portada -->
+  <section class="portada">
+    <div class="contenedor">
+      <div class="portada-texto">
+        <p class="insignia">plugin para WordPress · <b>Retoque 1.9</b></p>
+        <h1>Tu cliente edita su sitio <em>tocando la página.</em></h1>
+        <p class="bajada">Retoque es un plugin que programé para que cada cliente cambie sus textos, fotos y botones directamente sobre su sitio, sin entrar al panel de WordPress. Y cuando quiere un cambio que no puede hacer solo, toca esa parte y me deja una nota.</p>
+        <div class="acciones">
+          <a class="boton" href="#demo">Probar la demo ↓</a>
+          <a class="boton secundario" href="#funciones">Ver qué incluye</a>
+        </div>
+      </div>
+      <ul class="resumen">
+        <li><span class="icono" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg></span><div><strong>Editar en vivo</strong><span>Clic en un texto, escribir y guardar. Queda publicado al instante.</span></div></li>
+        <li><span class="icono" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></span><div><strong>Notas en la página</strong><span>El cliente marca dónde quiere un cambio. Al equipo le llega un solo correo.</span></div></li>
+        <li><span class="icono" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h9M19 6h1M4 12h3M13 12h7M4 18h11M21 18h-1"/><circle cx="16" cy="6" r="2.2"/><circle cx="10" cy="12" r="2.2"/><circle cx="18" cy="18" r="2.2"/></svg></span><div><strong>Ajustes para el desarrollador</strong><span>Colores, tamaños y secciones ocultas, sin tocar el código del tema.</span></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Demo -->
+  <section class="demo" id="demo" aria-labelledby="titulo-demo">
+    <div class="contenedor">
+      <p class="rotulo">// demo en vivo</p>
+      <h2 class="titulo-seccion" id="titulo-demo">Pruébalo en un sitio de ejemplo</h2>
+      <p class="entrada">Este es el editor real de Retoque funcionando sobre un sitio inventado. Usa la barra negra de abajo del sitio. Los cambios no se guardan en ningún lado: al recargar, todo vuelve a como estaba.</p>
+
+      <div class="demo-rejilla">
+        <div class="guia">
+          <div class="caja">
+            <h2>Ver como</h2>
+            <div class="segmentos" role="group" aria-label="Ver la demo como">
+              <button type="button" data-rol="cliente" aria-pressed="true">Cliente</button>
+              <button type="button" data-rol="desarrollador" aria-pressed="false">Desarrollador</button>
+            </div>
+            <p class="rol-detalle" id="rol-detalle">Lo que ve el dueño del sitio: editar contenidos y dejar notas.</p>
+          </div>
+
+          <div class="caja">
+            <div class="progreso">
+              <h2>Prueba esto</h2>
+              <span id="progreso" aria-live="polite">0 de 4</span>
+            </div>
+            <ol class="pasos">
+              <li class="paso" data-paso="editar"><strong>Toca «Editar página»</strong><span>Lo que se puede cambiar queda marcado con una línea punteada.</span></li>
+              <li class="paso" data-paso="guardar"><strong>Cambia algo y toca «Guardar»</strong><span>El título, la foto, el botón de WhatsApp o la categoría de un servicio. También puedes ordenar, quitar o agregar servicios.</span></li>
+              <li class="paso" data-paso="nota"><strong>Deja una nota</strong><span>Sal con ✕, toca «Dejar nota» y luego cualquier parte de la página.</span></li>
+              <li class="paso" data-paso="enviar"><strong>Envía tus notas</strong><span>Abre «Mis notas» y envíalas juntas. Al equipo le llegan en un solo correo.</span></li>
+              <li class="paso" data-paso="estilo" data-solo="desarrollador" hidden><strong>Cambia un estilo con «Estilo»</strong><span>Prueba «Colores del sitio», el tamaño de un título u ocultar una sección, y guarda.</span></li>
+              <li class="paso" data-paso="hecha" data-solo="desarrollador" hidden><strong>Marca una nota como hecha</strong><span>En «Dejar nota», toca un marcador azul del cliente y márcalo como hecho.</span></li>
+            </ol>
+            <p class="aviso-demo">¿Ves el aviso amarillo «Falta 1 dato»? Retoque avisa qué información le falta al sitio. Tócalo y completa el horario.</p>
+          </div>
+        </div>
+
+        <div class="ventana">
+          <div class="ventana-barra">
+            <i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i>
+            <span class="direccion">gasfiteriaejemplo.cl</span>
+            <a id="pantalla-completa" href="retoque-sitio.html?rol=cliente" target="_blank" rel="noopener">Pantalla completa ↗</a>
+          </div>
+          <iframe id="marco-demo" src="retoque-sitio.html?rol=cliente" title="Sitio de ejemplo con el editor Retoque"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Funciones -->
+  <section class="seccion seccion-alterna" id="funciones">
+    <div class="contenedor">
+      <p class="rotulo">01 / qué puede cambiar el cliente</p>
+      <h2 class="titulo-seccion">Todo lo del día a día, sin pedir ayuda</h2>
+      <p class="entrada">El tema del sitio marca qué partes se pueden editar. Así el cliente cambia el contenido sin romper el diseño.</p>
+      <div class="tarjetas">
+        <article class="tarjeta"><span class="icono" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7V4h14v3M12 4v16M9 20h6"/></svg></span><h3>Textos y párrafos</h3><p>Títulos, descripciones y datos de contacto. Se escribe directo sobre la página.</p></article>
+        <article class="tarjeta"><span class="icono" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h6a4 4 0 0 1 0 8H7zM7 12h7a4 4 0 0 1 0 8H7z"/></svg></span><h3>Texto con formato</h3><p>Negrita, cursiva, listas y enlaces en los textos largos, con una mini barra sobre el texto.</p></article>
+        <article class="tarjeta"><span class="icono" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/></svg></span><h3>Imágenes</h3><p>Se cambian desde la biblioteca de medios de WordPress, con la opción de una foto distinta para celular en los banners.</p></article>
+        <article class="tarjeta"><span class="icono" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></span><h3>Botones y enlaces</h3><p>Texto del botón y adónde lleva: WhatsApp, teléfono, correo o una sección del sitio.</p></article>
+        <article class="tarjeta"><span class="icono" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/></svg></span><h3>Listas</h3><p>Servicios, preguntas o equipos: agregar, quitar y cambiar el orden. Viene activado para el desarrollador y se puede habilitar para el cliente.</p></article>
+        <article class="tarjeta"><span class="icono" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-3"/></svg></span><h3>Sin miedo a equivocarse</h3><p>«Descartar» antes de guardar, «Original» para volver al texto del diseño y deshacer el último guardado desde los ajustes.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Notas -->
+  <section class="seccion" id="notas">
+    <div class="contenedor">
+      <p class="rotulo">02 / notas del cliente</p>
+      <h2 class="titulo-seccion">Se acabaron los correos con capturas de pantalla</h2>
+      <p class="entrada">Cuando el cliente quiere algo que no puede hacer solo, lo pide justo en la parte del sitio donde lo quiere.</p>
+      <ol class="flujo">
+        <li><h3>Toca y escribe</h3><p>Toca cualquier parte de la página y escribe qué quiere cambiar. Puede adjuntar una foto o captura.</p></li>
+        <li><h3>Junta todas</h3><p>Las notas quedan «por enviar» en «Mis notas», donde las revisa, edita o borra antes de mandarlas.</p></li>
+        <li><h3>Un solo correo</h3><p>Al enviarlas, el equipo recibe un correo con todas las notas ordenadas por página y un enlace a cada una.</p></li>
+        <li><h3>Marcadas en el sitio</h3><p>El desarrollador ve cada nota como un marcador en el lugar exacto y la marca como hecha al terminar.</p></li>
+      </ol>
+      <div class="estados">
+        <span>Cada nota pasa por tres estados:</span>
+        <span class="estado estado--borrador">Por enviar</span>
+        <span class="estado estado--pendiente">Enviada</span>
+        <span class="estado estado--hecho">Hecha</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Durante el desarrollo -->
+  <section class="seccion seccion-alterna" id="desarrollo">
+    <div class="contenedor">
+      <p class="rotulo">03 / durante el desarrollo</p>
+      <h2 class="titulo-seccion">Pensado para la etapa de revisión con el cliente</h2>
+      <p class="entrada">Mientras el sitio se construye, Retoque ordena la conversación con el cliente. Cuando se publica, todo eso se apaga solo.</p>
+      <div class="etapas">
+        <div class="etapa"><h3>Enlace de revisión</h3><p>Le mando al cliente un enlace y puede dejar notas sin tener usuario en WordPress. El enlace dura 30 días en su navegador y se puede cambiar por uno nuevo.</p></div>
+        <div class="etapa"><h3>Sitio en construcción</h3><p>Los visitantes ven una página de «Próximamente» con un título y mensaje propios. El cliente y el equipo ven el sitio completo.</p></div>
+        <div class="etapa"><h3>Aviso de datos que faltan</h3><p>Las partes sin información (un horario, una foto) se marcan en amarillo y la barra muestra cuántas faltan. Los visitantes nunca ven estos avisos.</p></div>
+        <div class="etapa"><h3>Terminar desarrollo</h3><p>Un botón apaga las notas en todo el sitio y desactiva el enlace de revisión. También se apagan solas si el sitio pasa al dominio definitivo. Las notas enviadas se conservan.</p></div>
+        <div class="etapa"><h3>Mudanza del contenido</h3><p>Exporta lo editado a un archivo y lo importa en el sitio definitivo: encuentra cada página y producto aunque cambien sus ID, e incluye las imágenes.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Técnico -->
+  <section class="seccion" id="tecnico">
+    <div class="contenedor">
+      <p class="rotulo">04 / para desarrolladores</p>
+      <h2 class="titulo-seccion">Cómo se prepara un tema</h2>
+      <div class="tecnico">
+        <div class="tecnico-texto">
+          <p class="entrada" style="margin-bottom: 1.5rem">El tema usa funciones de Retoque en lugar de escribir el texto fijo. Si el cliente no ha cambiado nada, se muestra el valor del diseño.</p>
+          <ul>
+            <li>Solo los desarrolladores elegidos ven <strong>Estilo</strong> (colores del sitio, tamaños en PC y celular, color de fondo, ocultar en todo, solo en celular o solo en PC) y <strong>Contenedores</strong>, que muestra el nombre de cada sección y copia su selector CSS.</li>
+            <li>Los visitantes no cargan nada del editor. La API de WordPress exige permiso de edición y una clave de sesión.</li>
+            <li>Funciona con WooCommerce: los datos que se cambian en otra parte (precio, stock) avisan dónde se editan.</li>
+            <li>Fechas siempre en español, aunque WordPress esté en inglés.</li>
+            <li>Requisitos: WordPress 6.2 o superior y PHP 7.4 o superior.</li>
+          </ul>
+        </div>
+        <div class="codigo">
+          <div class="codigo-barra">front-page.php</div>
+<pre><span class="c">// Textos, imagen y botón editables</span>
+<span class="f">retoque_texto</span>( <span class="s">'portada_titulo'</span>, <span class="s">'Gasfitería certificada'</span>,
+  array( <span class="s">'etiqueta'</span> =&gt; <span class="s">'h1'</span> ) );
+<span class="f">retoque_texto</span>( <span class="s">'portada_bajada'</span>, <span class="s">'Texto largo…'</span>,
+  array( <span class="s">'tipo'</span> =&gt; <span class="s">'parrafo'</span>, <span class="s">'etiqueta'</span> =&gt; <span class="s">'p'</span> ) );
+<span class="f">retoque_imagen</span>( <span class="s">'portada_foto'</span>,
+  get_theme_file_uri( <span class="s">'img/portada.webp'</span> ) );
+<span class="f">retoque_enlace</span>( <span class="s">'portada_boton'</span>, <span class="s">'Cotizar'</span>,
+  <span class="s">'https://wa.me/569…'</span>, array( <span class="s">'clase'</span> =&gt; <span class="s">'boton'</span> ) );
+
+<span class="c">// Lista que el cliente puede ordenar y ampliar</span>
+<span class="f">retoque_lista</span>( <span class="s">'servicios'</span>, $servicios, <span class="f">function</span> ( $datos, $prefijo ) {
+  <span class="c">// …cada servicio con sus propios campos</span>
+} );</pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section class="seccion" id="contacto" style="padding-top: 0">
+    <div class="contenedor">
+      <div class="contacto-caja">
+        <div>
+          <h2>¿Quieres un sitio que puedas editar así?</h2>
+          <p>Hago sitios en WordPress preparados para Retoque, para que manejes tu contenido sin depender de nadie.</p>
+        </div>
+        <div class="acciones" style="flex: 0 1 auto">
+          <a class="boton" href="mailto:nicolasmerino321@gmail.com?subject=Sitio%20con%20Retoque">Escribirme un correo</a>
+          <a class="boton secundario" href="./">Ver mi portafolio</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="contenedor"><span>© 2026 Nicolás Merino · Retoque</span><span>El sitio de la demo es ficticio</span></div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+  var marco = document.getElementById("marco-demo");
+  var completa = document.getElementById("pantalla-completa");
+  var detalle = document.getElementById("rol-detalle");
+  var botonesRol = Array.prototype.slice.call(document.querySelectorAll("[data-rol]"));
+  var pasos = Array.prototype.slice.call(document.querySelectorAll(".paso"));
+  var progreso = document.getElementById("progreso");
+  var DETALLES = {
+    cliente: "Lo que ve el dueño del sitio: editar contenidos y dejar notas.",
+    desarrollador: "Además: Estilo, Contenedores y marcar como hechas las notas que ya mandó el cliente."
+  };
+  var hechos = {};
+
+  function pintarProgreso() {
+    var visibles = pasos.filter(function (p) { return !p.hidden; });
+    var listos = visibles.filter(function (p) { return hechos[p.getAttribute("data-paso")]; });
+    visibles.forEach(function (p) { p.classList.toggle("es-hecho", !!hechos[p.getAttribute("data-paso")]); });
+    progreso.textContent = listos.length + " de " + visibles.length;
+  }
+
+  function elegirRol(rol) {
+    botonesRol.forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-rol") === rol ? "true" : "false"); });
+    pasos.forEach(function (p) { if (p.hasAttribute("data-solo")) p.hidden = p.getAttribute("data-solo") !== rol; });
+    detalle.textContent = DETALLES[rol];
+    var url = "retoque-sitio.html?rol=" + rol;
+    if (marco.getAttribute("src") !== url) marco.setAttribute("src", url);
+    completa.setAttribute("href", url);
+    pintarProgreso();
+  }
+
+  botonesRol.forEach(function (b) {
+    b.addEventListener("click", function () { elegirRol(b.getAttribute("data-rol")); });
+  });
+
+  // El sitio de la demo avisa qué se va probando.
+  window.addEventListener("message", function (e) {
+    if (e.source !== marco.contentWindow || !e.data || typeof e.data.retoqueDemo !== "string") return;
+    var paso = e.data.retoqueDemo;
+    if (pasos.some(function (p) { return p.getAttribute("data-paso") === paso; })) {
+      hechos[paso] = true;
+      pintarProgreso();
+    }
+  });
+
+  elegirRol("cliente");
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1870 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nicolás Merino · Desarrollador web</title>
+<meta name="description" content="Portafolio de Nicolás Merino, ingeniero informático en Concepción. Más de 40 sitios web en WordPress, plugins a medida que puedes probar en vivo y guías para que cada cliente administre su propio sitio.">
+<meta name="theme-color" content="#0E1116">
+<meta property="og:title" content="Nicolás Merino · Desarrollador web">
+<meta property="og:description" content="Más de 40 sitios web en WordPress y plugins a medida que puedes probar en vivo.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ---------- Variables (diseño oscuro) ---------- */
+  :root {
+    color-scheme: dark;
+    --fondo: #0E1116;
+    --fondo-alterno: #12161C;
+    --superficie: #161B22;
+    --tinta: #E6EDF3;
+    --tinta-suave: #9BA7B4;
+    --linea: #232A33;
+    --linea-fuerte: #3A4450;
+    --verde: #1C232C;
+    --acento: #B8F35A;
+    --acento-claro: #D4FA94;
+    --texto-acento: #0E1116;
+    --fuente-titulos: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+    --fuente-texto: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --fuente-mono: "JetBrains Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+  body {
+    margin: 0;
+    background: var(--fondo);
+    color: var(--tinta);
+    font-family: var(--fuente-texto);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: var(--fuente-titulos); margin: 0; letter-spacing: -0.02em; line-height: 1.1; }
+  p { margin: 0 0 1em; }
+  a { color: var(--acento); }
+  a:hover { color: var(--acento-claro); }
+  :focus-visible { outline: 3px solid var(--acento); outline-offset: 3px; border-radius: 4px; }
+
+  .contenedor { width: min(1160px, 100% - 2.5rem); margin-inline: auto; }
+  .seccion { padding: clamp(4rem, 9vw, 6rem) 0; }
+  .seccion-alterna { background: var(--fondo-alterno); border-block: 1px solid var(--linea); }
+  .rotulo { margin: 0 0 0.75rem; font-family: var(--fuente-mono); font-size: 0.875rem; color: var(--acento); }
+  .titulo-seccion { font-size: clamp(2rem, 4vw, 2.75rem); margin-bottom: 1rem; }
+  .entrada { color: var(--tinta-suave); max-width: 60ch; margin-bottom: 2.5rem; }
+
+  /* ---------- Saltar al contenido ---------- */
+  .saltar { position: absolute; left: 1rem; top: -4rem; z-index: 100; background: var(--acento); color: var(--texto-acento); padding: 0.6rem 1rem; border-radius: 6px; font-weight: 600; text-decoration: none; }
+  .saltar:focus { top: 1rem; }
+
+  /* ---------- Barra superior ---------- */
+  .barra { position: sticky; top: 0; z-index: 50; background: rgba(14, 17, 22, 0.88); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--linea); }
+  .barra .contenedor { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 0.9rem 0; }
+  .marca { font-family: var(--fuente-mono); font-weight: 500; font-size: 0.95rem; color: var(--tinta); text-decoration: none; white-space: nowrap; }
+  .marca span { color: var(--acento); }
+  .barra nav { display: flex; align-items: center; gap: 1.5rem; font-size: 0.95rem; overflow-x: auto; scrollbar-width: none; }
+  .barra nav::-webkit-scrollbar { display: none; }
+  .barra nav a { color: var(--tinta-suave); text-decoration: none; white-space: nowrap; }
+  .barra nav a:hover { color: var(--tinta); }
+  .barra nav .nav-contacto { color: var(--texto-acento); background: var(--acento); padding: 0.4rem 0.9rem; border-radius: 6px; font-weight: 600; }
+  .barra nav .nav-contacto:hover { color: var(--texto-acento); background: var(--acento-claro); }
+
+  /* ---------- Botones ---------- */
+  .acciones { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .boton { display: inline-flex; align-items: center; min-height: 48px; padding: 0.8rem 1.5rem; border-radius: 8px; font-weight: 600; text-decoration: none; background: var(--acento); color: var(--texto-acento); border: 1px solid var(--acento); transition: transform 0.15s ease, background-color 0.15s ease; }
+  .boton:hover { color: var(--texto-acento); background: var(--acento-claro); transform: translateY(-2px); }
+  .boton.secundario { background: transparent; color: var(--tinta); border-color: var(--linea-fuerte); }
+  .boton.secundario:hover { border-color: var(--tinta); color: var(--tinta); }
+
+  /* ---------- Portada ---------- */
+  .portada { padding: clamp(3.5rem, 9vw, 6rem) 0 clamp(3rem, 7vw, 4.5rem); }
+  .portada .contenedor { display: flex; flex-wrap: wrap; align-items: center; gap: 3.5rem; }
+  .portada-texto { flex: 1 1 520px; min-width: 0; }
+  .portada h1 { font-size: clamp(2.5rem, 6vw, 4.25rem); line-height: 1.04; letter-spacing: -0.03em; margin-bottom: 1.5rem; }
+  .portada .bajada { color: var(--tinta-suave); font-size: 1.2rem; max-width: 56ch; margin-bottom: 2rem; }
+  .codigo { flex: 1 1 380px; min-width: 0; background: var(--superficie); border: 1px solid var(--linea); border-radius: 12px; overflow: hidden; font-family: var(--fuente-mono); font-size: 0.875rem; line-height: 1.85; box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.7); }
+  .codigo-barra { display: flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1rem; border-bottom: 1px solid var(--linea); }
+  .codigo-barra i { width: 11px; height: 11px; border-radius: 50%; background: var(--linea-fuerte); }
+  .codigo-barra span { margin-left: 0.5rem; color: var(--tinta-suave); font-size: 0.8rem; }
+  .codigo pre { margin: 0; padding: 1.25rem 1.4rem; color: #C9D3DD; font: inherit; white-space: pre-wrap; word-break: break-word; }
+  .codigo .c { color: #7D8A97; }
+  .codigo .s { color: var(--acento); }
+  .codigo .a { color: var(--tinta-suave); }
+  .cursor { display: inline-block; width: 0.55em; height: 1.1em; vertical-align: -0.2em; background: var(--acento); }
+
+  /* ---------- Cifras ---------- */
+  .cifras { border-block: 1px solid var(--linea); }
+  .cifras .contenedor { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; padding: 2rem 0; }
+  .cifra strong { display: block; font-family: var(--fuente-titulos); font-size: 2.5rem; line-height: 1.1; color: var(--acento); }
+  .cifra span { color: var(--tinta-suave); }
+
+  /* ---------- Tarjetas de plugins (son las pestañas) ---------- */
+  .tarjetas-plugins { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.25rem; margin-bottom: 2rem; }
+  .tarjeta-plugin { display: flex; flex-direction: column; gap: 0.75rem; text-align: left; padding: 1.5rem; border-radius: 12px; border: 1px solid var(--linea); background: var(--superficie); color: var(--tinta); font: inherit; cursor: pointer; transition: border-color 0.15s ease, transform 0.15s ease; }
+  .tarjeta-plugin:hover { border-color: var(--linea-fuerte); transform: translateY(-2px); }
+  .tarjeta-plugin[aria-selected="true"] { border-color: var(--acento); box-shadow: inset 0 0 0 1px var(--acento); }
+  .tarjeta-plugin code { font-family: var(--fuente-mono); font-size: 0.8rem; color: var(--acento); }
+  .tarjeta-plugin .nombre { font-family: var(--fuente-titulos); font-weight: 700; font-size: 1.35rem; letter-spacing: -0.02em; line-height: 1.2; }
+  .tarjeta-plugin .detalle { color: var(--tinta-suave); font-size: 0.95rem; line-height: 1.5; }
+  .tarjeta-plugin .llamado { margin-top: auto; padding-top: 0.25rem; font-weight: 600; color: var(--acento); }
+  .tarjeta-plugin .llamado-activo { display: none; }
+  .tarjeta-plugin[aria-selected="true"] .llamado-inactivo { display: none; }
+  .tarjeta-plugin[aria-selected="true"] .llamado-activo { display: inline; }
+  #zona-demos { scroll-margin-top: 5.5rem; }
+
+  /* ---------- Plugin destacado (página aparte) ---------- */
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .destacado { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "texto barra" "llamado barra"; gap: 1rem 2rem; align-items: center; margin-bottom: 1.25rem; padding: clamp(1.4rem, 3vw, 2rem); border-radius: 14px; border: 1px solid rgba(245, 158, 11, 0.45); background: linear-gradient(var(--superficie), var(--superficie)) padding-box; color: var(--tinta); text-decoration: none; transition: border-color 0.15s ease, transform 0.15s ease; }
+  .destacado:hover { color: var(--tinta); border-color: #F59E0B; transform: translateY(-2px); }
+  .destacado-texto { grid-area: texto; display: flex; flex-direction: column; gap: 0.5rem; min-width: 0; }
+  .destacado-etiqueta { align-self: flex-start; padding: 0.15rem 0.6rem; border-radius: 999px; background: #F59E0B; color: #111827; font-family: var(--fuente-mono); font-size: 0.75rem; font-weight: 500; }
+  .destacado-nombre { font-family: var(--fuente-titulos); font-weight: 700; font-size: clamp(1.5rem, 3vw, 1.9rem); letter-spacing: -0.02em; line-height: 1.15; }
+  .destacado-detalle { color: var(--tinta-suave); max-width: 62ch; }
+  .destacado .llamado { grid-area: llamado; font-weight: 600; color: #F59E0B; }
+  .destacado-barra { grid-area: barra; display: flex; align-items: center; gap: 6px; padding: 6px; border-radius: 999px; background: #111827; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45); font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; font-size: 13px; font-weight: 600; white-space: nowrap; }
+  .destacado-boton { padding: 9px 14px; border-radius: 999px; background: rgba(255, 255, 255, 0.12); color: #f9fafb; }
+  .destacado-boton--editar { background: #F59E0B; color: #111827; }
+  .destacado-boton--falta { background: #FFF6D6; color: #5C4400; }
+  @media (max-width: 760px) {
+    .destacado { grid-template-columns: 1fr; grid-template-areas: "texto" "barra" "llamado"; }
+    .destacado-barra { justify-self: start; }
+  }
+
+    /* ---------- Demos de plugins ---------- */
+  .panel-demo[hidden] { display: none; }
+  .demo-marco { border: 1px solid var(--linea); border-radius: 14px; overflow: hidden; background: var(--superficie); }
+  .demo-cabecera { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem 1rem; padding: 0.6rem 1rem; background: var(--verde); border-bottom: 1px solid var(--linea); font-family: var(--fuente-titulos); font-size: 0.88rem; color: var(--tinta); }
+  .demo-cabecera button { font: inherit; font-weight: 700; color: var(--tinta); background: transparent; border: 1px solid var(--tinta); border-radius: 999px; padding: 0.2rem 0.85rem; cursor: pointer; }
+  .demo-cabecera button:hover { background: var(--tinta); color: var(--fondo); }
+  .demo-incluye { padding: 1.1rem 1.3rem 1.3rem; border-top: 1px solid var(--linea); background: var(--superficie); }
+  .demo-incluye h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.6rem; }
+  .demo-incluye ul { margin: 0; padding-left: 1.1rem; columns: 2; column-gap: 2rem; font-size: 0.98rem; }
+  .demo-incluye li { margin-bottom: 0.3rem; break-inside: avoid; }
+  .nota-demo { font-size: 0.92rem; color: var(--tinta-suave); margin: 1rem 0 0; }
+
+  /* Zona que simula la página de un cliente: siempre clara, sin importar el tema del portafolio */
+  .demo-plugin { color-scheme: light; background: #fff; color: #1f2937; font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-size: 16px; line-height: 1.5; letter-spacing: normal; padding: clamp(14px, 3vw, 28px); }
+  .demo-plugin *, .demo-plugin *::before, .demo-plugin *::after { box-sizing: border-box; }
+  /* :where() deja estas reglas con la menor prioridad, para que los estilos de cada plugin las puedan reemplazar */
+  .demo-plugin :where(h2, h3, h4) { font-family: inherit; letter-spacing: normal; line-height: 1.3; margin: 0; padding: 0; }
+  .demo-plugin :where(p) { max-width: none; margin: 0; }
+  .demo-plugin :where(ul, ol, fieldset, legend) { margin: 0; padding: 0; }
+  .demo-plugin :where(button, input, select, textarea) { font-family: inherit; font-size: inherit; color: inherit; }
+  .demo-plugin :focus-visible { outline: 3px solid #7c93e6; outline-offset: 2px; }
+  .demo-estado { min-height: 1.4em; margin-top: 12px; font-size: 0.88rem; color: #6b7280; text-align: center; }
+
+  /* ============ 1. Filtro de productos (ftfp) ============ */
+  .ftfp-filtro { --ftfp-primary: #4963C9; --ftfp-accent: #F257A1; --ftfp-text: #1F2937; --ftfp-muted: #6B7280; --ftfp-border: #E5E7EB; --ftfp-surface: #F9FAFB; --ftfp-radius: 8px; --ftfp-control-h: 46px; color: var(--ftfp-text); }
+  .ftfp-searchbar { margin-bottom: 26px; }
+  .ftfp-search { position: relative; display: flex; align-items: center; }
+  .ftfp-filtro .ftfp-search-input { width: 100%; height: 56px; margin: 0; padding: 0 48px 0 52px; border: 2px solid var(--ftfp-border); border-radius: var(--ftfp-radius); background: #fff; color: var(--ftfp-text); font-size: 16px; font-weight: 500; box-shadow: 0 2px 10px rgba(17, 24, 39, .06); -webkit-appearance: none; appearance: none; transition: border-color .2s ease, box-shadow .2s ease; }
+  .ftfp-filtro .ftfp-search-input::-webkit-search-cancel-button { display: none; }
+  .ftfp-filtro .ftfp-search-input::placeholder { color: #9CA3AF; opacity: 1; }
+  .ftfp-filtro .ftfp-search-input:focus { outline: none; border-color: var(--ftfp-primary); box-shadow: 0 0 0 4px color-mix(in srgb, var(--ftfp-primary) 15%, transparent); }
+  .ftfp-search-icon { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); display: flex; color: var(--ftfp-primary); pointer-events: none; }
+  .ftfp-search-clear { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); display: none; align-items: center; justify-content: center; width: 32px; height: 32px; padding: 0; border: 0; border-radius: 50%; background: #F3F4F6; color: var(--ftfp-muted); font-size: 13px; cursor: pointer; }
+  .ftfp-search-clear.is-visible { display: flex; }
+  .ftfp-search-clear:hover { background: #E5E7EB; color: var(--ftfp-text); }
+  .ftfp-search-hint { margin: 8px 2px 0; font-size: 13px; color: var(--ftfp-muted); }
+  .ftfp-wrapper { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
+  .ftfp-sidebar { background: var(--ftfp-surface); border: 1px solid var(--ftfp-border); border-radius: var(--ftfp-radius); }
+  .ftfp-sidebar-body { display: flex; flex-direction: column; gap: 24px; padding: 22px; }
+  .ftfp-filter-title { margin: 0 0 12px; padding: 0 0 10px; border-bottom: 2px solid var(--ftfp-accent); color: var(--ftfp-primary); font-size: 11px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; }
+  .ftfp-select { width: 100%; height: var(--ftfp-control-h); padding: 0 38px 0 14px; border: 1px solid var(--ftfp-border); border-radius: var(--ftfp-radius); background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B7280' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 14px center; color: var(--ftfp-text); font-size: 14px; font-weight: 500; cursor: pointer; -webkit-appearance: none; appearance: none; }
+  .ftfp-select:focus { outline: none; border-color: var(--ftfp-primary); box-shadow: 0 0 0 3px color-mix(in srgb, var(--ftfp-primary) 15%, transparent); }
+  .ftfp-range { --ftfp-fill: 100%; display: block; width: 100%; height: 24px; margin: 6px 0 10px; padding: 0; border: 0; background: transparent; cursor: pointer; -webkit-appearance: none; appearance: none; }
+  .ftfp-range::-webkit-slider-runnable-track { height: 6px; border-radius: 3px; background: linear-gradient(to right, var(--ftfp-primary) 0, var(--ftfp-primary) var(--ftfp-fill), #E5E7EB var(--ftfp-fill), #E5E7EB 100%); }
+  .ftfp-range::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 22px; height: 22px; margin-top: -8px; border-radius: 50%; border: 3px solid #fff; background: var(--ftfp-primary); box-shadow: 0 1px 6px rgba(0, 0, 0, .3); cursor: pointer; }
+  .ftfp-range::-moz-range-track { height: 6px; border-radius: 3px; background: #E5E7EB; }
+  .ftfp-range::-moz-range-progress { height: 6px; border-radius: 3px; background: var(--ftfp-primary); }
+  .ftfp-range::-moz-range-thumb { width: 16px; height: 16px; border-radius: 50%; border: 3px solid #fff; background: var(--ftfp-primary); box-shadow: 0 1px 6px rgba(0, 0, 0, .3); cursor: pointer; }
+  .ftfp-price-values { display: flex; justify-content: space-between; font-size: 13px; font-weight: 700; }
+  .ftfp-categories { display: flex; flex-direction: column; }
+  .ftfp-category-main-label, .ftfp-category-label { display: flex; align-items: center; gap: 10px; margin: 0; cursor: pointer; user-select: none; line-height: 1.35; transition: color .2s ease; }
+  .ftfp-category-main-label { padding: 10px 0; border-bottom: 1px solid var(--ftfp-border); font-size: 13px; font-weight: 600; }
+  .ftfp-category-label { padding: 8px 0 8px 26px; color: #4B5563; font-size: 12px; font-weight: 500; }
+  .ftfp-category-main-label:hover, .ftfp-category-label:hover { color: var(--ftfp-primary); }
+  .ftfp-category-checkbox { width: 18px; height: 18px; margin: 0; flex-shrink: 0; cursor: pointer; accent-color: var(--ftfp-primary); }
+  .ftfp-category-count { margin-left: auto; color: #9CA3AF; font-size: 11px; font-weight: 500; }
+  .ftfp-avail-box .ftfp-category-main-label:last-child { border-bottom: 0; }
+  .ftfp-reset-btn { display: inline-flex; align-items: center; justify-content: center; width: 100%; min-height: 44px; padding: 10px 14px; border: 0; border-radius: var(--ftfp-radius); background: var(--ftfp-accent); color: #fff; font-size: 12px; font-weight: 700; cursor: pointer; transition: background-color .2s ease; }
+  .ftfp-reset-btn:hover { background: #E0408A; }
+  .ftfp-main { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+  .ftfp-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding-bottom: 14px; border-bottom: 2px solid var(--ftfp-accent); }
+  .ftfp-count { font-size: 15px; font-weight: 700; }
+  .ftfp-count-query strong { color: var(--ftfp-primary); }
+  .ftfp-filter-toggle { display: none; align-items: center; gap: 8px; padding: 10px 16px; border: 1px solid var(--ftfp-border); border-radius: var(--ftfp-radius); background: #fff; color: var(--ftfp-text); font-size: 14px; font-weight: 700; cursor: pointer; box-shadow: 0 1px 4px rgba(17, 24, 39, .06); }
+  .ftfp-filter-toggle svg { color: var(--ftfp-primary); }
+  .ftfp-filter-badge { display: none; min-width: 20px; height: 20px; padding: 0 6px; border-radius: 10px; background: var(--ftfp-primary); color: #fff; font-size: 11px; font-weight: 700; line-height: 20px; text-align: center; }
+  .ftfp-filter-badge.is-visible { display: inline-block; }
+  .ftfp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 20px; width: 100%; }
+  .ftfp-product-card { display: flex; flex-direction: column; height: 100%; overflow: hidden; background: #fff; border: 1px solid var(--ftfp-border); border-radius: var(--ftfp-radius); transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease; }
+  .ftfp-product-card:hover { border-color: #F257A1; box-shadow: 0 8px 22px rgba(17, 24, 39, .10); transform: translateY(-3px); }
+  .ftfp-product-image { position: relative; display: flex; align-items: center; justify-content: center; width: 100%; aspect-ratio: 1 / .9; background: #F7F7F8; color: var(--ftfp-primary); }
+  .ftfp-product-image svg { width: 46%; height: auto; opacity: .85; }
+  .ftfp-badges { position: absolute; top: 10px; left: 10px; display: flex; flex-direction: column; align-items: flex-start; gap: 5px; }
+  .ftfp-badge { display: inline-block; padding: 4px 8px; border-radius: 5px; color: #fff; font-size: 11px; font-weight: 700; line-height: 1.2; }
+  .ftfp-badge-sale { background: #DC2626; }
+  .ftfp-badge-new { background: var(--ftfp-primary); }
+  .ftfp-badge-oos { background: #6B7280; }
+  .ftfp-oos .ftfp-product-image svg { opacity: .35; filter: grayscale(.6); }
+  .ftfp-product-info { display: flex; flex-direction: column; flex-grow: 1; gap: 8px; padding: 14px 16px 16px; }
+  .ftfp-product-category { color: var(--ftfp-primary); font-size: 10px; font-weight: 700; letter-spacing: .4px; line-height: 1.4; text-transform: uppercase; }
+  .ftfp-product-title { font-size: 15px; font-weight: 600; word-break: break-word; }
+  .ftfp-product-price { margin-top: auto; padding-top: 4px; font-size: 15px; font-weight: 700; color: #F257A1; }
+  .ftfp-product-price del { color: #6B7280; opacity: .8; font-weight: 500; margin-right: 6px; font-size: 13px; }
+  .ftfp-product-price ins { text-decoration: none; }
+  .ftfp-actions { display: flex; align-items: stretch; gap: 8px; }
+  .ftfp-btn { flex: 1; min-width: 0; display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px 14px; border: 0; border-radius: var(--ftfp-radius); background: var(--ftfp-primary); color: #fff; font-size: 12px; font-weight: 700; cursor: pointer; transition: filter .2s ease, box-shadow .2s ease; }
+  .ftfp-btn:hover { filter: brightness(1.12); box-shadow: 0 4px 12px rgba(17, 24, 39, .18); }
+  .ftfp-cart-btn { flex: 0 0 44px; width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; padding: 0; border: 1px solid var(--ftfp-primary); border-radius: var(--ftfp-radius); background: #fff; color: var(--ftfp-primary); cursor: pointer; transition: background-color .2s ease, color .2s ease; }
+  .ftfp-cart-btn:hover { background: var(--ftfp-primary); color: #fff; }
+  .ftfp-cart-btn .ftfp-ico-ok { display: none; }
+  .ftfp-cart-btn.added { background: #16A34A; border-color: #16A34A; color: #fff; }
+  .ftfp-cart-btn.added .ftfp-ico-cart { display: none; }
+  .ftfp-cart-btn.added .ftfp-ico-ok { display: block; }
+  .ftfp-pagination { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px; padding-top: 20px; border-top: 1px solid var(--ftfp-border); }
+  .ftfp-pagination:empty { display: none; }
+  .ftfp-page-link { display: inline-flex; align-items: center; justify-content: center; min-width: 42px; height: 42px; padding: 0 14px; border: 1px solid var(--ftfp-border); border-radius: var(--ftfp-radius); background: #fff; color: var(--ftfp-text); font-weight: 600; cursor: pointer; transition: all .2s ease; }
+  .ftfp-page-link:hover:not(:disabled) { border-color: var(--ftfp-primary); color: var(--ftfp-primary); }
+  .ftfp-page-link.is-active { background: var(--ftfp-primary); border-color: var(--ftfp-primary); color: #fff; }
+  .ftfp-page-link:disabled { opacity: .4; cursor: default; }
+  .ftfp-no-results { grid-column: 1 / -1; padding: 50px 24px; text-align: center; color: var(--ftfp-muted); }
+  .ftfp-no-results strong { display: block; margin-bottom: 8px; color: var(--ftfp-text); font-size: 17px; }
+
+  /* ============ 2. Cotización (txc) ============ */
+  .txc { --txc-azul: #1a3a6b; --txc-azul-2: #234b88; --txc-texto: #1e293b; --txc-suave: #64748b; --txc-borde: #cbd5e1; --txc-fondo: #f7f8fa; --txc-rojo: #dc2626; --txc-verde: #16a34a; --txc-radio: 8px; max-width: 1040px; margin: 0 auto; color: var(--txc-texto); }
+  .txc-intro { margin: 0 0 20px; font-size: 16px; line-height: 1.55; color: #475569; }
+  .txc-intro span { display: block; margin-top: 4px; font-size: 14px; color: var(--txc-suave); }
+  .txc-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .txc-resumen { background: var(--txc-fondo); border: 1px solid #e2e8f0; border-left: 4px solid var(--txc-azul); border-radius: var(--txc-radio); padding: 18px; align-self: start; }
+  .txc-resumen__titulo { margin: 0 0 14px; font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--txc-azul); }
+  .txc-prod { display: flex; gap: 14px; align-items: center; }
+  .txc-prod__img { flex: 0 0 72px; width: 72px; height: 72px; border-radius: 6px; background: #fff; border: 1px solid #e2e8f0; display: flex; align-items: center; justify-content: center; color: var(--txc-azul); }
+  .txc-prod__img svg { width: 44px; height: 44px; }
+  .txc-prod__nombre { font-weight: 700; font-size: 16px; line-height: 1.35; }
+  .txc-prod__sku { font-size: 13px; color: var(--txc-suave); margin-top: 2px; }
+  .txc-prod__precio { font-size: 15px; color: var(--txc-azul); margin-top: 4px; font-weight: 600; }
+  .txc-link { display: inline-block; margin-top: 14px; padding: 0; border: 0; background: none; font-size: 14px; color: var(--txc-azul); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+  .txc-pasos { list-style: none; margin: 18px 0 0; padding: 16px 0 0; border-top: 1px solid #e2e8f0; display: none; }
+  .txc-pasos li { display: flex; align-items: center; gap: 10px; margin: 0 0 10px; font-size: 14px; color: #475569; }
+  .txc-pasos li span { flex: 0 0 24px; height: 24px; border-radius: 50%; background: var(--txc-azul); color: #fff; font-size: 12px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; }
+  .txc-seccion { border: 0; margin: 0 0 22px; min-width: 0; }
+  .txc-seccion legend { display: block; width: 100%; margin: 0 0 14px; padding: 0 0 8px; border-bottom: 2px solid var(--txc-azul); font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--txc-azul); float: none; }
+  .txc-fila { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0 16px; }
+  .txc-campo { margin: 0 0 14px; min-width: 0; }
+  .txc-campo label, .txc-label { display: block; margin: 0 0 6px; font-size: 15px; font-weight: 600; color: var(--txc-texto); line-height: 1.3; }
+  .txc abbr { color: var(--txc-rojo); text-decoration: none; cursor: help; }
+  .txc-opc { font-weight: 400; color: var(--txc-suave); }
+  .txc-campo input[type="text"], .txc-campo input[type="email"], .txc-campo input[type="tel"], .txc-campo input[type="number"], .txc-campo select, .txc-campo textarea { width: 100%; min-height: 46px; padding: 10px 12px; border: 1px solid var(--txc-borde); border-radius: var(--txc-radio); background: #fff; color: var(--txc-texto); font-size: 16px; line-height: 1.4; }
+  .txc-campo textarea { resize: vertical; min-height: 110px; }
+  .txc-campo input:focus, .txc-campo select:focus, .txc-campo textarea:focus { outline: none; border-color: var(--txc-azul); box-shadow: 0 0 0 3px rgba(26, 58, 107, .15); }
+  .txc-campo [aria-invalid="true"] { border-color: var(--txc-rojo); background: #fff7f7; }
+  .txc-campo select:disabled { background: #f1f5f9; color: var(--txc-suave); cursor: not-allowed; }
+  .txc-error { display: block; margin-top: 5px; font-size: 13.5px; color: var(--txc-rojo); }
+  .txc-error[hidden] { display: none; }
+  .txc-tel { display: flex; }
+  .txc-tel__pref { display: inline-flex; align-items: center; padding: 0 12px; border: 1px solid var(--txc-borde); border-right: 0; border-radius: var(--txc-radio) 0 0 var(--txc-radio); background: #f1f5f9; color: var(--txc-suave); font-weight: 600; }
+  .txc-campo .txc-tel input { border-radius: 0 var(--txc-radio) var(--txc-radio) 0; }
+  .txc-couriers { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; }
+  .txc-courier { margin: 0; cursor: pointer; }
+  .txc-campo .txc-courier { margin: 0; font-weight: 600; }
+  .txc-courier input { position: absolute; opacity: 0; pointer-events: none; }
+  .txc-courier__caja { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; min-height: 88px; padding: 12px 8px; border: 2px solid var(--txc-borde); border-radius: var(--txc-radio); background: #fff; color: var(--txc-suave); text-align: center; transition: border-color .15s ease, background .15s ease; }
+  .txc-courier__nombre { font-size: 14px; font-weight: 700; color: var(--txc-texto); }
+  .txc-courier input:checked + .txc-courier__caja { border-color: var(--txc-azul); background: #eef3fa; color: var(--txc-azul); }
+  .txc-courier input:focus-visible + .txc-courier__caja { outline: 3px solid #7c93e6; outline-offset: 2px; }
+  .txc-courier__check { position: absolute; top: 6px; right: 6px; width: 18px; height: 18px; border-radius: 50%; background: var(--txc-azul); display: none; }
+  .txc-courier__check::after { content: ""; position: absolute; left: 6px; top: 3px; width: 5px; height: 9px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+  .txc-courier input:checked + .txc-courier__caja .txc-courier__check { display: block; }
+  .txc-stepper { display: inline-flex; align-items: stretch; }
+  .txc-stepper__btn { width: 46px; border: 1px solid var(--txc-borde); background: #f1f5f9; color: var(--txc-azul); font-size: 22px; font-weight: 700; cursor: pointer; }
+  .txc-stepper__btn:first-child { border-radius: var(--txc-radio) 0 0 var(--txc-radio); }
+  .txc-stepper__btn:last-child { border-radius: 0 var(--txc-radio) var(--txc-radio) 0; }
+  .txc-campo .txc-stepper input { width: 84px; border-radius: 0; text-align: center; border-left: 0; border-right: 0; }
+  .txc-alerta { margin: 0 0 18px; padding: 12px 14px; border: 1px solid #fecaca; border-radius: var(--txc-radio); background: #fef2f2; color: #991b1b; font-size: 15px; }
+  .txc-enviar { display: inline-flex; align-items: center; justify-content: center; width: 100%; min-height: 52px; padding: 12px 28px; border: 0; border-radius: var(--txc-radio); background: var(--txc-azul); color: #fff; font-size: 17px; font-weight: 700; cursor: pointer; box-shadow: 0 2px 6px rgba(26, 58, 107, .25); transition: background .15s ease; }
+  .txc-enviar:hover { background: var(--txc-azul-2); }
+  .txc-nota { margin: 14px 0 0; font-size: 14px; color: var(--txc-suave); line-height: 1.5; }
+  .txc-gracias { max-width: 560px; margin: 0 auto; padding: 24px 0; text-align: center; }
+  .txc-gracias__icono { width: 64px; height: 64px; margin: 0 auto 16px; border-radius: 50%; background: var(--txc-verde); color: #fff; display: flex; align-items: center; justify-content: center; }
+  .txc-gracias h2 { font-size: 26px; margin-bottom: 12px; color: var(--txc-azul); }
+  .txc-gracias p { margin-bottom: 12px; line-height: 1.55; }
+  .txc-gracias__sub { color: var(--txc-suave); }
+  .txc-btn-wsp { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border: 0; border-radius: var(--txc-radio); background: #25D366; color: #fff; font-size: 16px; font-weight: 700; cursor: pointer; }
+  .txc-btn-wsp:hover { filter: brightness(.94); }
+  @media (min-width: 860px) {
+    .txc-grid { grid-template-columns: 300px minmax(0, 1fr); gap: 32px; }
+    .txc-pasos { display: block; }
+    .txc-fila { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  /* ============ 3. Agendador de citas (ac) ============ */
+  .ac-agendador { --ac-color: #0f766e; --ac-fondo: #ffffff; --ac-texto: #1a1f2b; --ac-suave: #5b6676; --ac-borde: #dde2e9; --ac-panel: color-mix(in srgb, var(--ac-color) 6%, #fff); --ac-radio: 18px; --ac-radio-dia: 11px; --ac-sombra: 0 6px 24px rgba(20, 30, 50, .08); width: 100%; max-width: 880px; margin: 0 auto; color: var(--ac-texto); line-height: 1.45; }
+  .ac-tarjeta { display: grid; grid-template-columns: minmax(200px, 280px) minmax(0, 1fr); background: var(--ac-fondo); border: 1px solid var(--ac-borde); border-radius: var(--ac-radio); box-shadow: var(--ac-sombra); overflow: hidden; min-height: 440px; }
+  .ac-confirmada .ac-tarjeta { grid-template-columns: minmax(0, 1fr); }
+  .ac-info { position: relative; padding: 28px 24px; background: var(--ac-panel); border-right: 1px solid color-mix(in srgb, var(--ac-color) 14%, var(--ac-borde)); }
+  .ac-atras { width: 38px; height: 38px; margin: 0 0 16px; display: inline-flex; align-items: center; justify-content: center; color: var(--ac-color); background: var(--ac-fondo); border: 1px solid var(--ac-borde); border-radius: 50%; cursor: pointer; }
+  .ac-atras:hover { border-color: var(--ac-color); }
+  .ac-anfitrion { margin: 0 0 4px; font-size: 14px; font-weight: 600; color: var(--ac-suave); }
+  .ac-titulo { margin: 0 0 16px; font-size: 22px; font-weight: 700; line-height: 1.25; }
+  .ac-meta { list-style: none; display: flex; flex-direction: column; gap: 10px; margin: 0 0 16px; }
+  .ac-meta li { display: flex; align-items: flex-start; gap: 10px; }
+  .ac-meta .ac-icono { flex: 0 0 18px; margin-top: 2px; color: var(--ac-color); }
+  .ac-meta .ac-seleccion { font-weight: 700; color: var(--ac-color); }
+  .ac-ayuda { display: block; font-size: 13px; color: var(--ac-suave); font-weight: 400; }
+  .ac-descripcion { font-size: 14px; color: var(--ac-suave); line-height: 1.55; }
+  .ac-icono { width: 18px; height: 18px; flex: none; }
+  .ac-principal { padding: 28px 30px; min-width: 0; }
+  .ac-pasos { list-style: none; display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0 0 18px; }
+  .ac-paso { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ac-suave); }
+  .ac-paso-numero { width: 24px; height: 24px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; border: 1px solid var(--ac-borde); font-size: 12px; font-weight: 700; }
+  .ac-paso-actual { color: var(--ac-texto); font-weight: 700; }
+  .ac-paso-actual .ac-paso-numero { background: var(--ac-color); border-color: var(--ac-color); color: #fff; }
+  .ac-paso-hecho .ac-paso-numero { background: color-mix(in srgb, var(--ac-color) 14%, #fff); border-color: transparent; color: var(--ac-color); }
+  .ac-encabezado { margin: 0 0 16px; font-size: 20px; font-weight: 700; outline: none; }
+  .ac-error { margin: 0 0 14px; padding: 10px 12px; border-radius: 8px; background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; font-size: 14px; }
+  .ac-error:empty { display: none; }
+  .ac-selector { display: grid; grid-template-columns: minmax(0, 1fr); gap: 22px; }
+  .ac-selector.ac-con-horas { grid-template-columns: minmax(0, 1fr) 170px; }
+  .ac-cal-cabecera { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+  .ac-mes { font-size: 16px; font-weight: 700; }
+  .ac-nav { width: 38px; height: 38px; display: inline-flex; align-items: center; justify-content: center; color: var(--ac-color); background: var(--ac-fondo); border: 1px solid var(--ac-borde); border-radius: 50%; cursor: pointer; }
+  .ac-nav:hover:not(:disabled) { border-color: var(--ac-color); }
+  .ac-nav:disabled { opacity: .35; cursor: default; }
+  .ac-semana, .ac-dias { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; }
+  .ac-semana span { padding: 4px 0; text-align: center; font-size: 12px; font-weight: 700; color: var(--ac-suave); }
+  .ac-dia { aspect-ratio: 1; display: inline-flex; align-items: center; justify-content: center; position: relative; padding: 0; border: 0; border-radius: var(--ac-radio-dia); background: none; color: #a3acb9; font-size: 15px; cursor: default; }
+  .ac-dia.ac-libre { background: color-mix(in srgb, var(--ac-color) 10%, #fff); color: var(--ac-color); font-weight: 700; cursor: pointer; transition: background .15s ease; }
+  .ac-dia.ac-libre:hover { background: color-mix(in srgb, var(--ac-color) 20%, #fff); }
+  .ac-dia.ac-activo, .ac-dia.ac-activo:hover { background: var(--ac-color); color: #fff; }
+  .ac-dia.ac-hoy::after { content: ""; position: absolute; bottom: 5px; left: 50%; width: 4px; height: 4px; margin-left: -2px; border-radius: 50%; background: currentColor; }
+  .ac-estado { margin-top: 12px; font-size: 14px; color: var(--ac-suave); }
+  .ac-zona-caja { margin-top: 18px; }
+  .ac-zona-caja label { display: block; margin-bottom: 6px; font-size: 13px; font-weight: 600; color: var(--ac-suave); }
+  .ac-zona-fila { display: flex; align-items: center; gap: 8px; color: var(--ac-suave); }
+  .ac-zona { flex: 1; min-width: 0; padding: 9px 10px; border: 1px solid var(--ac-borde); border-radius: 8px; background: #fff; color: var(--ac-texto); font-size: 14px; }
+  .ac-zona:focus, .ac-form input:focus, .ac-form textarea:focus { outline: none; border-color: var(--ac-color); box-shadow: 0 0 0 1px var(--ac-color); }
+  .ac-horas-caja { min-width: 0; }
+  .ac-horas-titulo { margin-bottom: 10px; font-size: 14px; font-weight: 700; }
+  .ac-horas { display: flex; flex-direction: column; gap: 8px; max-height: 330px; overflow-y: auto; padding: 2px 4px 2px 2px; }
+  .ac-hora { padding: 9px 12px; border: 1px solid var(--ac-color); border-radius: 999px; background: #fff; color: var(--ac-color); font-size: 15px; font-weight: 700; cursor: pointer; transition: background .15s ease; }
+  .ac-hora:hover { background: color-mix(in srgb, var(--ac-color) 10%, #fff); }
+  .ac-hora-activa, .ac-hora-activa:hover { background: var(--ac-color); color: #fff; }
+  .ac-continuar { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--ac-borde); }
+  .ac-continuar-texto { margin-bottom: 8px; font-size: 14px; font-weight: 700; }
+  .ac-siguiente, .ac-btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; width: 100%; padding: 11px 16px; border: 0; border-radius: 8px; background: var(--ac-color); color: #fff; font-size: 15px; font-weight: 700; cursor: pointer; transition: filter .15s ease; }
+  .ac-siguiente:hover, .ac-btn:hover { filter: brightness(1.1); }
+  .ac-form { display: flex; flex-direction: column; gap: 14px; max-width: 460px; }
+  .ac-form label, .ac-form legend { display: block; margin-bottom: 6px; font-size: 14px; font-weight: 600; }
+  .ac-form input[type="text"], .ac-form input[type="email"], .ac-form input[type="tel"], .ac-form textarea { width: 100%; padding: 10px 12px; border: 1px solid var(--ac-borde); border-radius: 8px; background: #fff; color: var(--ac-texto); font-size: 15px; line-height: 1.4; }
+  .ac-form [aria-invalid="true"] { border-color: #dc2626; }
+  .ac-form fieldset { border: 0; min-width: 0; }
+  .ac-ubicaciones { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .ac-opcion-ubicacion { display: flex; align-items: center; gap: 8px; margin: 0 !important; padding: 10px 12px; border: 1px solid var(--ac-borde); border-radius: 8px; font-weight: 600 !important; cursor: pointer; }
+  .ac-opcion-ubicacion input { accent-color: var(--ac-color); }
+  .ac-opcion-ubicacion .ac-icono { color: var(--ac-color); }
+  .ac-opcion-ubicacion:has(input:checked) { border-color: var(--ac-color); background: var(--ac-panel); }
+  .ac-opcion-ubicacion:has(input:focus-visible) { outline: 3px solid #7c93e6; outline-offset: 2px; }
+  .ac-opcional { font-weight: 400; color: var(--ac-suave); }
+  .ac-btn-secundario { align-self: flex-start; padding: 6px 0; border: 0; background: none; color: var(--ac-color); font-size: 14px; font-weight: 700; cursor: pointer; }
+  .ac-legal { font-size: 12.5px; color: var(--ac-suave); }
+  .ac-ok { max-width: 520px; margin: 0 auto; padding: 8px 0; text-align: center; }
+  .ac-ok-icono { width: 64px; height: 64px; margin: 8px auto 14px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: color-mix(in srgb, var(--ac-color) 12%, #fff); color: var(--ac-color); }
+  .ac-ok-icono .ac-icono { width: 32px; height: 32px; }
+  .ac-ok-titulo { margin-bottom: 14px; }
+  .ac-resumen { margin: 0 0 16px; padding: 16px 18px; border: 1px solid var(--ac-borde); border-radius: 12px; text-align: left; }
+  .ac-resumen h3 { margin-bottom: 10px; font-size: 16px; font-weight: 700; }
+  .ac-resumen ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .ac-resumen li { display: flex; gap: 10px; align-items: flex-start; font-size: 14.5px; }
+  .ac-resumen .ac-icono { color: var(--ac-color); margin-top: 2px; }
+  .ac-enlaces { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 12px; }
+  .ac-enlaces span { padding: 6px 12px; border: 1px solid var(--ac-borde); border-radius: 999px; font-size: 13px; font-weight: 600; color: var(--ac-color); }
+  .ac-nota-ok { margin-bottom: 14px; font-size: 13px; color: var(--ac-suave); }
+  .ac-ok .ac-btn { width: auto; padding: 10px 22px; }
+  @media (max-width: 760px) {
+    .ac-tarjeta { grid-template-columns: minmax(0, 1fr); min-height: 0; }
+    .ac-info { padding: 22px 20px 16px; border-right: 0; border-bottom: 1px solid var(--ac-borde); }
+    .ac-principal { padding: 20px; }
+    .ac-selector.ac-con-horas { grid-template-columns: minmax(0, 1fr); }
+    .ac-horas { flex-direction: row; flex-wrap: wrap; max-height: none; }
+    .ac-hora { flex: 1 1 78px; }
+    .ac-ubicaciones { grid-template-columns: minmax(0, 1fr); }
+  }
+
+  /* ============ 4. Directorio de autores (diraut) ============ */
+  .diraut-directorio { font-family: 'Open Sans', system-ui, sans-serif; max-width: 1200px; margin: 0 auto; color: #2b2b33; }
+  .diraut-filtros { margin-bottom: 32px; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 14px; }
+  .diraut-filtros select { width: auto; min-width: min(280px, 100%); max-width: 100%; padding: 12px 40px 12px 16px; border: 1px solid #d8d8de; border-radius: 10px; font-size: 15px; font-weight: 600; background-color: #fff; color: #2b2b33; box-shadow: 0 2px 6px rgba(20, 20, 40, .05); cursor: pointer; line-height: 1.5; -webkit-appearance: none; appearance: none; background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236343e9' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; background-size: 18px; }
+  .diraut-filtros select:focus { outline: none; border-color: #6343e9; box-shadow: 0 0 0 3px rgba(99, 67, 233, .15); }
+  .diraut-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 26px; }
+  @media (min-width: 640px) { .diraut-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 1000px) { .diraut-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  .diraut-sin-resultados { grid-column: 1 / -1; text-align: center; color: #666672; margin: 20px 0; }
+  .diraut-tarjeta { position: relative; display: flex; flex-direction: column; min-width: 0; margin: 0; overflow: hidden; background: #fff; border: 1px solid #f1f1f4; border-radius: 14px; box-shadow: 0 5px 18px rgba(20, 20, 40, .06); transition: transform .3s ease, box-shadow .3s ease; }
+  .diraut-tarjeta:hover { transform: translateY(-6px); box-shadow: 0 16px 28px rgba(20, 20, 40, .12); }
+  .diraut-imagen-contenedor { position: relative; width: 100%; aspect-ratio: 1 / 1; overflow: hidden; background: #f3f2f8; cursor: pointer; flex-shrink: 0; }
+  .diraut-imagen-contenedor img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s ease; }
+  .diraut-tarjeta:hover .diraut-imagen-contenedor img { transform: scale(1.04); }
+  .diraut-etiqueta-categoria { position: absolute; top: 15px; left: 15px; z-index: 2; background: rgba(255, 255, 255, .95); color: #2b2b33; font-size: 11px; font-weight: 700; line-height: 1.2; padding: 6px 12px; border-radius: 7px; text-transform: uppercase; letter-spacing: .5px; box-shadow: 0 2px 5px rgba(0, 0, 0, .12); pointer-events: none; }
+  .diraut-tarjeta-contenido { padding: 20px 20px 24px; flex-grow: 1; display: flex; flex-direction: column; }
+  .diraut-titulo { font-size: 18px; font-weight: 700; margin: 0 0 12px; color: #18181c; line-height: 1.3; }
+  .diraut-descripcion { font-size: 14px; color: #666672; line-height: 1.6; margin-bottom: 20px; display: -webkit-box; -webkit-line-clamp: 3; line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .diraut-boton-ver-mas { align-self: center; width: max-content; max-width: 100%; margin: auto auto 0; padding: 8px 24px; border: 2px solid #6343e9; border-radius: 8px; background: transparent; color: #6343e9; font-size: 14px; font-weight: 600; line-height: 1.4; cursor: pointer; transition: all .25s ease; }
+  .diraut-boton-ver-mas:hover, .diraut-boton-ver-mas:focus-visible { background: #6343e9; color: #fff; }
+  .diraut-directorio :focus-visible, .diraut-modal-fondo :focus-visible { outline: 3px solid rgba(99, 67, 233, .35); outline-offset: 2px; }
+  .diraut-paginacion { display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 40px; flex-wrap: wrap; }
+  .diraut-paginacion:empty { display: none; }
+  .diraut-boton-pagina { min-width: 38px; height: 38px; padding: 0 10px; display: flex; justify-content: center; align-items: center; border: 1px solid #e2e2e8; background: #fff; color: #55555f; cursor: pointer; border-radius: 8px; font-weight: 600; font-size: 14px; line-height: 1; transition: all .2s; }
+  .diraut-boton-pagina:hover:not(:disabled) { background: #f5f4fb; color: #333; }
+  .diraut-boton-pagina.activo { background: #6343e9; color: #fff; border-color: #6343e9; }
+  .diraut-boton-pagina:disabled { opacity: .45; cursor: default; }
+  .diraut-paginacion-separador { color: #8a8a96; }
+  html.diraut-modal-abierto, html.diraut-modal-abierto body { overflow: hidden; }
+  .diraut-modal-fondo { position: fixed; inset: 0; z-index: 999999; display: flex; justify-content: center; align-items: center; padding: 20px; background: rgba(20, 20, 30, .7); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); font-family: 'Open Sans', system-ui, sans-serif; }
+  .diraut-modal-fondo[hidden] { display: none; }
+  .diraut-modal-fondo *, .diraut-modal-fondo *::before, .diraut-modal-fondo *::after { box-sizing: border-box; }
+  .diraut-modal-contenido { position: relative; width: 100%; max-width: 620px; max-height: 88vh; max-height: 88dvh; padding: 40px; overflow-y: auto; overscroll-behavior: contain; background: #fff; color: #2b2b33; border-radius: 18px; box-shadow: 0 25px 55px rgba(0, 0, 0, .28); outline: none; }
+  .diraut-modal-cerrar { position: absolute; top: 16px; right: 16px; z-index: 3; width: 40px; height: 40px; padding: 0; display: flex; align-items: center; justify-content: center; border: 0; border-radius: 50%; background: rgba(255, 255, 255, .92); color: #55555f; font-size: 24px; line-height: 1; cursor: pointer; box-shadow: 0 2px 8px rgba(0, 0, 0, .15); }
+  .diraut-modal-cerrar:hover { background: #e3e1ee; color: #333; }
+  .diraut-modal-imagen { position: relative; width: 100%; height: 300px; border-radius: 14px; overflow: hidden; background: #f3f2f8; margin-bottom: 24px; }
+  .diraut-modal-imagen img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+  .diraut-modal-titulo { margin: 0 0 6px; font-size: 26px; font-weight: 700; line-height: 1.25; color: #18181c; }
+  .diraut-modal-meta { margin: 0 0 16px; font-size: 14px; font-weight: 600; color: #6343e9; }
+  .diraut-modal-descripcion { font-size: 16px; color: #4d4d57; line-height: 1.75; }
+  .diraut-modal-descripcion p { margin: 0 0 16px; }
+  .diraut-caracteristicas-titulo { margin: 24px 0 12px; padding-top: 20px; border-top: 1px solid #f0f0f4; font-size: 15px; font-weight: 700; color: #18181c; }
+  .diraut-lista-caracteristicas { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .diraut-lista-caracteristicas li { position: relative; padding-left: 22px; font-size: 14.5px; color: #4d4d57; line-height: 1.5; }
+  .diraut-lista-caracteristicas li::before { content: ""; position: absolute; left: 3px; top: 7px; width: 8px; height: 8px; border-radius: 50%; background: #6343e9; }
+  @media (max-width: 640px) {
+    .diraut-modal-fondo { padding: 10px; }
+    .diraut-modal-contenido { padding: 22px; border-radius: 14px; }
+    .diraut-modal-imagen { height: 240px; }
+    .diraut-modal-titulo { font-size: 22px; }
+    .diraut-modal-cerrar { top: 10px; right: 10px; }
+  }
+
+  .ftfp-drawer-head, .ftfp-drawer-foot { display: none; }
+  /* ---------- Filtro en celular ---------- */
+  @media (max-width: 768px) {
+    .ftfp-wrapper { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+    .ftfp-sidebar { display: none; }
+    .ftfp-abierto .ftfp-sidebar { display: flex; flex-direction: column; position: fixed; top: 0; bottom: 0; left: 0; z-index: 1001; width: min(88vw, 380px); border: 0; border-radius: 0 14px 14px 0; background: #fff; box-shadow: 4px 0 30px rgba(0, 0, 0, .2); }
+    .ftfp-abierto .ftfp-sidebar-body { flex: 1; overflow-y: auto; padding: 20px 18px; }
+    .ftfp-abierto::after { content: ""; position: fixed; inset: 0; z-index: 1000; background: rgba(17, 24, 39, .5); }
+    .ftfp-drawer-head { display: flex; align-items: center; justify-content: space-between; padding: 16px 18px; border-bottom: 1px solid var(--ftfp-border); font-size: 17px; font-weight: 700; }
+    .ftfp-drawer-close { width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; padding: 0; border: 0; border-radius: 50%; background: #F3F4F6; color: var(--ftfp-text); font-size: 15px; cursor: pointer; }
+    .ftfp-drawer-foot { display: block; padding: 14px 18px; border-top: 1px solid var(--ftfp-border); background: #fff; }
+    .ftfp-apply-btn { width: 100%; min-height: 48px; border: 0; border-radius: var(--ftfp-radius); background: var(--ftfp-primary); color: #fff; font-size: 15px; font-weight: 700; cursor: pointer; }
+    .ftfp-filter-toggle { display: inline-flex; }
+    .ftfp-search-input { height: 52px !important; }
+    .ftfp-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .ftfp-product-card:hover { transform: none; }
+    .ftfp-product-info { padding: 10px 12px 12px; gap: 6px; }
+    .ftfp-product-title { font-size: 14px; }
+    .demo-incluye ul { columns: 1; }
+  }
+  @media (max-width: 340px) { .ftfp-grid { grid-template-columns: 1fr; } }
+  @media (prefers-reduced-motion: reduce) {
+    .ftfp-product-card, .diraut-tarjeta, .diraut-imagen-contenedor img { transition: none; }
+    .ftfp-product-card:hover, .diraut-tarjeta:hover { transform: none; }
+  }
+
+
+  /* ---------- Ajustes de las demos al diseño oscuro ---------- */
+  .demo-marco { border-color: var(--linea); }
+  .demo-cabecera { font-family: var(--fuente-mono); font-size: 0.8rem; color: var(--tinta-suave); }
+  .demo-cabecera button { font-family: var(--fuente-texto); color: var(--acento); border-color: var(--acento); }
+  .demo-cabecera button:hover { background: var(--acento); color: var(--texto-acento); }
+  .demo-incluye h3 { font-family: var(--fuente-titulos); }
+  .demo-incluye ul { color: var(--tinta-suave); }
+  .demo-incluye li::marker { color: var(--acento); }
+  .nota-demo { font-family: var(--fuente-mono); font-size: 0.8rem; }
+
+  /* ---------- Servicios ---------- */
+  .servicios { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; }
+  .servicio { padding: 1.5rem; border: 1px solid var(--linea); border-radius: 12px; }
+  .servicio h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+  .servicio p { margin: 0; color: var(--tinta-suave); font-size: 0.98rem; }
+  .servicio svg { color: var(--acento); margin-bottom: 0.9rem; }
+
+  /* ---------- Trayectoria ---------- */
+  .experiencias { display: flex; flex-direction: column; }
+  .experiencia { display: flex; flex-wrap: wrap; gap: 0.5rem 2rem; padding: 1.75rem 0; border-top: 1px solid var(--linea); }
+  .experiencia:last-child { border-bottom: 1px solid var(--linea); }
+  .experiencia .fecha { flex: 0 0 220px; font-family: var(--fuente-mono); font-size: 0.875rem; color: var(--tinta-suave); padding-top: 0.3rem; }
+  .experiencia .detalle { flex: 1 1 420px; min-width: 0; }
+  .experiencia h3 { font-size: 1.35rem; margin-bottom: 0.25rem; }
+  .experiencia .lugar { color: var(--acento); font-size: 0.95rem; margin-bottom: 0.6rem; }
+  .experiencia ul { margin: 0; padding-left: 1.1rem; color: var(--tinta-suave); max-width: 66ch; }
+  .experiencia li { margin-bottom: 0.3rem; }
+  .experiencia li::marker { color: var(--acento); }
+
+  /* ---------- Trabajos ---------- */
+  .rubros { list-style: none; margin: 0 0 2rem; padding: 0; display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .rubros li { padding: 0.45rem 1rem; border: 1px solid var(--linea-fuerte); border-radius: 999px; font-size: 0.95rem; }
+  .proyecto { margin-top: 2rem; padding: 1.5rem; border: 1px solid var(--linea); border-radius: 12px; background: var(--superficie); max-width: 62ch; }
+  .proyecto h3 { font-size: 1.25rem; margin-bottom: 0.4rem; }
+  .proyecto p { margin: 0; color: var(--tinta-suave); }
+
+  /* ---------- Herramientas ---------- */
+  .herramientas { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.6rem; font-family: var(--fuente-mono); font-size: 0.875rem; }
+  .herramientas li { padding: 0.5rem 0.9rem; border: 1px solid var(--linea-fuerte); border-radius: 6px; }
+  .idiomas { margin-top: 1.5rem; color: var(--tinta-suave); }
+
+  /* ---------- Contacto ---------- */
+  .contacto-caja { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 2rem; padding: clamp(2rem, 6vw, 4rem); border-radius: 16px; background: var(--acento); color: var(--texto-acento); }
+  .contacto-caja > div { flex: 1 1 420px; min-width: 0; }
+  .contacto-caja h2 { font-size: clamp(2rem, 4.5vw, 3.25rem); line-height: 1.05; margin-bottom: 0.75rem; }
+  .contacto-caja p { margin: 0; font-size: 1.1rem; max-width: 48ch; }
+  .contacto-caja .boton { background: var(--texto-acento); color: var(--tinta); border-color: var(--texto-acento); }
+  .contacto-caja .boton:hover { background: #232A33; color: var(--tinta); }
+  .contacto-caja .boton.secundario { background: transparent; color: var(--texto-acento); border: 2px solid var(--texto-acento); }
+  .contacto-caja .boton.secundario:hover { background: rgba(14, 17, 22, 0.08); color: var(--texto-acento); }
+  .contacto-caja :focus-visible { outline-color: var(--texto-acento); }
+
+  footer { border-top: 1px solid var(--linea); }
+  footer .contenedor { padding: 1.5rem 0; font-family: var(--fuente-mono); font-size: 0.8rem; color: var(--tinta-suave); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem; }
+
+  /* ---------- Movimiento ---------- */
+  @media (prefers-reduced-motion: no-preference) {
+    .cursor { animation: parpadeo 1.1s steps(1) infinite; }
+    @keyframes parpadeo { 50% { opacity: 0; } }
+    .codigo { animation: aparecer 0.7s ease-out both; }
+    @keyframes aparecer { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .boton, .tarjeta-plugin { transition: none; }
+  }
+
+  @media (max-width: 640px) {
+    .barra nav a:not(.nav-contacto) { display: none; }
+    .experiencia .fecha { flex-basis: 100%; padding-top: 0; }
+    .demo-incluye ul { columns: 1; }
+  }
+</style>
+</head>
+<body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="barra">
+  <div class="contenedor">
+    <a class="marca" href="#inicio">nicolas<span>.</span>merino</a>
+    <nav aria-label="Secciones">
+      <a href="#plugins">Plugins</a>
+      <a href="#servicios">Qué hago</a>
+      <a href="#trayectoria">Trayectoria</a>
+      <a href="#trabajos">Trabajos</a>
+      <a href="#herramientas">Herramientas</a>
+      <a class="nav-contacto" href="#contacto">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenido">
+  <!-- Portada -->
+  <section class="portada" id="inicio">
+    <div class="contenedor">
+      <div class="portada-texto">
+        <p class="rotulo">// Ingeniero informático · Concepción, Chile</p>
+        <h1>Sitios WordPress y plugins a medida que tus clientes pueden usar solos.</h1>
+        <p class="bajada">He creado más de 40 sitios web, programo plugins en PHP cuando una solución lista no alcanza y dejo guías para que cada cliente administre su sitio sin depender de nadie.</p>
+        <div class="acciones">
+          <a class="boton" href="#contacto">Hablemos de tu proyecto</a>
+          <a class="boton secundario" href="#plugins">Probar mis plugins</a>
+        </div>
+      </div>
+      <div class="codigo" aria-hidden="true">
+        <div class="codigo-barra"><i></i><i></i><i></i><span>pagina-de-inicio.php</span></div>
+<pre><span class="c">&lt;!-- Plugins propios en acción --&gt;</span>
+<span class="s">[filtro_productos]</span> <span class="a">categorias="todas"</span>
+<span class="s">[cotizacion]</span> <span class="a">boton="Deseo cotizar"</span>
+<span class="s">[agendador_citas]</span> <span class="a">zona="America/Santiago"</span>
+<span class="s">[directorio_autores]</span> <span class="a">por_pagina="8"</span>
+
+<span class="c">// listo: el cliente lo edita desde su panel</span> <span class="cursor"></span></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cifras -->
+  <section class="cifras" aria-label="En resumen">
+    <div class="contenedor">
+      <div class="cifra"><strong>+40</strong><span>sitios web publicados</span></div>
+      <div class="cifra"><strong>5</strong><span>plugins propios para WordPress</span></div>
+      <div class="cifra"><strong>2</strong><span>agencias digitales</span></div>
+      <div class="cifra"><strong>CL</strong><span>clientes de todo Chile</span></div>
+    </div>
+  </section>
+
+  <!-- Plugins -->
+  <section class="seccion" id="plugins">
+    <div class="contenedor">
+      <p class="rotulo">01 / plugins</p>
+      <h2 class="titulo-seccion">Plugins que he desarrollado</h2>
+      <p class="entrada">Elige uno y pruébalo aquí mismo: cada demo usa la misma interfaz que ven los clientes, con datos de ejemplo.</p>
+
+      <a class="destacado" href="retoque.html" target="_blank" rel="noopener">
+        <span class="destacado-texto">
+          <span class="destacado-etiqueta">Nuevo · Retoque 1.9</span>
+          <span class="destacado-nombre">Retoque · Edición en vivo</span>
+          <span class="destacado-detalle">Tus clientes cambian textos, fotos y botones tocando su propio sitio, y te dejan notas en la parte exacta donde quieren un cambio. Tiene su propia página con demo y explicación para mostrarla a clientes.</span>
+        </span>
+        <span class="destacado-barra" aria-hidden="true">
+          <span class="destacado-boton destacado-boton--editar">Editar página</span>
+          <span class="destacado-boton">Dejar nota</span>
+          <span class="destacado-boton destacado-boton--falta">Falta 1</span>
+        </span>
+        <span class="llamado">Abrir demo en otra pestaña ↗<span class="sr-only"> (se abre en una pestaña nueva)</span></span>
+      </a>
+
+      <div class="tarjetas-plugins" role="tablist" aria-label="Demos de plugins">
+        <button type="button" class="tarjeta-plugin" role="tab" id="pestana-filtros" aria-controls="panel-filtros" aria-selected="true">
+          <code>[filtro_productos]</code>
+          <span class="nombre">Filtro de productos</span>
+          <span class="detalle">Búsqueda en vivo, categorías con contador, rango de precio y orden para tiendas WooCommerce.</span>
+          <span class="llamado"><span class="llamado-inactivo">Probar demo →</span><span class="llamado-activo">Demo abierta ↓</span></span>
+        </button>
+        <button type="button" class="tarjeta-plugin" role="tab" id="pestana-cotizacion" aria-controls="panel-cotizacion" aria-selected="false" tabindex="-1">
+          <code>[cotizacion]</code>
+          <span class="nombre">Cotización</span>
+          <span class="detalle">Cambia "Agregar al carrito" por "Deseo cotizar", con validación de RUT y aviso por correo.</span>
+          <span class="llamado"><span class="llamado-inactivo">Probar demo →</span><span class="llamado-activo">Demo abierta ↓</span></span>
+        </button>
+        <button type="button" class="tarjeta-plugin" role="tab" id="pestana-agenda" aria-controls="panel-agenda" aria-selected="false" tabindex="-1">
+          <code>[agendador_citas]</code>
+          <span class="nombre">Agendador de citas</span>
+          <span class="detalle">Calendario con zona horaria, varias ubicaciones por reunión y correos de confirmación.</span>
+          <span class="llamado"><span class="llamado-inactivo">Probar demo →</span><span class="llamado-activo">Demo abierta ↓</span></span>
+        </button>
+        <button type="button" class="tarjeta-plugin" role="tab" id="pestana-autores" aria-controls="panel-autores" aria-selected="false" tabindex="-1">
+          <code>[directorio_autores]</code>
+          <span class="nombre">Directorio de autores</span>
+          <span class="detalle">Tarjetas con foto, filtros por categoría, paginación y perfil completo en una ventana.</span>
+          <span class="llamado"><span class="llamado-inactivo">Probar demo →</span><span class="llamado-activo">Demo abierta ↓</span></span>
+        </button>
+      </div>
+
+      <div id="zona-demos">
+      <!-- 1. Filtro de productos -->
+      <div class="panel-demo" role="tabpanel" id="panel-filtros" aria-labelledby="pestana-filtros">
+        <div class="demo-marco">
+          <div class="demo-cabecera"><span>Filtro de productos para tiendas WooCommerce</span><span>Demo con productos de ejemplo</span></div>
+          <div class="demo-plugin">
+            <div class="ftfp-filtro" id="demo-filtro"></div>
+            <p class="demo-estado" role="status" aria-live="polite"></p>
+          </div>
+          <div class="demo-incluye">
+            <h3>Qué incluye el plugin real</h3>
+            <ul>
+              <li>Búsqueda en vivo por nombre o categoría.</li>
+              <li>Filtros por categoría (con subcategorías y contador), rango de precio, disponibilidad y ofertas.</li>
+              <li>Orden por relevancia, novedad, ventas, precio o nombre.</li>
+              <li>Paginación, insignias de oferta, nuevo y agotado, y botón para agregar al carrito.</li>
+              <li>En celular, los filtros se abren en un cajón lateral.</li>
+              <li>Consulta por WhatsApp desde cada producto, opcional.</li>
+              <li>Panel en WordPress para cambiar colores, tamaños y categorías.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Cotización -->
+      <div class="panel-demo" role="tabpanel" id="panel-cotizacion" aria-labelledby="pestana-cotizacion" hidden>
+        <div class="demo-marco">
+          <div class="demo-cabecera"><span>Formulario de cotización para tiendas WooCommerce</span><button type="button" id="demo-cot-rellenar">Rellenar con datos de ejemplo</button></div>
+          <div class="demo-plugin">
+            <div id="demo-cotizacion"></div>
+            <p class="demo-estado" role="status" aria-live="polite"></p>
+          </div>
+          <div class="demo-incluye">
+            <h3>Qué incluye el plugin real</h3>
+            <ul>
+              <li>Reemplaza "Agregar al carrito" por el botón "Deseo cotizar" en fichas y listados de productos.</li>
+              <li>Formulario con validación en vivo, RUT chileno con dígito verificador y teléfono +56.</li>
+              <li>Datos de despacho opcionales: empresa de envío, región y comuna.</li>
+              <li>Correo de aviso al negocio y copia para el cliente.</li>
+              <li>Enlace a WhatsApp con el resumen de la solicitud.</li>
+              <li>Protección contra mensajes automáticos (spam).</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Agendador -->
+      <div class="panel-demo" role="tabpanel" id="panel-agenda" aria-labelledby="pestana-agenda" hidden>
+        <div class="demo-marco">
+          <div class="demo-cabecera"><span>Agendador de reuniones</span><span>Horarios de ejemplo</span></div>
+          <div class="demo-plugin">
+            <div id="demo-agendador"></div>
+            <p class="demo-estado" role="status" aria-live="polite"></p>
+          </div>
+          <div class="demo-incluye">
+            <h3>Qué incluye el plugin real</h3>
+            <ul>
+              <li>Calendario con zona horaria elegida por el cliente; abre en el primer mes con horarios libres.</li>
+              <li>Varias ubicaciones por reunión: Google Meet, Zoom, llamada, WhatsApp o presencial.</li>
+              <li>Disponibilidad por horario semanal, fechas especiales, aviso mínimo y máximo de citas por día.</li>
+              <li>Opción de aprobar cada reunión antes de confirmarla.</li>
+              <li>Correos de confirmación con invitación de calendario y enlace para cancelar o cambiar el horario.</li>
+              <li>Estilos propios por página y widget para Elementor.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Directorio de autores -->
+      <div class="panel-demo" role="tabpanel" id="panel-autores" aria-labelledby="pestana-autores" hidden>
+        <div class="demo-marco">
+          <div class="demo-cabecera"><span>Directorio de autores y autoras</span><span>Autores y fotos de ejemplo</span></div>
+          <div class="demo-plugin">
+            <div class="diraut-directorio" id="demo-directorio"></div>
+          </div>
+          <div class="demo-incluye">
+            <h3>Qué incluye el plugin real</h3>
+            <ul>
+              <li>Tipo de contenido propio "Autor" con foto, categoría, descripción corta y larga, y características.</li>
+              <li>Fotos con la misma proporción en todas las tarjetas, con punto de enfoque definido por autor.</li>
+              <li>Filtros por categoría y por tipo de escritor, y paginación.</li>
+              <li>Ventana con el perfil completo, accesible con teclado y cierre con Esc.</li>
+              <li>Se muestra con un shortcode; puede haber varios directorios en una misma página.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <p class="nota-demo">Estas demos reproducen la interfaz y el comportamiento de los plugins con datos inventados. Los plugins reales se instalan en WordPress y se administran desde su panel.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Qué hago -->
+  <section class="seccion seccion-alterna" id="servicios">
+    <div class="contenedor">
+      <p class="rotulo">02 / qué hago</p>
+      <h2 class="titulo-seccion">Qué puedo hacer por tu proyecto</h2>
+      <p class="entrada">Desde el primer boceto hasta que el sitio está publicado y tú sabes cómo actualizarlo.</p>
+      <div class="servicios">
+        <div class="servicio">
+          <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M7 6.5h.01M10 6.5h.01"/></svg>
+          <h3>Sitios web en WordPress</h3>
+          <p>Sitios para empresas, servicios y tiendas online, con cotizadores, formularios y reserva de horas.</p>
+        </div>
+        <div class="servicio">
+          <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m8 8-4 4 4 4"/><path d="m16 8 4 4-4 4"/><path d="m13.5 5-3 14"/></svg>
+          <h3>Plugins a medida</h3>
+          <p>Cuando una solución lista no alcanza, desarrollo en PHP la función que tu negocio necesita.</p>
+        </div>
+        <div class="servicio">
+          <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5"/><path d="M8 7h6M8 11h6"/></svg>
+          <h3>Guías y tutoriales</h3>
+          <p>Explico paso a paso cómo actualizar contenidos para que no dependas de nadie en el día a día.</p>
+        </div>
+        <div class="servicio">
+          <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>
+          <h3>Trato directo contigo</h3>
+          <p>Reuniones periódicas, avances claros y lenguaje simple, sin tecnicismos innecesarios.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trayectoria -->
+  <section class="seccion" id="trayectoria">
+    <div class="contenedor">
+      <p class="rotulo">03 / trayectoria</p>
+      <h2 class="titulo-seccion">Dónde he trabajado</h2>
+      <div class="experiencias" style="margin-top: 2rem">
+        <article class="experiencia">
+          <div class="fecha">abr 2025 — hoy</div>
+          <div class="detalle">
+            <h3>Desarrollador web y apoyo administrativo</h3>
+            <p class="lugar">Focus Team · agencia digital de Concepción</p>
+            <ul>
+              <li>Sitios corporativos, de servicios y tiendas online en WordPress para clientes de todo Chile.</li>
+              <li>Plugins a medida según lo que necesita cada cliente.</li>
+              <li>Reuniones constantes con clientes para definir requerimientos y mostrar avances.</li>
+              <li>Guías y tutoriales para que cada cliente administre su sitio de forma autónoma.</li>
+              <li>Planillas en Excel y tareas administrativas de apoyo a los proyectos.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="experiencia">
+          <div class="fecha">abr 2024 — dic 2024</div>
+          <div class="detalle">
+            <h3>Ingeniero informático · jornada parcial</h3>
+            <p class="lugar">Brooklyn Chile</p>
+            <ul>
+              <li>Diseño y desarrollo de sitios web en WordPress para clientes de la agencia.</li>
+              <li>Jefe directo de dos estudiantes en práctica del IP Santo Tomás: les enseñé, los guié y los integré al ámbito laboral.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="experiencia">
+          <div class="fecha">sep 2022 — dic 2022</div>
+          <div class="detalle">
+            <h3>Desarrollador web · práctica</h3>
+            <p class="lugar">Municipalidad de Talcahuano, área de informática</p>
+            <ul>
+              <li>Ideé y presenté una propuesta de mejora y rediseño del sitio web de la Municipalidad.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="experiencia">
+          <div class="fecha">2019 — 2022</div>
+          <div class="detalle">
+            <h3>Ingeniería en Informática</h3>
+            <p class="lugar">Instituto Profesional Santo Tomás, Concepción</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trabajos -->
+  <section class="seccion seccion-alterna" id="trabajos">
+    <div class="contenedor">
+      <p class="rotulo">04 / trabajos</p>
+      <h2 class="titulo-seccion">Más de 40 sitios en distintos rubros</h2>
+      <p class="entrada">Algunos de los sectores para los que he desarrollado sitios web:</p>
+      <ul class="rubros">
+        <li>Inmobiliario</li>
+        <li>Salud y estética</li>
+        <li>Construcción</li>
+        <li>Gastronomía</li>
+        <li>Seguridad</li>
+        <li>Control de plagas</li>
+      </ul>
+      <p>Parte del trabajo de la agencia está en su portafolio: <a href="https://focusteam.cl" target="_blank" rel="noopener">focusteam.cl ↗</a></p>
+      <div class="proyecto">
+        <h3>Sitio web de la clínica Medicapro</h3>
+        <p>Desarrollé el front-end de la interfaz con React, HTML, CSS y JavaScript.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Herramientas -->
+  <section class="seccion" id="herramientas">
+    <div class="contenedor">
+      <p class="rotulo">05 / herramientas</p>
+      <h2 class="titulo-seccion" style="margin-bottom: 2rem">Con qué trabajo</h2>
+      <ul class="herramientas">
+        <li>WordPress</li>
+        <li>PHP</li>
+        <li>WooCommerce</li>
+        <li>Elementor</li>
+        <li>HTML5 · CSS3</li>
+        <li>JavaScript</li>
+        <li>React (básico)</li>
+        <li>SQL</li>
+        <li>Android</li>
+        <li>Excel</li>
+      </ul>
+      <p class="idiomas">Idiomas: español nativo, inglés intermedio.</p>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section class="seccion" id="contacto" style="padding-top: 0">
+    <div class="contenedor">
+      <div class="contacto-caja">
+        <div>
+          <h2>¿Tienes un proyecto en mente?</h2>
+          <p>Cuéntame qué necesitas y te respondo con una propuesta clara. Trabajo desde Concepción con clientes de todo Chile.</p>
+        </div>
+        <div class="acciones" style="flex: 0 1 auto">
+          <a class="boton" href="mailto:nicolasmerino321@gmail.com">Escribirme un correo</a>
+          <a class="boton secundario" href="https://www.linkedin.com/in/nico-merino-b07332221" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="contenedor"><span>© 2026 Nicolás Merino</span><span>Concepción, Chile</span></div>
+</footer>
+
+<script>
+
+  /* ========== Demos de plugins ========== */
+  const pesos = (n) => "$" + Math.round(n).toLocaleString("es-CL");
+  const normalizar = (t) => String(t).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  const esc = (t) => String(t).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const pad = (n) => String(n).padStart(2, "0");
+  const mayuscula = (t) => t.charAt(0).toUpperCase() + t.slice(1);
+  const sinMovimiento = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Mensaje breve bajo cada demo (por ejemplo, cuando un botón solo existe en el sitio real)
+  function avisar(raiz, mensaje) {
+    const zona = raiz.closest(".demo-plugin").querySelector(".demo-estado");
+    if (!zona) return;
+    zona.textContent = mensaje;
+    clearTimeout(zona._temporizador);
+    zona._temporizador = setTimeout(() => { zona.textContent = ""; }, 4500);
+  }
+
+  // ----- Pestañas -----
+  const pestanas = Array.from(document.querySelectorAll('[role="tab"]'));
+  function activarPestana(pestana) {
+    pestanas.forEach((otra) => {
+      const activa = otra === pestana;
+      otra.setAttribute("aria-selected", activa ? "true" : "false");
+      otra.tabIndex = activa ? 0 : -1;
+      document.getElementById(otra.getAttribute("aria-controls")).hidden = !activa;
+    });
+  }
+  pestanas.forEach((pestana, indice) => {
+    pestana.addEventListener("click", () => activarPestana(pestana));
+    pestana.addEventListener("keydown", (evento) => {
+      let destino = null;
+      if (evento.key === "ArrowRight") destino = pestanas[(indice + 1) % pestanas.length];
+      if (evento.key === "ArrowLeft") destino = pestanas[(indice - 1 + pestanas.length) % pestanas.length];
+      if (destino) { evento.preventDefault(); activarPestana(destino); destino.focus(); }
+    });
+  });
+
+  /* ================================================================
+     1. Filtro de productos
+     ================================================================ */
+  (function filtroProductos() {
+    const raiz = document.getElementById("demo-filtro");
+    const POR_PAGINA = 6;
+    const PRECIO_MAX = 500000;
+
+    const ICONOS = {
+      audifonos: '<path d="M12 36v-6a20 20 0 0 1 40 0v6"/><rect x="8" y="36" width="10" height="16" rx="4"/><rect x="46" y="36" width="10" height="16" rx="4"/>',
+      parlante: '<rect x="16" y="8" width="32" height="48" rx="8"/><circle cx="32" cy="38" r="9"/><circle cx="32" cy="20" r="3"/>',
+      teclado: '<rect x="6" y="20" width="52" height="26" rx="4"/><path d="M14 28h4M24 28h4M34 28h4M44 28h6M14 37h6M26 37h12M44 37h6"/>',
+      mouse: '<rect x="20" y="10" width="24" height="44" rx="12"/><path d="M32 10v16M20 26h24"/>',
+      cargador: '<rect x="20" y="14" width="24" height="30" rx="4"/><path d="M26 6v8M38 6v8M32 44v10"/>',
+      monitor: '<rect x="8" y="12" width="48" height="32" rx="3"/><path d="M24 54h16M32 44v10"/>',
+      notebook: '<rect x="14" y="14" width="36" height="26" rx="3"/><path d="M6 46h52l-4 6H10z"/>',
+      ssd: '<rect x="10" y="18" width="44" height="28" rx="4"/><path d="M18 38h8M44 28h4"/><circle cx="46" cy="38" r="2"/>',
+      pendrive: '<rect x="22" y="22" width="20" height="32" rx="3"/><path d="M26 22V10h12v12M30 15h1M34 15h1"/>'
+    };
+
+    const CATEGORIAS = [
+      { nombre: "Computación", hijas: ["Notebooks", "Monitores"] },
+      { nombre: "Accesorios", hijas: ["Audio", "Teclados y mouse", "Energía"] },
+      { nombre: "Almacenamiento", hijas: ["Discos SSD", "Pendrives"] }
+    ];
+
+    // orden = posición en "relevancia"; novedad y ventas sirven para los otros ordenamientos
+    const PRODUCTOS = [
+      { nombre: "Audífonos inalámbricos con cancelación de ruido", cat: "Accesorios", sub: "Audio", precio: 39990, antes: 49990, icono: "audifonos", novedad: 6, ventas: 90 },
+      { nombre: "Parlante Bluetooth resistente al agua", cat: "Accesorios", sub: "Audio", precio: 34990, icono: "parlante", novedad: 3, ventas: 75 },
+      { nombre: "Teclado mecánico compacto", cat: "Accesorios", sub: "Teclados y mouse", precio: 54990, nuevo: true, icono: "teclado", novedad: 12, ventas: 40 },
+      { nombre: "Mouse ergonómico inalámbrico", cat: "Accesorios", sub: "Teclados y mouse", precio: 19990, icono: "mouse", novedad: 2, ventas: 120 },
+      { nombre: "Cargador USB-C 65 W", cat: "Accesorios", sub: "Energía", precio: 24990, icono: "cargador", novedad: 5, ventas: 110 },
+      { nombre: "Monitor 24\" Full HD", cat: "Computación", sub: "Monitores", precio: 119990, icono: "monitor", novedad: 4, ventas: 60 },
+      { nombre: "Monitor curvo 27\" QHD", cat: "Computación", sub: "Monitores", precio: 219990, antes: 249990, icono: "monitor", novedad: 7, ventas: 30 },
+      { nombre: "Notebook 14\" Ryzen 5, 16 GB", cat: "Computación", sub: "Notebooks", precio: 429990, icono: "notebook", novedad: 9, ventas: 55 },
+      { nombre: "Notebook 15,6\" Core i5", cat: "Computación", sub: "Notebooks", precio: 499990, agotado: true, icono: "notebook", novedad: 1, ventas: 80 },
+      { nombre: "Disco SSD 1 TB NVMe", cat: "Almacenamiento", sub: "Discos SSD", precio: 64990, nuevo: true, icono: "ssd", novedad: 11, ventas: 70 },
+      { nombre: "Disco SSD portátil 500 GB", cat: "Almacenamiento", sub: "Discos SSD", precio: 49990, icono: "ssd", novedad: 8, ventas: 65 },
+      { nombre: "Pendrive 128 GB USB 3.2", cat: "Almacenamiento", sub: "Pendrives", precio: 9990, icono: "pendrive", novedad: 10, ventas: 150 }
+    ].map((p, i) => Object.assign({ id: i, orden: i }, p));
+
+    const estado = { texto: "", precioMax: PRECIO_MAX, cats: new Set(), stock: false, oferta: false, orden: "relevancia", pagina: 1 };
+
+    const cuenta = (fn) => PRODUCTOS.filter(fn).length;
+    const htmlCategorias = CATEGORIAS.map((c) => {
+      const hijas = c.hijas.map((h) =>
+        `<label class="ftfp-category-label"><input type="checkbox" class="ftfp-category-checkbox" data-cat="${esc(c.nombre)}|${esc(h)}"><span>${esc(h)}</span><span class="ftfp-category-count">${cuenta((p) => p.cat === c.nombre && p.sub === h)}</span></label>`
+      ).join("");
+      return `<label class="ftfp-category-main-label"><input type="checkbox" class="ftfp-category-checkbox" data-cat="${esc(c.nombre)}"><span>${esc(c.nombre)}</span><span class="ftfp-category-count">${cuenta((p) => p.cat === c.nombre)}</span></label>${hijas}`;
+    }).join("");
+
+    raiz.innerHTML = `
+      <div class="ftfp-searchbar">
+        <div class="ftfp-search" role="search">
+          <span class="ftfp-search-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></span>
+          <input type="search" class="ftfp-search-input" placeholder="Busca un producto…" aria-label="Buscar productos" autocomplete="off" spellcheck="false">
+          <button type="button" class="ftfp-search-clear" aria-label="Borrar búsqueda">✕</button>
+        </div>
+        <p class="ftfp-search-hint">Prueba con «monitor», «ssd» o «audio».</p>
+      </div>
+      <div class="ftfp-wrapper">
+        <aside class="ftfp-sidebar" aria-label="Filtros">
+          <div class="ftfp-drawer-head"><span>Filtros</span><button type="button" class="ftfp-drawer-close" aria-label="Cerrar filtros">✕</button></div>
+          <div class="ftfp-sidebar-body">
+            <div>
+              <h3 class="ftfp-filter-title">Ordenar por</h3>
+              <select class="ftfp-select" aria-label="Ordenar por">
+                <option value="relevancia">Relevancia</option>
+                <option value="nuevos">Más nuevos</option>
+                <option value="vendidos">Más vendidos</option>
+                <option value="precio-asc">Precio: menor a mayor</option>
+                <option value="precio-desc">Precio: mayor a menor</option>
+                <option value="nombre-asc">Nombre: A - Z</option>
+              </select>
+            </div>
+            <div class="ftfp-price-box">
+              <h3 class="ftfp-filter-title">Rango de precio</h3>
+              <input type="range" class="ftfp-range" min="0" max="${PRECIO_MAX}" step="5000" value="${PRECIO_MAX}" aria-label="Precio máximo">
+              <div class="ftfp-price-values"><span>$0</span><span class="ftfp-precio-max">${pesos(PRECIO_MAX)}</span></div>
+            </div>
+            <div class="ftfp-avail-box">
+              <h3 class="ftfp-filter-title">Disponibilidad</h3>
+              <label class="ftfp-category-main-label"><input type="checkbox" class="ftfp-category-checkbox" data-filtro="stock"><span>Solo con stock</span></label>
+              <label class="ftfp-category-main-label"><input type="checkbox" class="ftfp-category-checkbox" data-filtro="oferta"><span>Solo ofertas</span></label>
+            </div>
+            <div class="ftfp-categories-box">
+              <h3 class="ftfp-filter-title">Categorías</h3>
+              <div class="ftfp-categories">${htmlCategorias}</div>
+            </div>
+            <button type="button" class="ftfp-reset-btn">✕ Limpiar filtros</button>
+          </div>
+          <div class="ftfp-drawer-foot"><button type="button" class="ftfp-apply-btn">Ver <span class="ftfp-apply-count"></span> productos</button></div>
+        </aside>
+        <div class="ftfp-main">
+          <div class="ftfp-header">
+            <button type="button" class="ftfp-filter-toggle" aria-expanded="false">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+              Filtrar <span class="ftfp-filter-badge"></span>
+            </button>
+            <div class="ftfp-count" aria-live="polite">Mostrando <span class="ftfp-total"></span> productos<span class="ftfp-count-query"></span></div>
+          </div>
+          <div class="ftfp-grid"></div>
+          <div class="ftfp-pagination"></div>
+        </div>
+      </div>`;
+
+    const $ = (sel) => raiz.querySelector(sel);
+    const campoBuscar = $(".ftfp-search-input");
+    const botonLimpiarBusqueda = $(".ftfp-search-clear");
+    const selectorOrden = $(".ftfp-select");
+    const rango = $(".ftfp-range");
+    const grilla = $(".ftfp-grid");
+    const paginacion = $(".ftfp-pagination");
+    const insignia = $(".ftfp-filter-badge");
+    const botonFiltrar = $(".ftfp-filter-toggle");
+
+    function filtrar() {
+      const palabras = normalizar(estado.texto).split(/\s+/).filter(Boolean);
+      const lista = PRODUCTOS.filter((p) => {
+        const pajar = normalizar(p.nombre + " " + p.cat + " " + p.sub);
+        return palabras.every((w) => pajar.includes(w)) &&
+          p.precio <= estado.precioMax &&
+          (estado.cats.size === 0 || estado.cats.has(p.cat) || estado.cats.has(p.cat + "|" + p.sub)) &&
+          (!estado.stock || !p.agotado) &&
+          (!estado.oferta || p.antes);
+      });
+      const criterios = {
+        "relevancia": (a, b) => a.orden - b.orden,
+        "nuevos": (a, b) => b.novedad - a.novedad,
+        "vendidos": (a, b) => b.ventas - a.ventas,
+        "precio-asc": (a, b) => a.precio - b.precio,
+        "precio-desc": (a, b) => b.precio - a.precio,
+        "nombre-asc": (a, b) => a.nombre.localeCompare(b.nombre, "es")
+      };
+      return lista.sort(criterios[estado.orden]);
+    }
+
+    function tarjeta(p) {
+      const insignias = (p.agotado ? '<span class="ftfp-badge ftfp-badge-oos">Agotado</span>' : "") +
+        (p.antes ? `<span class="ftfp-badge ftfp-badge-sale">-${Math.round((1 - p.precio / p.antes) * 100)}%</span>` : "") +
+        (p.nuevo ? '<span class="ftfp-badge ftfp-badge-new">Nuevo</span>' : "");
+      const carrito = p.agotado ? "" :
+        `<button type="button" class="ftfp-cart-btn" data-accion="carrito" aria-label="Agregar al carrito: ${esc(p.nombre)}">
+          <svg class="ftfp-ico-cart" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M3 4h2l2.4 10.2a1.5 1.5 0 0 0 1.5 1.1h8.3a1.5 1.5 0 0 0 1.5-1.1L20.5 8H6.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="19.5" r="1.4" fill="currentColor"/><circle cx="17" cy="19.5" r="1.4" fill="currentColor"/></svg>
+          <svg class="ftfp-ico-ok" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>`;
+      return `<article class="ftfp-product-card${p.agotado ? " ftfp-oos" : ""}">
+        <div class="ftfp-product-image">
+          ${insignias ? `<span class="ftfp-badges">${insignias}</span>` : ""}
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONOS[p.icono]}</svg>
+        </div>
+        <div class="ftfp-product-info">
+          <div class="ftfp-product-category">${esc(p.cat)}, ${esc(p.sub)}</div>
+          <h3 class="ftfp-product-title">${esc(p.nombre)}</h3>
+          <div class="ftfp-product-price">${p.antes ? `<del>${pesos(p.antes)}</del>` : ""}<ins>${pesos(p.precio)}</ins></div>
+          <div class="ftfp-actions"><button type="button" class="ftfp-btn" data-accion="ver">Ver producto</button>${carrito}</div>
+        </div>
+      </article>`;
+    }
+
+    function dibujarPaginacion(paginas) {
+      if (paginas <= 1) { paginacion.innerHTML = ""; return; }
+      let html = `<button type="button" class="ftfp-page-link" data-pagina="${estado.pagina - 1}" aria-label="Página anterior"${estado.pagina === 1 ? " disabled" : ""}>‹</button>`;
+      for (let i = 1; i <= paginas; i++) {
+        html += `<button type="button" class="ftfp-page-link${i === estado.pagina ? " is-active" : ""}" data-pagina="${i}"${i === estado.pagina ? ' aria-current="page"' : ""} aria-label="Página ${i}">${i}</button>`;
+      }
+      html += `<button type="button" class="ftfp-page-link" data-pagina="${estado.pagina + 1}" aria-label="Página siguiente"${estado.pagina === paginas ? " disabled" : ""}>›</button>`;
+      paginacion.innerHTML = html;
+    }
+
+    function actualizar() {
+      const lista = filtrar();
+      const paginas = Math.max(1, Math.ceil(lista.length / POR_PAGINA));
+      if (estado.pagina > paginas) estado.pagina = paginas;
+      const visibles = lista.slice((estado.pagina - 1) * POR_PAGINA, estado.pagina * POR_PAGINA);
+
+      $(".ftfp-total").textContent = lista.length;
+      $(".ftfp-apply-count").textContent = lista.length;
+      $(".ftfp-count-query").innerHTML = estado.texto.trim() ? ` para «<strong>${esc(estado.texto.trim())}</strong>»` : "";
+      $(".ftfp-precio-max").textContent = pesos(estado.precioMax);
+      rango.style.setProperty("--ftfp-fill", (estado.precioMax / PRECIO_MAX * 100) + "%");
+      botonLimpiarBusqueda.classList.toggle("is-visible", estado.texto.length > 0);
+
+      grilla.innerHTML = visibles.length
+        ? visibles.map(tarjeta).join("")
+        : '<div class="ftfp-no-results"><strong>No encontramos productos con esos filtros.</strong>Prueba con otro nombre, sube el precio máximo o limpia los filtros.</div>';
+      dibujarPaginacion(paginas);
+
+      const activos = estado.cats.size + (estado.stock ? 1 : 0) + (estado.oferta ? 1 : 0) + (estado.precioMax < PRECIO_MAX ? 1 : 0);
+      insignia.textContent = activos;
+      insignia.classList.toggle("is-visible", activos > 0);
+    }
+
+    campoBuscar.addEventListener("input", () => { estado.texto = campoBuscar.value; estado.pagina = 1; actualizar(); });
+    botonLimpiarBusqueda.addEventListener("click", () => { campoBuscar.value = ""; estado.texto = ""; estado.pagina = 1; actualizar(); campoBuscar.focus(); });
+    selectorOrden.addEventListener("change", () => { estado.orden = selectorOrden.value; estado.pagina = 1; actualizar(); });
+    rango.addEventListener("input", () => { estado.precioMax = Number(rango.value); estado.pagina = 1; actualizar(); });
+
+    raiz.addEventListener("change", (e) => {
+      const caja = e.target.closest(".ftfp-category-checkbox");
+      if (!caja) return;
+      if (caja.dataset.cat) {
+        caja.checked ? estado.cats.add(caja.dataset.cat) : estado.cats.delete(caja.dataset.cat);
+      } else if (caja.dataset.filtro) {
+        estado[caja.dataset.filtro] = caja.checked;
+      }
+      estado.pagina = 1;
+      actualizar();
+    });
+
+    $(".ftfp-reset-btn").addEventListener("click", () => {
+      estado.texto = ""; estado.precioMax = PRECIO_MAX; estado.cats.clear(); estado.stock = false; estado.oferta = false; estado.orden = "relevancia"; estado.pagina = 1;
+      campoBuscar.value = ""; rango.value = PRECIO_MAX; selectorOrden.value = "relevancia";
+      raiz.querySelectorAll(".ftfp-category-checkbox").forEach((c) => { c.checked = false; });
+      actualizar();
+    });
+
+    // En celular los filtros se abren en un cajón lateral
+    function cajon(abrir) {
+      raiz.classList.toggle("ftfp-abierto", abrir);
+      document.documentElement.classList.toggle("diraut-modal-abierto", abrir);
+      botonFiltrar.setAttribute("aria-expanded", abrir ? "true" : "false");
+      if (abrir) $(".ftfp-drawer-close").focus(); else botonFiltrar.focus();
+    }
+    botonFiltrar.addEventListener("click", () => cajon(!raiz.classList.contains("ftfp-abierto")));
+    $(".ftfp-drawer-close").addEventListener("click", () => cajon(false));
+    $(".ftfp-apply-btn").addEventListener("click", () => cajon(false));
+    document.addEventListener("keydown", (ev) => { if (ev.key === "Escape" && raiz.classList.contains("ftfp-abierto")) cajon(false); });
+    window.matchMedia("(min-width: 769px)").addEventListener("change", (m) => {
+      if (m.matches && raiz.classList.contains("ftfp-abierto")) {
+        raiz.classList.remove("ftfp-abierto");
+        document.documentElement.classList.remove("diraut-modal-abierto");
+        botonFiltrar.setAttribute("aria-expanded", "false");
+      }
+    });
+
+    raiz.addEventListener("click", (e) => {
+      if (e.target === raiz && raiz.classList.contains("ftfp-abierto")) { cajon(false); return; } // clic en el fondo oscuro
+      const pag = e.target.closest("[data-pagina]");
+      if (pag && !pag.disabled) {
+        estado.pagina = Number(pag.dataset.pagina);
+        actualizar();
+        $(".ftfp-header").scrollIntoView({ behavior: sinMovimiento ? "auto" : "smooth", block: "start" });
+        return;
+      }
+      const boton = e.target.closest("[data-accion]");
+      if (!boton) return;
+      if (boton.dataset.accion === "ver") {
+        avisar(raiz, "En el sitio real, este botón abre la ficha del producto.");
+      } else if (boton.dataset.accion === "carrito") {
+        boton.classList.add("added");
+        avisar(raiz, "Producto agregado al carrito (simulado).");
+        setTimeout(() => boton.classList.remove("added"), 1600);
+      }
+    });
+
+    actualizar();
+  })();
+
+  /* ================================================================
+     2. Cotización
+     ================================================================ */
+  (function cotizacion() {
+    const raiz = document.getElementById("demo-cotizacion");
+    const REGIONES = {
+      biobio: { nombre: "Región del Biobío", comunas: ["Concepción", "Talcahuano", "San Pedro de la Paz", "Chiguayante", "Los Ángeles"] },
+      metropolitana: { nombre: "Región Metropolitana", comunas: ["Santiago", "Providencia", "Las Condes", "Maipú", "Ñuñoa"] },
+      valparaiso: { nombre: "Región de Valparaíso", comunas: ["Valparaíso", "Viña del Mar", "Quilpué", "Villa Alemana"] }
+    };
+    const COURIERS = ["Chilexpress", "Starken", "Blue Express"];
+    const VARIANTES = ["2 MP · 1080p", "4 MP · 2K", "8 MP · 4K"];
+    const ICONO_CAMION = '<svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4h13v12H1z"/><path d="M14 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2"/><circle cx="17.5" cy="18.5" r="2"/></svg>';
+
+    // Validación del RUT chileno (módulo 11), igual que en el plugin
+    const limpiarRut = (v) => (v || "").replace(/[^0-9kK]/g, "").toUpperCase();
+    function rutValido(v) {
+      const r = limpiarRut(v);
+      if (r.length < 8 || r.length > 9) return false;
+      const cuerpo = r.slice(0, -1), dv = r.slice(-1);
+      if (!/^\d+$/.test(cuerpo)) return false;
+      let suma = 0, mult = 2;
+      for (let i = cuerpo.length - 1; i >= 0; i--) {
+        suma += parseInt(cuerpo.charAt(i), 10) * mult;
+        mult = mult === 7 ? 2 : mult + 1;
+      }
+      const res = 11 - (suma % 11);
+      return (res === 11 ? "0" : res === 10 ? "K" : String(res)) === dv;
+    }
+    function formatearRut(v) {
+      const r = limpiarRut(v);
+      if (r.length < 2) return r;
+      return r.slice(0, -1).replace(/\B(?=(\d{3})+(?!\d))/g, ".") + "-" + r.slice(-1);
+    }
+    const digitosTel = (v) => (v || "").replace(/\D/g, "").replace(/^0+/, "").replace(/^56(?=\d{9})/, "");
+
+    const reglas = {
+      nombre: (v) => v.trim().length >= 3 || "Ingresa tu nombre y apellido.",
+      correo: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()) || "Ingresa un correo válido.",
+      telefono: (v) => { const d = digitosTel(v); return (d.length >= 8 && d.length <= 13) || "Ingresa un teléfono válido, ej: 912345678."; },
+      empresa: (v) => v.trim().length >= 2 || "Ingresa el nombre de la empresa.",
+      rut: (v) => !v.trim() ? "Ingresa el RUT de la empresa." : (rutValido(v) || "El RUT no es válido. Revisa el número y el dígito verificador."),
+      cantidad: (v) => { const n = parseInt(v, 10); return (n >= 1 && n <= 9999) || "Indica una cantidad entre 1 y 9999."; }
+    };
+
+    const campoHtml = (id, etiqueta, entrada, opciones = {}) => `
+      <div class="txc-campo">
+        <label for="txc-${id}">${etiqueta}${opciones.opcional ? ' <span class="txc-opc">(opcional)</span>' : ' <abbr title="obligatorio">*</abbr>'}</label>
+        ${entrada}
+        <span class="txc-error" id="txc-err-${id}" hidden></span>
+      </div>`;
+
+    function vistaFormulario() {
+      raiz.innerHTML = `
+        <div class="txc">
+          <p class="txc-intro">Completa tus datos y te enviaremos el <strong>valor y disponibilidad</strong> por correo y WhatsApp. <span>No se procesan pagos en este sitio.</span></p>
+          <div class="txc-grid">
+            <aside class="txc-resumen" aria-label="Producto a cotizar">
+              <h3 class="txc-resumen__titulo">Producto a cotizar</h3>
+              <div class="txc-prod">
+                <div class="txc-prod__img"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="16" width="40" height="22" rx="5"/><circle cx="28" cy="27" r="6"/><path d="M48 24l10-5v18l-10-5M20 38v10h16"/></svg></div>
+                <div>
+                  <div class="txc-prod__nombre">Cámara de seguridad IP Wi-Fi</div>
+                  <div class="txc-prod__sku">SKU: CAM-IP-04</div>
+                  <div class="txc-prod__precio">Desde ${pesos(59990)} + IVA</div>
+                </div>
+              </div>
+              <button type="button" class="txc-link" data-accion="volver">← Volver al producto / elegir otro</button>
+              <ul class="txc-pasos">
+                <li><span>1</span> Envías este formulario</li>
+                <li><span>2</span> Confirmas por WhatsApp (opcional)</li>
+                <li><span>3</span> Recibes la cotización formal</li>
+              </ul>
+            </aside>
+
+            <form class="txc-form" novalidate>
+              <div class="txc-alerta" role="alert" hidden>Revisa los campos marcados en rojo e intenta de nuevo.</div>
+
+              <fieldset class="txc-seccion">
+                <legend>Datos de contacto</legend>
+                ${campoHtml("nombre", "Nombre y Apellido", '<input id="txc-nombre" type="text" name="nombre" maxlength="100" autocomplete="off">')}
+                <div class="txc-fila">
+                  ${campoHtml("correo", "Correo electrónico", '<input id="txc-correo" type="email" name="correo" maxlength="120" autocomplete="off" inputmode="email">')}
+                  ${campoHtml("telefono", "Teléfono / WhatsApp", '<div class="txc-tel"><span class="txc-tel__pref" aria-hidden="true">+56</span><input id="txc-telefono" type="tel" name="telefono" maxlength="20" autocomplete="off" inputmode="tel" placeholder="Ej: 912345678"></div>')}
+                </div>
+              </fieldset>
+
+              <fieldset class="txc-seccion">
+                <legend>Datos de la empresa</legend>
+                <div class="txc-fila">
+                  ${campoHtml("empresa", "Nombre de la Empresa", '<input id="txc-empresa" type="text" name="empresa" maxlength="120" autocomplete="off">')}
+                  ${campoHtml("rut", "RUT Empresa", '<input id="txc-rut" type="text" name="rut" maxlength="12" placeholder="Ej: 77.654.321-7" autocomplete="off">')}
+                </div>
+              </fieldset>
+
+              <fieldset class="txc-seccion">
+                <legend>Datos de despacho <span class="txc-opc">(opcional)</span></legend>
+                <div class="txc-campo">
+                  <span class="txc-label" id="txc-courier-lbl">¿Con qué empresa quieres el envío? <span class="txc-opc">(opcional)</span></span>
+                  <div class="txc-couriers" role="radiogroup" aria-labelledby="txc-courier-lbl">
+                    ${COURIERS.map((c) => `<label class="txc-courier"><input type="radio" name="courier" value="${esc(c)}"><span class="txc-courier__caja">${ICONO_CAMION}<span class="txc-courier__nombre">${esc(c)}</span><span class="txc-courier__check" aria-hidden="true"></span></span></label>`).join("")}
+                  </div>
+                </div>
+                <div class="txc-fila">
+                  ${campoHtml("region", "Región", `<select id="txc-region" name="region"><option value="">Selecciona una región</option>${Object.entries(REGIONES).map(([k, r]) => `<option value="${k}">${esc(r.nombre)}</option>`).join("")}</select>`, { opcional: true })}
+                  ${campoHtml("comuna", "Comuna", '<select id="txc-comuna" name="comuna" disabled><option value="">Primero elige la región</option></select>', { opcional: true })}
+                </div>
+                <div class="txc-fila">
+                  ${campoHtml("direccion", "Dirección (calle y número)", '<input id="txc-direccion" type="text" name="direccion" maxlength="150" autocomplete="off" placeholder="Ej: Av. Providencia 1234">', { opcional: true })}
+                  ${campoHtml("direccion2", "Depto / oficina", '<input id="txc-direccion2" type="text" name="direccion2" maxlength="120" autocomplete="off" placeholder="Ej: Of. 502, Torre B, bodega">', { opcional: true })}
+                </div>
+              </fieldset>
+
+              <fieldset class="txc-seccion">
+                <legend>Detalle de la cotización</legend>
+                <div class="txc-fila">
+                  <div class="txc-campo">
+                    <label for="txc-variante">Modelo / variante</label>
+                    <select id="txc-variante" name="variacion"><option value="0">No estoy seguro / asesórenme</option>${VARIANTES.map((v) => `<option>${esc(v)}</option>`).join("")}</select>
+                  </div>
+                  ${campoHtml("cantidad", "Cantidad", '<div class="txc-stepper"><button type="button" class="txc-stepper__btn" data-paso="-1" aria-label="Restar uno">−</button><input id="txc-cantidad" type="number" name="cantidad" min="1" max="9999" step="1" inputmode="numeric" value="1"><button type="button" class="txc-stepper__btn" data-paso="1" aria-label="Sumar uno">+</button></div>')}
+                </div>
+                <div class="txc-campo">
+                  <label for="txc-mensaje">Mensaje <span class="txc-opc">(opcional)</span></label>
+                  <textarea id="txc-mensaje" name="mensaje" rows="4" maxlength="2000" placeholder="Describe lo que necesitas aquí: uso, accesorios, plazos, lugar de despacho…"></textarea>
+                </div>
+              </fieldset>
+
+              <button type="submit" class="txc-enviar">Enviar solicitud de cotización</button>
+              <p class="txc-nota">Al enviar, recibirás una confirmación por correo y podrás escribirnos por <strong>WhatsApp</strong> para acelerar tu cotización.</p>
+            </form>
+          </div>
+        </div>`;
+      enlazar();
+    }
+
+    function validar(campo) {
+      const regla = reglas[campo.name];
+      if (!regla) return true;
+      const resultado = regla(campo.value);
+      const mensaje = document.getElementById("txc-err-" + campo.name);
+      const ok = resultado === true;
+      if (ok) { campo.removeAttribute("aria-invalid"); } else { campo.setAttribute("aria-invalid", "true"); }
+      if (mensaje) { mensaje.hidden = ok; mensaje.textContent = ok ? "" : resultado; }
+      return ok;
+    }
+
+    function enlazar() {
+      const form = raiz.querySelector(".txc-form");
+      const alerta = form.querySelector(".txc-alerta");
+      const selRegion = form.elements.region;
+      const selComuna = form.elements.comuna;
+
+      form.addEventListener("input", (e) => {
+        const c = e.target;
+        if (c.name === "rut") c.value = formatearRut(c.value);
+        if (c.name === "telefono") c.value = c.value.replace(/[^\d\s]/g, "");
+        if (c.getAttribute("aria-invalid")) validar(c);
+      });
+      form.addEventListener("focusout", (e) => {
+        if (reglas[e.target.name] && e.target.value !== "") validar(e.target);
+      });
+
+      selRegion.addEventListener("change", () => {
+        const region = REGIONES[selRegion.value];
+        selComuna.innerHTML = `<option value="">${region ? "Selecciona una comuna" : "Primero elige la región"}</option>` +
+          (region ? region.comunas.map((c) => `<option>${esc(c)}</option>`).join("") : "");
+        selComuna.disabled = !region;
+        if (region) selComuna.focus();
+      });
+
+      // Courier: un segundo clic sobre la opción elegida la desmarca (el despacho es opcional)
+      form.querySelectorAll('input[name="courier"]').forEach((radio) => {
+        radio.addEventListener("click", () => {
+          if (radio.dataset.estaba === "1") {
+            radio.checked = false;
+            radio.dataset.estaba = "";
+          } else {
+            form.querySelectorAll('input[name="courier"]').forEach((x) => { x.dataset.estaba = ""; });
+            radio.dataset.estaba = "1";
+          }
+        });
+      });
+
+      form.querySelectorAll(".txc-stepper__btn").forEach((boton) => {
+        boton.addEventListener("click", () => {
+          const campo = form.elements.cantidad;
+          const nuevo = Math.min(9999, Math.max(1, (parseInt(campo.value, 10) || 1) + Number(boton.dataset.paso)));
+          campo.value = nuevo;
+          if (campo.getAttribute("aria-invalid")) validar(campo);
+        });
+      });
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        let primero = null;
+        Object.keys(reglas).forEach((nombre) => {
+          const campo = form.elements[nombre];
+          if (campo && !validar(campo) && !primero) primero = campo;
+        });
+        alerta.hidden = !primero;
+        if (primero) { primero.focus(); return; }
+        vistaGracias(form.elements.nombre.value.trim(), form.elements.correo.value.trim());
+      });
+
+      raiz.querySelector('[data-accion="volver"]').addEventListener("click", () => {
+        avisar(raiz, "En el sitio real, este enlace vuelve a la ficha del producto o al catálogo.");
+      });
+    }
+
+    function vistaGracias(nombre, correo) {
+      const numero = "C-" + (1000 + Math.floor(Math.random() * 9000));
+      raiz.innerHTML = `
+        <div class="txc"><div class="txc-gracias">
+          <div class="txc-gracias__icono" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <h2 tabindex="-1">¡Solicitud enviada!</h2>
+          <p>Gracias, <strong>${esc(nombre)}</strong>. Recibimos tu solicitud <strong>N° ${numero}</strong> y te responderemos a la brevedad.</p>
+          <p class="txc-gracias__sub">¿Quieres agilizarla? Envíanos el resumen por WhatsApp:</p>
+          <p><button type="button" class="txc-btn-wsp" data-accion="wsp"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zM12 0a12 12 0 0 0-10.3 18L0 24l6.2-1.6A12 12 0 1 0 12 0z"/></svg><span>Enviar por WhatsApp</span></button></p>
+          <p class="txc-gracias__sub">Te enviamos una copia a <strong>${esc(correo)}</strong>. Si no la ves, revisa tu carpeta de spam o promociones.</p>
+          <p><button type="button" class="txc-link" data-accion="nueva">Hacer otra cotización →</button></p>
+        </div></div>`;
+      raiz.querySelector("h2").focus();
+      raiz.querySelector('[data-accion="wsp"]').addEventListener("click", () => avisar(raiz, "En el sitio real, este botón abre WhatsApp con el resumen de la solicitud."));
+      raiz.querySelector('[data-accion="nueva"]').addEventListener("click", vistaFormulario);
+    }
+
+    document.getElementById("demo-cot-rellenar").addEventListener("click", () => {
+      if (!raiz.querySelector(".txc-form")) vistaFormulario();
+      const form = raiz.querySelector(".txc-form");
+      const valores = { nombre: "Ana Ejemplo", correo: "ana@ejemplo.cl", telefono: "912345678", empresa: "Comercial Ejemplo SpA", rut: "77.654.321-7", cantidad: "3", mensaje: "Necesito 3 cámaras para una bodega. ¿Tienen instalación?" };
+      Object.entries(valores).forEach(([k, v]) => { form.elements[k].value = v; form.elements[k].removeAttribute("aria-invalid"); });
+      form.querySelectorAll(".txc-error").forEach((m) => { m.hidden = true; });
+      form.querySelector(".txc-alerta").hidden = true;
+      avisar(raiz, "Datos de ejemplo cargados. Presiona «Enviar solicitud de cotización».");
+    });
+
+    vistaFormulario();
+  })();
+
+  /* ================================================================
+     3. Agendador de citas
+     ================================================================ */
+  (function agendador() {
+    const raiz = document.getElementById("demo-agendador");
+    const IDIOMA = "es-CL";
+    const ZONA_ANFITRION = "America/Santiago";
+    const ZONAS = [["America/Santiago", "Santiago (Chile)"], ["America/Bogota", "Bogotá"], ["America/Mexico_City", "Ciudad de México"], ["America/New_York", "Nueva York"], ["Europe/Madrid", "Madrid"]];
+    const DURACION = 30;
+    const SEMANA = ["Lu", "Ma", "Mi", "Ju", "Vi", "Sá", "Do"];
+    const PASOS = ["Horario", "Sus datos", "Listo"];
+    const UBICACIONES = [
+      { tipo: "meet", nombre: "Google Meet", icono: "video", ayuda: "El enlace llega en la confirmación", telefono: false },
+      { tipo: "llamada", nombre: "Llamada telefónica", icono: "telefono", ayuda: "Le llamamos al número que indique", telefono: true },
+      { tipo: "whatsapp", nombre: "WhatsApp", icono: "whatsapp", ayuda: "Le escribimos al número que indique", telefono: true },
+      { tipo: "presencial", nombre: "Presencial", icono: "ubicacion", ayuda: "Av. Ejemplo 123, Concepción", telefono: false }
+    ];
+    const ICONOS = {
+      izquierda: '<path d="M15 18l-6-6 6-6"/>',
+      derecha: '<path d="M9 18l6-6-6-6"/>',
+      reloj: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+      ubicacion: '<path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/>',
+      calendario: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
+      mundo: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/>',
+      check: '<path d="M5 12.5l4.5 4.5L19 7.5"/>',
+      video: '<rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3z"/>',
+      telefono: '<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/>',
+      whatsapp: '<path d="M3 21l1.6-4.7A8.5 8.5 0 1 1 8 19.6z"/><path d="M9 9.5c.5 2 2.5 4 5 5l1.2-1.2-2-1-1 .7a4 4 0 0 1-1.7-1.7l.7-1-1-2z"/>'
+    };
+    const icono = (n) => `<svg class="ac-icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${ICONOS[n]}</svg>`;
+
+    // ---- Zonas horarias: se calcula el instante real de "9:00 en Santiago" ----
+    function partes(ts, zona) {
+      const f = new Intl.DateTimeFormat("en-CA", { timeZone: zona, year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hourCycle: "h23" });
+      const o = {};
+      f.formatToParts(ts).forEach((p) => { o[p.type] = p.value; });
+      return { y: +o.year, m: +o.month, d: +o.day, h: +o.hour, mi: +o.minute };
+    }
+    function instanteEnZona(y, m, d, h, mi, zona) {
+      let ts = Date.UTC(y, m - 1, d, h, mi);
+      for (let i = 0; i < 2; i++) {
+        const p = partes(ts, zona);
+        ts -= Date.UTC(p.y, p.m - 1, p.d, p.h, p.mi) - Date.UTC(y, m - 1, d, h, mi);
+      }
+      return ts;
+    }
+    const claveDia = (ts, zona) => { const p = partes(ts, zona); return p.y + "-" + pad(p.m) + "-" + pad(p.d); };
+
+    // ---- Horarios de ejemplo: lunes a viernes, 09:00 a 17:30, sin hora de almuerzo ----
+    const hoy = partes(Date.now(), ZONA_ANFITRION);
+    const HORARIOS = [];
+    for (let i = 1; i <= 40; i++) {
+      const f = new Date(Date.UTC(hoy.y, hoy.m - 1, hoy.d + i));
+      const dow = f.getUTCDay();
+      if (dow === 0 || dow === 6) continue;
+      for (let min = 9 * 60; min <= 17 * 60 + 30; min += 30) {
+        if (min >= 13 * 60 && min < 14 * 60) continue;
+        if ((f.getUTCDate() * 3 + min / 30) % 4 === 0) continue; // algunas horas ya ocupadas
+        HORARIOS.push(instanteEnZona(f.getUTCFullYear(), f.getUTCMonth() + 1, f.getUTCDate(), Math.floor(min / 60), min % 60, ZONA_ANFITRION));
+      }
+    }
+
+    const e = { vista: "calendario", zona: ZONA_ANFITRION, anio: 0, mes: 0, dia: null, hora: null, invitados: false, error: "", datos: { nombre: "", correo: "", ubicacion: "", telefono: "", listaInvitados: "", notas: "" } };
+
+    const porDia = () => {
+      const m = {};
+      HORARIOS.forEach((ts) => { const k = claveDia(ts, e.zona); (m[k] = m[k] || []).push(ts); });
+      return m;
+    };
+    const fDia = (ts) => mayuscula(new Intl.DateTimeFormat(IDIOMA, { timeZone: e.zona, weekday: "long", day: "numeric", month: "long" }).format(ts));
+    const fHora = (ts) => new Intl.DateTimeFormat(IDIOMA, { timeZone: e.zona, hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).format(ts);
+    const rango = (ts) => fHora(ts) + " – " + fHora(ts + DURACION * 60000) + ", " + fDia(ts);
+    const ubicacionElegida = () => UBICACIONES.find((u) => u.tipo === e.datos.ubicacion) || null;
+
+    function irAlPrimerMes() {
+      const claves = Object.keys(porDia()).sort();
+      const [a, m] = claves[0].split("-").map(Number);
+      e.anio = a; e.mes = m - 1;
+    }
+
+    function panelInfo() {
+      const elegida = e.vista === "formulario" ? ubicacionElegida() : null;
+      let ubic;
+      if (elegida) ubic = `<li>${icono(elegida.icono)}<span>${esc(elegida.nombre)}</span></li>`;
+      else ubic = `<li>${icono("ubicacion")}<span>Usted elige el lugar:<small class="ac-ayuda">${UBICACIONES.map((u) => esc(u.nombre)).join(" · ")}</small></span></li>`;
+      return `<aside class="ac-info">
+        ${e.vista === "formulario" ? `<button type="button" class="ac-atras" data-accion="atras" aria-label="Volver al calendario">${icono("izquierda")}</button>` : ""}
+        <p class="ac-anfitrion">Consultoría Ejemplo</p>
+        <h2 class="ac-titulo">Reunión de diagnóstico</h2>
+        <ul class="ac-meta">
+          <li>${icono("reloj")}<span>${DURACION} min</span></li>
+          ${ubic}
+          ${e.vista === "formulario" && e.hora ? `<li class="ac-seleccion">${icono("calendario")}<span>${esc(rango(e.hora))}</span></li><li>${icono("mundo")}<span>${esc(e.zona.replace(/_/g, " "))}</span></li>` : ""}
+        </ul>
+        <p class="ac-descripcion">Conversemos 30 minutos sobre lo que necesita su negocio y los pasos para empezar.</p>
+      </aside>`;
+    }
+
+    function pasos(actual) {
+      return `<ol class="ac-pasos" aria-label="Pasos">${PASOS.map((nombre, i) => {
+        const n = i + 1;
+        const clase = n < actual ? " ac-paso-hecho" : n === actual ? " ac-paso-actual" : "";
+        return `<li class="ac-paso${clase}"${n === actual ? ' aria-current="step"' : ""}><span class="ac-paso-numero">${n < actual ? "✓" : n}</span><span>${nombre}</span></li>`;
+      }).join("")}</ol>`;
+    }
+
+    function vistaCalendario() {
+      const dias = porDia();
+      const claves = Object.keys(dias).sort();
+      const [pa, pm] = claves[0].split("-").map(Number);
+      const [ua, um] = claves[claves.length - 1].split("-").map(Number);
+      const actual = e.anio * 12 + e.mes;
+      const hayAtras = actual > pa * 12 + (pm - 1);
+      const hayAdelante = actual < ua * 12 + (um - 1);
+      const primero = new Date(Date.UTC(e.anio, e.mes, 1)).getUTCDay();
+      const desfase = (primero + 6) % 7;
+      const total = new Date(Date.UTC(e.anio, e.mes + 1, 0)).getUTCDate();
+      const nombreMes = mayuscula(new Intl.DateTimeFormat(IDIOMA, { timeZone: "UTC", month: "long", year: "numeric" }).format(Date.UTC(e.anio, e.mes, 1)));
+      const hoyClave = claveDia(Date.now(), e.zona);
+      const etiquetaDia = new Intl.DateTimeFormat(IDIOMA, { timeZone: "UTC", weekday: "long", day: "numeric", month: "long" });
+
+      let html = pasos(1) + '<h2 class="ac-encabezado" tabindex="-1">Elija un día y una hora</h2>';
+      html += `<div class="ac-selector${e.dia ? " ac-con-horas" : ""}"><div class="ac-calendario">`;
+      html += `<div class="ac-cal-cabecera"><button type="button" class="ac-nav" data-accion="mes-anterior" aria-label="Mes anterior"${hayAtras ? "" : " disabled"}>${icono("izquierda")}</button><span class="ac-mes" aria-live="polite">${esc(nombreMes)}</span><button type="button" class="ac-nav" data-accion="mes-siguiente" aria-label="Mes siguiente"${hayAdelante ? "" : " disabled"}>${icono("derecha")}</button></div>`;
+      html += `<div class="ac-semana" aria-hidden="true">${SEMANA.map((d) => `<span>${d}</span>`).join("")}</div><div class="ac-dias">`;
+      for (let i = 0; i < desfase; i++) html += "<span></span>";
+      for (let d = 1; d <= total; d++) {
+        const clave = e.anio + "-" + pad(e.mes + 1) + "-" + pad(d);
+        const libre = !!dias[clave];
+        const activo = clave === e.dia;
+        const etiqueta = etiquetaDia.format(Date.UTC(e.anio, e.mes, d)) + (libre ? ", con horarios disponibles" : ", sin horarios");
+        const clases = "ac-dia" + (libre ? " ac-libre" : "") + (clave === hoyClave ? " ac-hoy" : "") + (activo ? " ac-activo" : "");
+        html += `<button type="button" class="${clases}"${libre ? ` data-accion="dia" data-dia="${clave}"` : " disabled"}${activo ? ' aria-pressed="true"' : ""} aria-label="${esc(etiqueta)}">${d}</button>`;
+      }
+      html += "</div>";
+      html += `<div class="ac-zona-caja"><label for="ac-zona">Mostrar horarios en</label><div class="ac-zona-fila">${icono("mundo")}<select class="ac-zona" id="ac-zona">${ZONAS.map(([v, n]) => `<option value="${v}"${v === e.zona ? " selected" : ""}>${esc(n)}</option>`).join("")}</select></div></div>`;
+      html += "</div>";
+
+      if (e.dia) {
+        const horas = (dias[e.dia] || []).slice().sort((a, b) => a - b);
+        html += `<div class="ac-horas-caja"><p class="ac-horas-titulo" id="ac-horas-t">${horas.length ? esc(fDia(horas[0])) : ""}</p><div class="ac-horas" role="group" aria-labelledby="ac-horas-t">`;
+        html += horas.map((ts) => `<button type="button" class="ac-hora${ts === e.hora ? " ac-hora-activa" : ""}" data-accion="hora" data-ts="${ts}" aria-pressed="${ts === e.hora ? "true" : "false"}">${fHora(ts)}</button>`).join("");
+        html += "</div>";
+        if (e.hora) html += `<div class="ac-continuar"><p class="ac-continuar-texto">${fHora(e.hora)} · ${DURACION} min</p><button type="button" class="ac-siguiente" data-accion="siguiente">Continuar ${icono("derecha")}</button></div>`;
+        html += "</div>";
+      }
+      html += "</div>";
+      return html;
+    }
+
+    function vistaFormulario() {
+      const d = e.datos;
+      const sel = ubicacionElegida();
+      let html = pasos(2) + '<h2 class="ac-encabezado" tabindex="-1">Sus datos</h2><form class="ac-form" novalidate>';
+      html += `<div><label for="ac-nombre">Nombre y apellido *</label><input id="ac-nombre" type="text" name="nombre" autocomplete="off" value="${esc(d.nombre)}"></div>`;
+      html += `<div><label for="ac-correo">Correo electrónico *</label><input id="ac-correo" type="email" name="correo" autocomplete="off" value="${esc(d.correo)}"></div>`;
+      html += '<fieldset class="ac-ubicaciones-caja"><legend>¿Dónde prefiere la reunión? *</legend><div class="ac-ubicaciones">';
+      html += UBICACIONES.map((u) => `<label class="ac-opcion-ubicacion"><input type="radio" name="ubicacion" value="${u.tipo}"${d.ubicacion === u.tipo ? " checked" : ""}>${icono(u.icono)}<span>${esc(u.nombre)}</span></label>`).join("");
+      html += "</div></fieldset>";
+      html += `<div class="ac-campo-telefono"${sel && sel.telefono ? "" : " hidden"}><label for="ac-telefono">Teléfono *</label><input id="ac-telefono" type="tel" name="telefono" autocomplete="off" value="${esc(d.telefono)}"><small class="ac-ayuda">Incluya el código de país si no es de Chile.</small></div>`;
+      html += `<button type="button" class="ac-btn-secundario" data-accion="invitados"${e.invitados ? " hidden" : ""}>+ Invitar a otra persona</button>`;
+      html += `<div class="ac-invitados"${e.invitados ? "" : " hidden"}><label for="ac-invitados">Correos de las personas invitadas (separados por coma)</label><textarea id="ac-invitados" name="invitados" rows="2">${esc(d.listaInvitados)}</textarea></div>`;
+      html += `<div><label for="ac-notas">¿Algo que debamos saber antes de la reunión? <span class="ac-opcional">(opcional)</span></label><textarea id="ac-notas" name="notas" rows="3" maxlength="3000">${esc(d.notas)}</textarea></div>`;
+      html += '<p class="ac-legal">Al confirmar, acepta que usemos sus datos solo para gestionar esta reunión.</p>';
+      html += `<div class="ac-error" role="alert">${esc(e.error)}</div>`;
+      html += '<button type="submit" class="ac-btn">Confirmar reunión</button></form>';
+      return html;
+    }
+
+    function vistaListo() {
+      const d = e.datos;
+      const u = ubicacionElegida();
+      return pasos(3) + `<div class="ac-ok">
+        <span class="ac-ok-icono">${icono("check")}</span>
+        <h2 class="ac-ok-titulo ac-encabezado" tabindex="-1">¡Reserva confirmada!</h2>
+        <div class="ac-resumen"><h3>Reunión de diagnóstico</h3><ul>
+          <li>${icono("calendario")}<span>${esc(rango(e.hora))}</span></li>
+          <li>${icono("mundo")}<span>${esc(e.zona.replace(/_/g, " "))}</span></li>
+          <li>${icono(u.icono)}<span>${esc(u.nombre)}${u.telefono && d.telefono ? " · " + esc(d.telefono) : ""}</span></li>
+          <li>${icono("check")}<span>${esc(d.nombre)} · ${esc(d.correo)}</span></li>
+        </ul></div>
+        <div class="ac-enlaces"><span>Google Calendar</span><span>Outlook</span><span>Apple</span><span>Cancelar o cambiar horario</span></div>
+        <p class="ac-nota-ok">En el sitio real llega un correo con estos botones y la invitación de calendario.</p>
+        <button type="button" class="ac-btn" data-accion="reiniciar">Hacer otra reserva</button>
+      </div>`;
+    }
+
+    function dibujar(enfocar) {
+      const contenido = e.vista === "calendario" ? vistaCalendario() : e.vista === "formulario" ? vistaFormulario() : vistaListo();
+      const clases = "ac-agendador-interior" + (e.vista === "listo" ? " ac-confirmada" : "");
+      raiz.innerHTML = `<div class="ac-agendador"><div class="${clases}"><div class="ac-tarjeta">${panelInfo()}<section class="ac-principal">${contenido}</section></div></div></div>`;
+      if (enfocar === "titulo") {
+        const t = raiz.querySelector(".ac-encabezado");
+        if (t) t.focus({ preventScroll: true });
+      } else if (enfocar) {
+        const el = raiz.querySelector(enfocar);
+        if (el) el.focus({ preventScroll: true });
+      }
+    }
+
+    raiz.addEventListener("click", (ev) => {
+      const b = ev.target.closest("[data-accion]");
+      if (!b) return;
+      const accion = b.dataset.accion;
+      if (accion === "dia") { e.dia = b.dataset.dia; e.hora = null; dibujar('[data-dia="' + e.dia + '"]'); }
+      else if (accion === "hora") { e.hora = Number(b.dataset.ts); dibujar('[data-ts="' + e.hora + '"]'); }
+      else if (accion === "mes-anterior" || accion === "mes-siguiente") {
+        const delta = accion === "mes-anterior" ? -1 : 1;
+        const f = new Date(Date.UTC(e.anio, e.mes + delta, 1));
+        e.anio = f.getUTCFullYear(); e.mes = f.getUTCMonth();
+        dibujar('[data-accion="' + accion + '"]');
+      }
+      else if (accion === "siguiente") { e.vista = "formulario"; e.error = ""; dibujar("titulo"); }
+      else if (accion === "atras") { e.vista = "calendario"; e.error = ""; dibujar("titulo"); }
+      else if (accion === "invitados") {
+        e.invitados = true;
+        raiz.querySelector(".ac-invitados").hidden = false;
+        b.hidden = true;
+        raiz.querySelector("#ac-invitados").focus();
+      }
+      else if (accion === "reiniciar") {
+        e.vista = "calendario"; e.dia = null; e.hora = null; e.invitados = false; e.error = "";
+        e.datos = { nombre: "", correo: "", ubicacion: "", telefono: "", listaInvitados: "", notas: "" };
+        irAlPrimerMes(); dibujar("titulo");
+      }
+    });
+
+    raiz.addEventListener("change", (ev) => {
+      if (ev.target.id === "ac-zona") {
+        e.zona = ev.target.value;
+        e.hora = null;
+        const dias = porDia();
+        if (!dias[e.dia]) e.dia = null;
+        if (!Object.keys(dias).some((k) => k.startsWith(e.anio + "-" + pad(e.mes + 1)))) irAlPrimerMes();
+        dibujar("#ac-zona");
+      } else if (ev.target.name === "ubicacion") {
+        e.datos.ubicacion = ev.target.value;
+        const u = ubicacionElegida();
+        raiz.querySelector(".ac-campo-telefono").hidden = !(u && u.telefono);
+        raiz.querySelector(".ac-info").outerHTML = panelInfo();
+      }
+    });
+
+    raiz.addEventListener("input", (ev) => {
+      const mapa = { nombre: "nombre", correo: "correo", telefono: "telefono", invitados: "listaInvitados", notas: "notas" };
+      const clave = mapa[ev.target.name];
+      if (clave && ev.target.closest(".ac-form")) e.datos[clave] = ev.target.value;
+    });
+
+    raiz.addEventListener("submit", (ev) => {
+      ev.preventDefault();
+      const d = e.datos;
+      const u = ubicacionElegida();
+      const form = ev.target;
+      let error = "", foco = null;
+      form.querySelectorAll("[aria-invalid]").forEach((x) => x.removeAttribute("aria-invalid"));
+      if (d.nombre.trim().length < 3) { error = "Ingrese su nombre y apellido."; foco = form.elements.nombre; }
+      else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d.correo.trim())) { error = "Ingrese un correo válido."; foco = form.elements.correo; }
+      else if (!u) { error = "Elija dónde prefiere la reunión."; foco = form.querySelector('input[name="ubicacion"]'); }
+      else if (u.telefono && d.telefono.replace(/\D/g, "").length < 8) { error = "Ingrese un teléfono válido para poder contactarlo."; foco = form.elements.telefono; }
+      e.error = error;
+      const caja = form.querySelector(".ac-error");
+      caja.textContent = error;
+      if (error) { if (foco && foco.name !== "ubicacion") foco.setAttribute("aria-invalid", "true"); if (foco) foco.focus(); return; }
+      e.vista = "listo";
+      dibujar("titulo");
+    });
+
+    irAlPrimerMes();
+    dibujar();
+  })();
+
+  /* ================================================================
+     4. Directorio de autores
+     ================================================================ */
+  (function directorioAutores() {
+    const raiz = document.getElementById("demo-directorio");
+    const POR_PAGINA = 8;
+    const TODOS = "Todos (Autores y Autoras)";
+    const TODOS_TIPOS = "Todos los tipos";
+
+    // Autores y autoras inventados para la demostración
+    const AUTORES = [
+      { n: "Elena Marchant", c: "Autora", t: "Novelista", corta: "Novelas de misterio ambientadas en pueblos del sur de Chile.", larga: ["Escribe novelas de misterio donde el paisaje funciona casi como un personaje más. Combina trabajo de archivo con ficción para recrear la vida en los pueblos del sur.", "Dicta talleres de escritura para quienes parten su primera novela."], car: ["4 novelas publicadas", "Talleres de escritura narrativa", "Participación en ferias del libro regionales"] },
+      { n: "Tomás Valderrama", c: "Autor", t: "Ensayista", corta: "Ensayos breves sobre ciudad, memoria y vida cotidiana.", larga: ["Sus ensayos parten de escenas pequeñas, como una esquina o una conversación en el bus, para pensar cómo cambian las ciudades.", "Colabora con revistas culturales y ha coordinado ciclos de lectura."], car: ["3 libros de ensayo", "Columnista en revistas culturales", "Coordinador de ciclos de lectura"] },
+      { n: "Irene Collao", c: "Autora", t: "Poeta", corta: "Poesía de versos cortos inspirada en el mar y los oficios.", larga: ["Su poesía usa versos cortos y un lenguaje directo para hablar del mar, el trabajo y la familia.", "Realiza lecturas en bibliotecas y colegios."], car: ["5 poemarios", "Lecturas en bibliotecas y colegios", "Antologada en publicaciones regionales"] },
+      { n: "Bruno Aldunate", c: "Autor", t: "Cuentista", corta: "Cuentos fantásticos que cruzan lo cotidiano con lo inexplicable.", larga: ["Sus cuentos parten en escenas normales y giran hacia lo fantástico sin aviso. Prefiere finales abiertos.", "Participa en talleres de lectura en voz alta."], car: ["2 libros de cuentos", "Talleres de lectura en voz alta", "Cuentos publicados en revistas literarias"] },
+      { n: "Marta Quiroz", c: "Autora", t: "Infantil", corta: "Álbumes ilustrados para primeros lectores sobre animales y amistad.", larga: ["Escribe álbumes ilustrados con frases breves y mucho humor, pensados para leer en voz alta.", "Trabaja con ilustradoras e ilustradores de la región."], car: ["6 álbumes ilustrados", "Visitas a jardines infantiles y escuelas", "Trabajo en equipo con ilustradores"] },
+      { n: "Julián Ferrer", c: "Autor", t: "Novelista", corta: "Novela histórica sobre puertos, migraciones y oficios.", larga: ["Investiga archivos portuarios para reconstruir historias de familias migrantes en los puertos del país.", "Sus novelas mezclan documentos reales y personajes inventados."], car: ["3 novelas históricas", "Investigación en archivos portuarios", "Charlas en museos y centros culturales"] },
+      { n: "Sofía Bahamondes", c: "Autora", t: "Poeta", corta: "Poesía contemporánea sobre cuerpo, territorio y lenguaje.", larga: ["Trabaja con fragmentos, listas y repeticiones para escribir sobre el cuerpo y el territorio.", "Edita una pequeña colección de poesía independiente."], car: ["2 poemarios", "Edición de una colección independiente", "Lecturas y performances"] },
+      { n: "Ignacio Pereda", c: "Autor", t: "Ensayista", corta: "Ensayo cultural sobre cine, música y fandoms.", larga: ["Escribe sobre cómo las comunidades de fans construyen sentido alrededor del cine y la música.", "Dicta clases de escritura académica y de divulgación."], car: ["2 libros de ensayo", "Clases de escritura de divulgación", "Participación en podcasts culturales"] },
+      { n: "Alma Tapia", c: "Autora", t: "Cuentista", corta: "Cuentos breves de humor negro sobre la vida de barrio.", larga: ["Sus cuentos son cortos, directos y con humor negro. Los personajes salen de su propio barrio.", "Organiza una feria anual de escritores locales."], car: ["3 libros de cuentos", "Organizadora de una feria de escritores", "Cuentos adaptados a radioteatro"] },
+      { n: "Renato Cifuentes", c: "Autor", t: "Infantil", corta: "Cuentos de aventuras para lectores de 8 a 12 años.", larga: ["Escribe aventuras con misterios y mapas para lectores de 8 a 12 años.", "Realiza talleres para fomentar la lectura en escuelas rurales."], car: ["4 libros infantiles", "Talleres en escuelas rurales", "Material de apoyo para docentes"] },
+      { n: "Paula Norambuena", c: "Autora", t: "Ensayista", corta: "Ensayos sobre educación, lectura y bibliotecas públicas.", larga: ["Combina su experiencia como bibliotecaria con investigación para escribir sobre cómo se forman los lectores.", "Asesora proyectos de bibliotecas comunitarias."], car: ["2 libros de ensayo", "Asesorías a bibliotecas comunitarias", "Conferencias sobre fomento lector"] },
+      { n: "Gaspar Leiva", c: "Autor", t: "Poeta", corta: "Poesía visual y experimental con collage y fotografía.", larga: ["Mezcla texto, collage y fotografía para crear poemas que se leen y se miran.", "Presenta sus libros en galerías y ferias de arte."], car: ["3 libros de poesía visual", "Exposiciones en galerías", "Libros de artista en edición limitada"] }
+    ];
+    const PALETAS = [["#e9e5fb", "#bfb4f1"], ["#e3eefb", "#a9c5ef"], ["#fbe6ee", "#f0b4c8"], ["#e4f4ec", "#a9d9bf"], ["#fbf0dc", "#efd096"], ["#ece7f5", "#c2b2e0"]];
+    const retrato = (i) => {
+      const [fondo, figura] = PALETAS[i % PALETAS.length];
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><rect width="400" height="400" fill="${fondo}"/><circle cx="200" cy="150" r="62" fill="${figura}"/><path d="M80 400c0-85 54-140 120-140s120 55 120 140z" fill="${figura}"/></svg>`;
+      return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg);
+    };
+    AUTORES.forEach((a, i) => { a.img = retrato(i); a.fondo = PALETAS[i % PALETAS.length][0]; });
+
+    const categorias = [...new Set(AUTORES.map((a) => a.c))].sort();
+    const tipos = [...new Set(AUTORES.map((a) => a.t))].sort((a, b) => a.localeCompare(b, "es"));
+    const estado = { categoria: TODOS, tipo: TODOS_TIPOS, pagina: 1 };
+
+    raiz.innerHTML = `
+      <div class="diraut-filtros">
+        <select class="diraut-filtro-categoria" aria-label="Filtrar por categoría"><option>${TODOS}</option>${categorias.map((c) => `<option>${esc(c)}</option>`).join("")}</select>
+        <select class="diraut-filtro-tipo" aria-label="Filtrar por tipo de escritor"><option>${TODOS_TIPOS}</option>${tipos.map((t) => `<option>${esc(t)}</option>`).join("")}</select>
+      </div>
+      <div class="diraut-grid" aria-live="polite"></div>
+      <nav class="diraut-paginacion" aria-label="Paginación del directorio"></nav>
+      <div class="diraut-modal-fondo" role="dialog" aria-modal="true" aria-labelledby="diraut-modal-nombre" hidden>
+        <div class="diraut-modal-contenido" tabindex="-1">
+          <button type="button" class="diraut-modal-cerrar" aria-label="Cerrar">&times;</button>
+          <div class="diraut-modal-cuerpo"></div>
+        </div>
+      </div>`;
+
+    const grilla = raiz.querySelector(".diraut-grid");
+    const paginacion = raiz.querySelector(".diraut-paginacion");
+    const modal = raiz.querySelector(".diraut-modal-fondo");
+    const cuerpoModal = raiz.querySelector(".diraut-modal-cuerpo");
+    const botonCerrar = raiz.querySelector(".diraut-modal-cerrar");
+    let origenFoco = null;
+
+    function filtrados() {
+      return AUTORES.filter((a) => (estado.categoria === TODOS || a.c === estado.categoria) && (estado.tipo === TODOS_TIPOS || a.t === estado.tipo))
+        .sort((a, b) => a.n.localeCompare(b.n, "es"));
+    }
+
+    function dibujarPaginacion(paginas) {
+      if (paginas <= 1) { paginacion.innerHTML = ""; return; }
+      const boton = (texto, pagina, extra = "", etiqueta = "") => `<button type="button" class="diraut-boton-pagina${extra}" data-pagina="${pagina}"${etiqueta ? ` aria-label="${etiqueta}"` : ""}${extra.includes("activo") ? ' aria-current="page"' : ""}>${texto}</button>`;
+      let html = `<button type="button" class="diraut-boton-pagina" data-pagina="${estado.pagina - 1}" aria-label="Página anterior"${estado.pagina === 1 ? " disabled" : ""}>‹</button>`;
+      let ultimo = 0;
+      for (let i = 1; i <= paginas; i++) {
+        if (i === 1 || i === paginas || Math.abs(i - estado.pagina) <= 1) {
+          if (i - ultimo > 1) html += '<span class="diraut-paginacion-separador">…</span>';
+          html += boton(i, i, i === estado.pagina ? " activo" : "", "Página " + i);
+          ultimo = i;
+        }
+      }
+      html += `<button type="button" class="diraut-boton-pagina" data-pagina="${estado.pagina + 1}" aria-label="Página siguiente"${estado.pagina === paginas ? " disabled" : ""}>›</button>`;
+      paginacion.innerHTML = html;
+    }
+
+    function dibujar() {
+      const lista = filtrados();
+      const paginas = Math.max(1, Math.ceil(lista.length / POR_PAGINA));
+      if (estado.pagina > paginas) estado.pagina = paginas;
+      const visibles = lista.slice((estado.pagina - 1) * POR_PAGINA, estado.pagina * POR_PAGINA);
+      grilla.innerHTML = visibles.length
+        ? visibles.map((a) => `<article class="diraut-tarjeta">
+            <div class="diraut-imagen-contenedor" data-perfil="${esc(a.n)}">
+              <span class="diraut-etiqueta-categoria">${esc(a.c)}</span>
+              <img src="${a.img}" alt="" loading="lazy">
+            </div>
+            <div class="diraut-tarjeta-contenido">
+              <h3 class="diraut-titulo">${esc(a.n)}</h3>
+              <p class="diraut-descripcion">${esc(a.corta)}</p>
+              <button type="button" class="diraut-boton-ver-mas" data-perfil="${esc(a.n)}">Ver perfil completo</button>
+            </div>
+          </article>`).join("")
+        : '<p class="diraut-sin-resultados">No se encontraron resultados.</p>';
+      dibujarPaginacion(paginas);
+    }
+
+    function abrirPerfil(nombre, origen) {
+      const a = AUTORES.find((x) => x.n === nombre);
+      if (!a) return;
+      origenFoco = origen;
+      cuerpoModal.innerHTML = `
+        <div class="diraut-modal-imagen" style="background:${a.fondo}"><img src="${a.img}" alt=""></div>
+        <h3 class="diraut-modal-titulo" id="diraut-modal-nombre">${esc(a.n)}</h3>
+        <p class="diraut-modal-meta">${esc(a.c)} · ${esc(a.t)}</p>
+        <div class="diraut-modal-descripcion">${a.larga.map((p) => `<p>${esc(p)}</p>`).join("")}</div>
+        <h4 class="diraut-caracteristicas-titulo">Características</h4>
+        <ul class="diraut-lista-caracteristicas">${a.car.map((c) => `<li>${esc(c)}</li>`).join("")}</ul>`;
+      modal.hidden = false;
+      document.documentElement.classList.add("diraut-modal-abierto");
+      raiz.querySelector(".diraut-modal-contenido").scrollTop = 0;
+      botonCerrar.focus();
+    }
+    function cerrarPerfil() {
+      if (modal.hidden) return;
+      modal.hidden = true;
+      document.documentElement.classList.remove("diraut-modal-abierto");
+      if (origenFoco && document.body.contains(origenFoco)) origenFoco.focus();
+    }
+
+    raiz.querySelector(".diraut-filtro-categoria").addEventListener("change", (ev) => { estado.categoria = ev.target.value; estado.pagina = 1; dibujar(); });
+    raiz.querySelector(".diraut-filtro-tipo").addEventListener("change", (ev) => { estado.tipo = ev.target.value; estado.pagina = 1; dibujar(); });
+
+    raiz.addEventListener("click", (ev) => {
+      const pag = ev.target.closest("[data-pagina]");
+      if (pag && !pag.disabled) {
+        estado.pagina = Number(pag.dataset.pagina);
+        dibujar();
+        grilla.scrollIntoView({ behavior: sinMovimiento ? "auto" : "smooth", block: "start" });
+        return;
+      }
+      const perfil = ev.target.closest("[data-perfil]");
+      if (perfil) {
+        const boton = perfil.closest(".diraut-tarjeta").querySelector(".diraut-boton-ver-mas");
+        abrirPerfil(perfil.dataset.perfil, boton);
+        return;
+      }
+      if (ev.target === modal || ev.target.closest(".diraut-modal-cerrar")) cerrarPerfil();
+    });
+
+    document.addEventListener("keydown", (ev) => {
+      if (modal.hidden) return;
+      if (ev.key === "Escape") cerrarPerfil();
+      // El único elemento enfocable de la ventana es el botón de cierre: se mantiene el foco dentro
+      if (ev.key === "Tab") { ev.preventDefault(); botonCerrar.focus(); }
+    });
+
+    dibujar();
+  })();
+
+
+  // ----- Las tarjetas abren su demo y llevan la vista hasta ella -----
+  document.querySelectorAll(".tarjeta-plugin").forEach((tarjeta) => {
+    tarjeta.addEventListener("click", () => {
+      const zona = document.getElementById("zona-demos");
+      const arriba = zona.getBoundingClientRect().top;
+      // Solo desplaza si la demo no está ya a la vista
+      if (arriba > window.innerHeight * 0.6 || arriba < 0) {
+        zona.scrollIntoView({ behavior: sinMovimiento ? "auto" : "smooth", block: "start" });
+      }
+    });
+  });
+</script>
+</body>
+</html>
