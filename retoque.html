@@ -2,6 +2,17 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
+<script>
+  // Tema guardado por el visitante; la primera vez se usa el del sistema.
+  (function () {
+    var tema = null;
+    try { tema = localStorage.getItem("tema"); } catch (e) {}
+    if (tema !== "claro" && tema !== "oscuro") {
+      tema = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "claro" : "oscuro";
+    }
+    document.documentElement.setAttribute("data-tema", tema);
+  })();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Retoque · Edición en vivo para WordPress</title>
 <meta name="description" content="Retoque es un plugin de WordPress hecho por Nicolás Merino: tus clientes cambian textos, fotos y botones tocando su propio sitio, y te dejan notas en cualquier parte de la página. Pruébalo en vivo.">
@@ -26,6 +37,10 @@
     --acento: #B8F35A;
     --acento-claro: #D4FA94;
     --texto-acento: #0E1116;
+    --barra-fondo: rgba(14, 17, 22, 0.88);
+    --icono-fondo: #111827;
+    --ambar-texto: #F59E0B;
+    --sombra-ventana: 0 30px 60px -30px rgba(0, 0, 0, 0.7);
     --ambar: #F59E0B;
     --fuente-titulos: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
     --fuente-texto: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -52,7 +67,7 @@
   .saltar:focus { top: 1rem; }
 
   /* ---------- Barra ---------- */
-  .barra { position: sticky; top: 0; z-index: 50; background: rgba(14, 17, 22, 0.88); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--linea); }
+  .barra { position: sticky; top: 0; z-index: 50; background: var(--barra-fondo); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--linea); }
   .barra .contenedor { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 0.9rem 0; }
   .marca { font-family: var(--fuente-mono); font-weight: 500; font-size: 0.95rem; color: var(--tinta); text-decoration: none; white-space: nowrap; }
   .marca span { color: var(--acento); }
@@ -80,7 +95,7 @@
   .portada .bajada { color: var(--tinta-suave); font-size: 1.2rem; max-width: 60ch; margin-bottom: 2rem; }
   .resumen { flex: 1 1 320px; min-width: 0; display: grid; gap: 0.75rem; margin: 0; padding: 0; list-style: none; }
   .resumen li { display: flex; gap: 0.75rem; align-items: flex-start; padding: 1rem 1.1rem; border: 1px solid var(--linea); border-radius: 12px; background: var(--superficie); }
-  .resumen .icono { flex: none; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 9px; background: #111827; color: var(--acento); }
+  .resumen .icono { flex: none; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 9px; background: var(--icono-fondo); color: var(--acento); }
   .resumen strong { display: block; font-family: var(--fuente-titulos); font-size: 1.05rem; }
   .resumen span { color: var(--tinta-suave); font-size: 0.95rem; }
 
@@ -88,7 +103,7 @@
   .demo { padding: 0 0 clamp(4rem, 9vw, 6rem); }
   .demo-rejilla { display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: flex-start; }
   .guia { flex: 1 1 320px; max-width: 380px; min-width: 0; display: flex; flex-direction: column; gap: 1rem; }
-  .ventana { flex: 999 1 640px; min-width: 0; border: 1px solid var(--linea); border-radius: 14px; overflow: hidden; background: var(--superficie); box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.7); }
+  .ventana { flex: 999 1 640px; min-width: 0; border: 1px solid var(--linea); border-radius: 14px; overflow: hidden; background: var(--superficie); box-shadow: var(--sombra-ventana); }
   .ventana-barra { display: flex; align-items: center; gap: 0.75rem; padding: 0.65rem 0.9rem; border-bottom: 1px solid var(--linea); }
   .ventana-barra i { flex: none; width: 11px; height: 11px; border-radius: 50%; background: var(--linea-fuerte); }
   .direccion { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 0.25rem 0.8rem; border-radius: 999px; background: var(--fondo); font-family: var(--fuente-mono); font-size: 0.78rem; color: var(--tinta-suave); }
@@ -119,7 +134,7 @@
   /* ---------- Tarjetas ---------- */
   .tarjetas { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.25rem; }
   .tarjeta { padding: 1.5rem; border: 1px solid var(--linea); border-radius: 12px; background: var(--superficie); }
-  .tarjeta .icono { display: inline-grid; place-items: center; width: 40px; height: 40px; margin-bottom: 0.9rem; border-radius: 10px; background: #111827; color: var(--acento); }
+  .tarjeta .icono { display: inline-grid; place-items: center; width: 40px; height: 40px; margin-bottom: 0.9rem; border-radius: 10px; background: var(--icono-fondo); color: var(--acento); }
   .tarjeta h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
   .tarjeta p { margin: 0; color: var(--tinta-suave); font-size: 0.98rem; }
 
@@ -166,6 +181,38 @@
     .etapa h3 { flex-basis: 100%; }
     .ventana iframe { min-height: 520px; height: calc(100svh - 130px); }
   }
+  /* ---------- Modo claro ---------- */
+  :root[data-tema="claro"] {
+    color-scheme: light;
+    --fondo: #F6F8FA;
+    --fondo-alterno: #EEF1F5;
+    --superficie: #FFFFFF;
+    --tinta: #0E1116;
+    --tinta-suave: #4A5562;
+    --linea: #DCE1E7;
+    --linea-fuerte: #B4BDC8;
+    --verde: #EEF1F5;
+    --acento: #3D6B00;
+    --acento-claro: #4E8700;
+    --texto-acento: #FFFFFF;
+    --barra-fondo: rgba(246, 248, 250, 0.9);
+    --icono-fondo: #E8F2DA;
+    --ambar-texto: #9A5B00;
+    --sombra-ventana: 0 24px 50px -28px rgba(14, 17, 22, 0.35);
+  }
+  /* La ventana de código se ve siempre oscura, como un editor */
+  :root[data-tema="claro"] .codigo { --superficie: #161B22; --linea: #232A33; --linea-fuerte: #3A4450; --tinta-suave: #9BA7B4; --acento: #B8F35A; color-scheme: dark; }
+  :root[data-tema="claro"] .contacto-caja .boton:hover { background: #E9EEF3; color: #0E1116; }
+  :root[data-tema="claro"] .contacto-caja .boton.secundario:hover { background: rgba(255, 255, 255, 0.14); color: var(--texto-acento); }
+  :root[data-tema="claro"] .paso.es-hecho { border-color: var(--acento); }
+
+  /* ---------- Botón de modo claro / oscuro ---------- */
+  .tema-boton { flex: none; display: inline-grid; place-items: center; width: 40px; height: 40px; padding: 0; border: 1px solid var(--linea-fuerte); border-radius: 8px; background: transparent; color: var(--tinta); cursor: pointer; }
+  .tema-boton:hover { border-color: var(--tinta); }
+  .tema-boton svg { display: block; }
+  .tema-luna { display: none !important; }
+  :root[data-tema="claro"] .tema-sol { display: none !important; }
+  :root[data-tema="claro"] .tema-luna { display: block !important; }
 </style>
 </head>
 <body>
@@ -179,6 +226,10 @@
       <a href="#demo">Demo</a>
       <a href="#funciones">Funciones</a>
       <a href="#desarrollo">Durante el desarrollo</a>
+      <button type="button" class="tema-boton" id="tema-boton" aria-label="Cambiar a modo claro" title="Cambiar a modo claro">
+        <svg class="tema-sol" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="tema-luna" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
       <a class="nav-contacto" href="#contacto">Contacto</a>
     </nav>
   </div>
@@ -375,6 +426,27 @@
 
   elegirRol("cliente");
 })();
+</script>
+<script>
+  // Botón de modo claro / oscuro: cambia el tema y lo recuerda para la próxima visita.
+  (function () {
+    var boton = document.getElementById("tema-boton");
+    var meta = document.querySelector('meta[name="theme-color"]');
+    function pintar() {
+      var claro = document.documentElement.getAttribute("data-tema") === "claro";
+      var texto = claro ? "Cambiar a modo oscuro" : "Cambiar a modo claro";
+      boton.setAttribute("aria-label", texto);
+      boton.title = texto;
+      if (meta) meta.setAttribute("content", claro ? "#F6F8FA" : "#0E1116");
+    }
+    boton.addEventListener("click", function () {
+      var nuevo = document.documentElement.getAttribute("data-tema") === "claro" ? "oscuro" : "claro";
+      document.documentElement.setAttribute("data-tema", nuevo);
+      try { localStorage.setItem("tema", nuevo); } catch (e) {}
+      pintar();
+    });
+    pintar();
+  })();
 </script>
 </body>
 </html>
