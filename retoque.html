@@ -142,19 +142,6 @@
   .etapa h3 { flex: 0 0 300px; font-size: 1.2rem; }
   .etapa p { flex: 1 1 420px; min-width: 0; margin: 0; color: var(--tinta-suave); max-width: 70ch; }
 
-  /* ---------- Técnico ---------- */
-  .tecnico { display: flex; flex-wrap: wrap; gap: 2rem 3rem; align-items: flex-start; }
-  .tecnico-texto { flex: 1 1 380px; min-width: 0; }
-  .tecnico-texto ul { margin: 0; padding-left: 1.1rem; color: var(--tinta-suave); }
-  .tecnico-texto li { margin-bottom: 0.5rem; }
-  .tecnico-texto li::marker { color: var(--acento); }
-  .codigo { flex: 1 1 520px; min-width: 0; border: 1px solid var(--linea); border-radius: 12px; background: var(--superficie); overflow: hidden; }
-  .codigo-barra { padding: 0.7rem 1rem; border-bottom: 1px solid var(--linea); font-family: var(--fuente-mono); font-size: 0.8rem; color: var(--tinta-suave); }
-  .codigo pre { margin: 0; padding: 1.25rem 1.4rem; overflow-x: auto; font-family: var(--fuente-mono); font-size: 0.85rem; line-height: 1.8; color: #C9D3DD; }
-  .codigo .c { color: #7D8A97; }
-  .codigo .f { color: var(--acento); }
-  .codigo .s { color: #F2C88B; }
-
   /* ---------- Contacto ---------- */
   .contacto-caja { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 2rem; padding: clamp(2rem, 6vw, 4rem); border-radius: 16px; background: var(--acento); color: var(--texto-acento); }
   .contacto-caja > div { flex: 1 1 420px; min-width: 0; }
@@ -315,43 +302,6 @@
         <div class="etapa"><h3>Aviso de datos que faltan</h3><p>Las partes sin información (un horario, una foto) se marcan en amarillo y la barra muestra cuántas faltan. Los visitantes nunca ven estos avisos.</p></div>
         <div class="etapa"><h3>Terminar desarrollo</h3><p>Un botón apaga las notas en todo el sitio y desactiva el enlace de revisión. También se apagan solas si el sitio pasa al dominio definitivo. Las notas enviadas se conservan.</p></div>
         <div class="etapa"><h3>Mudanza del contenido</h3><p>Exporta lo editado a un archivo y lo importa en el sitio definitivo: encuentra cada página y producto aunque cambien sus ID, e incluye las imágenes.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Técnico -->
-  <section class="seccion" id="tecnico">
-    <div class="contenedor">
-      <p class="rotulo">04 / para desarrolladores</p>
-      <h2 class="titulo-seccion">Cómo se prepara un tema</h2>
-      <div class="tecnico">
-        <div class="tecnico-texto">
-          <p class="entrada" style="margin-bottom: 1.5rem">El tema usa funciones de Retoque en lugar de escribir el texto fijo. Si el cliente no ha cambiado nada, se muestra el valor del diseño.</p>
-          <ul>
-            <li>Solo los desarrolladores elegidos ven <strong>Estilo</strong> (colores del sitio, tamaños en PC y celular, color de fondo, ocultar en todo, solo en celular o solo en PC) y <strong>Contenedores</strong>, que muestra el nombre de cada sección y copia su selector CSS.</li>
-            <li>Los visitantes no cargan nada del editor. La API de WordPress exige permiso de edición y una clave de sesión.</li>
-            <li>Funciona con WooCommerce: los datos que se cambian en otra parte (precio, stock) avisan dónde se editan.</li>
-            <li>Fechas siempre en español, aunque WordPress esté en inglés.</li>
-            <li>Requisitos: WordPress 6.2 o superior y PHP 7.4 o superior.</li>
-          </ul>
-        </div>
-        <div class="codigo">
-          <div class="codigo-barra">front-page.php</div>
-<pre><span class="c">// Textos, imagen y botón editables</span>
-<span class="f">retoque_texto</span>( <span class="s">'portada_titulo'</span>, <span class="s">'Gasfitería certificada'</span>,
-  array( <span class="s">'etiqueta'</span> =&gt; <span class="s">'h1'</span> ) );
-<span class="f">retoque_texto</span>( <span class="s">'portada_bajada'</span>, <span class="s">'Texto largo…'</span>,
-  array( <span class="s">'tipo'</span> =&gt; <span class="s">'parrafo'</span>, <span class="s">'etiqueta'</span> =&gt; <span class="s">'p'</span> ) );
-<span class="f">retoque_imagen</span>( <span class="s">'portada_foto'</span>,
-  get_theme_file_uri( <span class="s">'img/portada.webp'</span> ) );
-<span class="f">retoque_enlace</span>( <span class="s">'portada_boton'</span>, <span class="s">'Cotizar'</span>,
-  <span class="s">'https://wa.me/569…'</span>, array( <span class="s">'clase'</span> =&gt; <span class="s">'boton'</span> ) );
-
-<span class="c">// Lista que el cliente puede ordenar y ampliar</span>
-<span class="f">retoque_lista</span>( <span class="s">'servicios'</span>, $servicios, <span class="f">function</span> ( $datos, $prefijo ) {
-  <span class="c">// …cada servicio con sus propios campos</span>
-} );</pre>
-        </div>
       </div>
     </div>
   </section>
