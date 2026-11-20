@@ -8,7 +8,7 @@
   "use strict";
 
   var CLAVE = "retoque_demo_v2";
-  var PAGINAS = { "index.html": "Inicio", "servicios.html": "Servicios", "contacto.html": "Contacto" };
+  var PAGINAS = { "index.html": "Inicio", "servicios.html": "Servicios", "tienda.html": "Tienda", "contacto.html": "Contacto" };
   var IMAGENES = window.RETOQUE_DEMO_IMAGENES || [];
   var parametros = new URLSearchParams(window.location.search);
 
@@ -49,11 +49,16 @@
   }
 
   var estado = leer();
+  // Vistas de la demo: cliente (con usuario, en desarrollo), desarrollador,
+  // entregado (sitio ya publicado: sin notas) y revision (enlace de revisión: solo notas, sin usuario).
+  var ROLES = ["cliente", "desarrollador", "entregado", "revision"];
   if (!estado || (rolPedido && rolPedido !== estado.rol)) {
-    estado = crearEstado(rolPedido === "desarrollador" ? "desarrollador" : "cliente");
+    estado = crearEstado(ROLES.indexOf(rolPedido) !== -1 ? rolPedido : "cliente");
     escribir(estado);
   }
   var esDesarrollador = estado.rol === "desarrollador";
+  var esEntregado = estado.rol === "entregado";
+  var esRevision = estado.rol === "revision";
   window.RETOQUE_DEMO_ROL = estado.rol;
 
   function rutaDe(nombre) { return "/" + (carpeta + nombre).replace(/^\/+|\/+$/g, ""); }
@@ -184,7 +189,7 @@
         texto: String(f.get("texto") || ""),
         estado: "borrador",
         estado_nombre: "Por enviar",
-        autor: esDesarrollador ? "Nicolás (desarrollador)" : "Tú",
+        autor: String(f.get("nombre") || "") || (esDesarrollador ? "Nicolás (desarrollador)" : "Tú"),
         fecha: fecha(new Date()),
         tocado: String(f.get("texto_elemento") || ""),
         ubicacion: String(f.get("ubicacion") || ""),
@@ -264,12 +269,12 @@
     nonce: "demo",
     pagina: 0,
     desarrollador: esDesarrollador,
-    listas: true,
+    listas: !esRevision,
     notas: estado.notas.filter(function (n) { return n.ruta === rutaAqui && n.estado !== "hecho"; }),
-    notasActivas: true,
-    soloNotas: false,
-    pedirNombre: false,
-    correoAviso: esDesarrollador ? "" : "carolina@example.com",
+    notasActivas: !esEntregado,
+    soloNotas: esRevision,
+    pedirNombre: esRevision,
+    correoAviso: (esDesarrollador || esRevision) ? "" : "carolina@example.com",
     revision: "",
     porEnviar: porEnviar()
   };

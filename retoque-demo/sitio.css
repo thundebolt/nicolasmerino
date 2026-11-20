@@ -225,3 +225,14 @@ img { display: block; max-width: 100%; }
   html { scroll-behavior: auto; }
   .boton { transition: none; }
 }
+
+/* ---------- Tienda (WooCommerce) ---------- */
+.productos { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1.25rem; }
+.producto { display: flex; flex-direction: column; gap: 0.45rem; padding: 1rem 1rem 1.2rem; border-radius: var(--radio); background: var(--blanco); border: 1px solid var(--linea); box-shadow: var(--sombra); }
+.producto-foto { border-radius: 12px; overflow: hidden; aspect-ratio: 1; background: var(--fondo); margin-bottom: 0.4rem; }
+.producto-foto img { width: 100%; height: 100%; object-fit: cover; }
+.producto-cat { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--turquesa); }
+.producto h3 { font-size: 1.05rem; color: var(--azul); }
+.producto-precio { font-family: var(--titulos); font-weight: 800; font-size: 1.2rem; color: var(--azul); }
+.producto-precio del { font-family: var(--cuerpo); font-weight: 500; font-size: 0.9rem; color: var(--suave); margin-right: 0.3rem; }
+.producto-boton { margin-top: auto; min-height: 42px; padding: 0.5rem 1rem; font-size: 0.92rem; }
