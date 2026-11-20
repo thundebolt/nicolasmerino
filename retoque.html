@@ -107,6 +107,8 @@
   .ventana-barra { display: flex; align-items: center; gap: 0.75rem; padding: 0.65rem 0.9rem; border-bottom: 1px solid var(--linea); }
   .ventana-barra i { flex: none; width: 11px; height: 11px; border-radius: 50%; background: var(--linea-fuerte); }
   .direccion { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 0.25rem 0.8rem; border-radius: 999px; background: var(--fondo); font-family: var(--fuente-mono); font-size: 0.78rem; color: var(--tinta-suave); }
+  .ventana-boton { flex: none; padding: 0; border: 0; background: none; color: var(--tinta-suave); font: inherit; font-size: 0.85rem; font-weight: 600; cursor: pointer; white-space: nowrap; }
+  .ventana-boton:hover { color: var(--tinta); }
   .ventana-barra a { flex: none; font-size: 0.85rem; font-weight: 600; text-decoration: none; white-space: nowrap; }
   .ventana iframe { display: block; width: 100%; height: min(860px, calc(100svh - 120px)); min-height: 560px; border: 0; background: #f4f7fb; }
 
@@ -240,7 +242,7 @@
   <section class="portada">
     <div class="contenedor">
       <div class="portada-texto">
-        <p class="insignia">plugin para WordPress · <b>Retoque 1.9</b></p>
+        <p class="insignia">plugin para WordPress · <b>Retoque 1.13</b></p>
         <h1>Tu cliente edita su sitio <em>tocando la página.</em></h1>
         <p class="bajada">Retoque es un plugin que programé para que cada cliente cambie sus textos, fotos y botones directamente sobre su sitio, sin entrar al panel de WordPress. Y cuando quiere un cambio que no puede hacer solo, toca esa parte y me deja una nota.</p>
         <div class="acciones">
@@ -261,7 +263,7 @@
     <div class="contenedor">
       <p class="rotulo">// demo en vivo</p>
       <h2 class="titulo-seccion" id="titulo-demo">Pruébalo en un sitio de ejemplo</h2>
-      <p class="entrada">Este es el editor real de Retoque funcionando sobre un sitio inventado. Usa la barra negra de abajo del sitio. Los cambios no se guardan en ningún lado: al recargar, todo vuelve a como estaba.</p>
+      <p class="entrada">Este es el editor real de Retoque sobre un sitio de ejemplo de tres páginas. Usa la barra negra de abajo del sitio. Lo que guardes se mantiene mientras navegas por el sitio, y «Reiniciar» deja todo como al principio.</p>
 
       <div class="demo-rejilla">
         <div class="guia">
@@ -277,27 +279,30 @@
           <div class="caja">
             <div class="progreso">
               <h2>Prueba esto</h2>
-              <span id="progreso" aria-live="polite">0 de 4</span>
+              <span id="progreso" aria-live="polite">0 de 6</span>
             </div>
             <ol class="pasos">
               <li class="paso" data-paso="editar"><strong>Toca «Editar página»</strong><span>Lo que se puede cambiar queda marcado con una línea punteada.</span></li>
-              <li class="paso" data-paso="guardar"><strong>Cambia algo y toca «Guardar»</strong><span>El título, la foto, el botón de WhatsApp o la categoría de un servicio. También puedes ordenar, quitar o agregar servicios.</span></li>
+              <li class="paso" data-paso="guardar"><strong>Cambia algo y toca «Guardar»</strong><span>El título, un botón o la categoría de un servicio. También puedes agregar, quitar u ordenar servicios y preguntas.</span></li>
+              <li class="paso" data-paso="fondo"><strong>Cambia el fondo del banner</strong><span>En modo edición, toca el banner donde no hay texto y elige «Cambiar fondo».</span></li>
               <li class="paso" data-paso="nota"><strong>Deja una nota</strong><span>Sal con ✕, toca «Dejar nota» y luego cualquier parte de la página.</span></li>
-              <li class="paso" data-paso="enviar"><strong>Envía tus notas</strong><span>Abre «Mis notas» y envíalas juntas. Al equipo le llegan en un solo correo.</span></li>
+              <li class="paso" data-paso="enlace"><strong>Deja un enlace en una nota</strong><span>Toca el ícono de Instagram de la franja de arriba: la nota te pide el enlace de tu Instagram.</span></li>
+              <li class="paso" data-paso="enviar"><strong>Envía tus notas</strong><span>Abre «Mis notas»: están ordenadas por página. Envíalas juntas en un solo correo.</span></li>
               <li class="paso" data-paso="estilo" data-solo="desarrollador" hidden><strong>Cambia un estilo con «Estilo»</strong><span>Prueba «Colores del sitio», el tamaño de un título u ocultar una sección, y guarda.</span></li>
-              <li class="paso" data-paso="hecha" data-solo="desarrollador" hidden><strong>Marca una nota como hecha</strong><span>En «Dejar nota», toca un marcador azul del cliente y márcalo como hecho.</span></li>
+              <li class="paso" data-paso="hecha" data-solo="desarrollador" hidden><strong>Marca una nota como hecha</strong><span>En «Dejar nota», toca un marcador azul de la clienta y márcalo como hecho. En «Mis notas» están las de todas las páginas.</span></li>
             </ol>
-            <p class="aviso-demo">¿Ves el aviso amarillo «Falta 1 dato»? Retoque avisa qué información le falta al sitio. Tócalo y completa el horario.</p>
+            <p class="aviso-demo">En Servicios y Contacto verás el aviso amarillo «Falta 1 dato»: Retoque avisa qué información le falta al sitio. Tócalo y complétala.</p>
           </div>
         </div>
 
         <div class="ventana">
           <div class="ventana-barra">
             <i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i>
-            <span class="direccion">gasfiteriaejemplo.cl</span>
-            <a id="pantalla-completa" href="retoque-sitio.html?rol=cliente" target="_blank" rel="noopener">Pantalla completa ↗</a>
+            <span class="direccion">aguamarina-demo.cl</span>
+            <button type="button" id="reiniciar-demo" class="ventana-boton">Reiniciar</button>
+            <a id="pantalla-completa" href="retoque-demo/index.html?rol=cliente&amp;nuevo=1" target="_blank" rel="noopener">Pantalla completa ↗</a>
           </div>
-          <iframe id="marco-demo" src="retoque-sitio.html?rol=cliente" title="Sitio de ejemplo con el editor Retoque"></iframe>
+          <iframe id="marco-demo" src="retoque-demo/index.html?rol=cliente&amp;nuevo=1" title="Sitio de ejemplo con el editor Retoque"></iframe>
         </div>
       </div>
     </div>
@@ -312,10 +317,11 @@
       <div class="tarjetas">
         <article class="tarjeta"><span class="icono" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7V4h14v3M12 4v16M9 20h6"/></svg></span><h3>Textos y párrafos</h3><p>Títulos, descripciones y datos de contacto. Se escribe directo sobre la página.</p></article>
         <article class="tarjeta"><span class="icono" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h6a4 4 0 0 1 0 8H7zM7 12h7a4 4 0 0 1 0 8H7z"/></svg></span><h3>Texto con formato</h3><p>Negrita, cursiva, listas y enlaces en los textos largos, con una mini barra sobre el texto.</p></article>
-        <article class="tarjeta"><span class="icono" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/></svg></span><h3>Imágenes</h3><p>Se cambian desde la biblioteca de medios de WordPress, con la opción de una foto distinta para celular en los banners.</p></article>
+        <article class="tarjeta"><span class="icono" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/></svg></span><h3>Fotos y fondos</h3><p>Desde la biblioteca de medios de WordPress: fotos, fondos de banners y tarjetas detrás del texto, y una foto distinta para celular.</p></article>
         <article class="tarjeta"><span class="icono" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></span><h3>Botones y enlaces</h3><p>Texto del botón y adónde lleva: WhatsApp, teléfono, correo o una sección del sitio.</p></article>
         <article class="tarjeta"><span class="icono" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/></svg></span><h3>Listas</h3><p>Servicios, preguntas o equipos: agregar, quitar y cambiar el orden. Viene activado para el desarrollador y se puede habilitar para el cliente.</p></article>
         <article class="tarjeta"><span class="icono" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-3"/></svg></span><h3>Sin miedo a equivocarse</h3><p>«Descartar» antes de guardar, «Original» para volver al texto del diseño y deshacer el último guardado desde los ajustes.</p></article>
+        <article class="tarjeta"><span class="icono" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4.5 13.5H12L11 22l8.5-11.5H12z"/></svg></span><h3>Sitio liviano</h3><p>Las fotos que se suben se guardan en formato WebP y se achican solas, para que el sitio cargue rápido.</p></article>
       </div>
     </div>
   </section>
@@ -327,10 +333,10 @@
       <h2 class="titulo-seccion">Se acabaron los correos con capturas de pantalla</h2>
       <p class="entrada">Cuando el cliente quiere algo que no puede hacer solo, lo pide justo en la parte del sitio donde lo quiere.</p>
       <ol class="flujo">
-        <li><h3>Toca y escribe</h3><p>Toca cualquier parte de la página y escribe qué quiere cambiar. Puede adjuntar una foto o captura.</p></li>
-        <li><h3>Junta todas</h3><p>Las notas quedan «por enviar» en «Mis notas», donde las revisa, edita o borra antes de mandarlas.</p></li>
+        <li><h3>Toca y escribe</h3><p>Toca cualquier parte de la página y escribe qué quiere cambiar. Puede adjuntar una foto o pegar un enlace: si toca el ícono de Instagram, la nota le pide el de su cuenta.</p></li>
+        <li><h3>Junta todas</h3><p>Las notas quedan «por enviar» en «Mis notas», ordenadas por página. Un botón amarillo le recuerda enviarlas.</p></li>
         <li><h3>Un solo correo</h3><p>Al enviarlas, el equipo recibe un correo con todas las notas ordenadas por página y un enlace a cada una.</p></li>
-        <li><h3>Marcadas en el sitio</h3><p>El desarrollador ve cada nota como un marcador en el lugar exacto y la marca como hecha al terminar.</p></li>
+        <li><h3>Aviso cuando está listo</h3><p>El equipo ve cada nota en el lugar exacto y la marca como hecha. Al cliente le llega un correo cuando sus cambios están listos.</p></li>
       </ol>
       <div class="estados">
         <span>Cada nota pasa por tres estados:</span>
@@ -392,6 +398,7 @@
     desarrollador: "Además: Estilo, Contenedores y marcar como hechas las notas que ya mandó el cliente."
   };
   var hechos = {};
+  var rolActual = "cliente";
 
   function pintarProgreso() {
     var visibles = pasos.filter(function (p) { return !p.hidden; });
@@ -404,14 +411,22 @@
     botonesRol.forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-rol") === rol ? "true" : "false"); });
     pasos.forEach(function (p) { if (p.hasAttribute("data-solo")) p.hidden = p.getAttribute("data-solo") !== rol; });
     detalle.textContent = DETALLES[rol];
-    var url = "retoque-sitio.html?rol=" + rol;
-    if (marco.getAttribute("src") !== url) marco.setAttribute("src", url);
+    var url = "retoque-demo/index.html?rol=" + rol + "&nuevo=1";
+    if (rol !== rolActual) { hechos = {}; marco.setAttribute("src", url); }
+    rolActual = rol;
     completa.setAttribute("href", url);
     pintarProgreso();
   }
 
   botonesRol.forEach(function (b) {
     b.addEventListener("click", function () { elegirRol(b.getAttribute("data-rol")); });
+  });
+
+  // Reiniciar: la demo vuelve a como estaba al principio.
+  document.getElementById("reiniciar-demo").addEventListener("click", function () {
+    hechos = {};
+    marco.setAttribute("src", "retoque-demo/index.html?rol=" + rolActual + "&nuevo=1&r=" + Date.now());
+    pintarProgreso();
   });
 
   // El sitio de la demo avisa qué se va probando.
