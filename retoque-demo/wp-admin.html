@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Páginas ‹ Aguamarina Gasfitería — WordPress (demo)</title>
+<meta name="robots" content="noindex">
+<style>
+  /* Panel de WordPress simplificado, solo para el video tutorial de la demo. */
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #f0f0f1; color: #1d2327; font: 13px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; }
+  a { color: #2271b1; text-decoration: none; }
+  a:hover { color: #135e96; }
+  .barra-admin { position: fixed; top: 0; left: 0; right: 0; height: 32px; background: #1d2327; color: #f0f0f1; display: flex; align-items: center; gap: 18px; padding: 0 12px; z-index: 10; font-size: 13px; }
+  .barra-admin a { color: #f0f0f1; display: inline-flex; align-items: center; gap: 6px; }
+  .barra-admin .derecha { margin-left: auto; }
+  .logo-wp { width: 20px; height: 20px; border-radius: 50%; border: 2px solid #a7aaad; display: grid; place-items: center; font: 700 11px/1 Georgia, serif; color: #a7aaad; }
+  .menu-admin { position: fixed; top: 32px; bottom: 0; left: 0; width: 160px; background: #1d2327; padding-top: 10px; }
+  .menu-admin a { display: flex; align-items: center; gap: 8px; padding: 8px 12px; color: #f0f0f1; font-size: 14px; }
+  .menu-admin a:hover { color: #72aee6; background: #2c3338; }
+  .menu-admin a.actual { background: #2271b1; color: #fff; }
+  .menu-admin .sub { background: #2c3338; padding: 6px 0; }
+  .menu-admin .sub a { padding: 5px 12px 5px 36px; font-size: 13px; color: #c3c4c7; }
+  .menu-admin .sub a.actual { background: none; color: #fff; font-weight: 600; }
+  .menu-admin svg { width: 18px; height: 18px; flex: none; opacity: .7; }
+  .contenido { margin-left: 160px; padding: 52px 20px 40px; }
+  h1 { display: inline-block; margin: 0 10px 0 0; font-size: 23px; font-weight: 400; }
+  .boton-wp { display: inline-block; padding: 4px 10px; border: 1px solid #2271b1; border-radius: 3px; color: #2271b1; background: #f6f7f7; font-size: 13px; vertical-align: 3px; }
+  .filtros { margin: 14px 0 10px; color: #646970; }
+  .filtros a { color: #2271b1; }
+  .filtros b { color: #1d2327; }
+  .acciones-tabla { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .acciones-tabla select, .buscar input { font: inherit; padding: 4px 8px; border: 1px solid #8c8f94; border-radius: 4px; background: #fff; }
+  .buscar input { width: 200px; }
+  table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid #c3c4c7; box-shadow: 0 1px 1px rgba(0,0,0,.04); }
+  th, td { text-align: left; padding: 10px; vertical-align: top; }
+  thead th { border-bottom: 1px solid #c3c4c7; font-weight: 400; color: #2c3338; }
+  tbody tr:nth-child(odd) { background: #f6f7f7; }
+  td.titulo a.fila-titulo { font-size: 14px; font-weight: 600; }
+  .estado-fila { color: #50575e; font-weight: 600; }
+  .acciones-fila { margin-top: 4px; font-size: 13px; color: #a7aaad; visibility: hidden; }
+  tr:hover .acciones-fila, tr:focus-within .acciones-fila { visibility: visible; }
+  .acciones-fila .papelera { color: #b32d2e; }
+  .check { width: 30px; }
+  .aviso-demo { margin-top: 18px; color: #646970; font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="barra-admin">
+  <span class="logo-wp" aria-hidden="true">W</span>
+  <a href="index.html">Aguamarina Gasfitería</a>
+  <span>+ Añadir</span>
+  <span class="derecha">Hola, Carolina</span>
+</div>
+<nav class="menu-admin" aria-label="Menú del panel">
+  <a href="#">Escritorio</a>
+  <a href="#">Entradas</a>
+  <a href="#">Medios</a>
+  <a href="#" class="actual">Páginas</a>
+  <div class="sub"><a href="#" class="actual">Todas las páginas</a><a href="#">Añadir página</a></div>
+  <a href="#">Comentarios</a>
+  <a href="woocommerce.html">WooCommerce</a>
+  <a href="woocommerce.html">Productos</a>
+  <a href="#">Apariencia</a>
+  <a href="#">Usuarios</a>
+  <a href="#">Ajustes</a>
+</nav>
+<main class="contenido">
+  <h1>Páginas</h1><a class="boton-wp" href="#">Añadir página</a>
+  <p class="filtros"><b>Todas</b> (4) | <a href="#">Publicadas</a> (4)</p>
+  <div class="acciones-tabla">
+    <span><select aria-label="Acciones en lote"><option>Acciones en lote</option></select></span>
+    <span class="buscar"><input type="search" aria-label="Buscar páginas" placeholder="Buscar páginas"></span>
+  </div>
+  <table>
+    <thead><tr><th class="check"><input type="checkbox" aria-label="Seleccionar todas"></th><th>Título</th><th>Autor</th><th>Fecha</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="check"><input type="checkbox" aria-label="Seleccionar Contacto"></td>
+        <td class="titulo"><a class="fila-titulo" href="contacto.html">Contacto</a>
+          <div class="acciones-fila"><a href="#">Editar</a> | <a href="#">Edición rápida</a> | <a class="papelera" href="#">Papelera</a> | <a class="ver" href="contacto.html">Ver</a></div></td>
+        <td>Carolina</td><td>Publicada<br>12/11/2026 a las 10:24</td>
+      </tr>
+      <tr id="fila-inicio">
+        <td class="check"><input type="checkbox" aria-label="Seleccionar Inicio"></td>
+        <td class="titulo"><a class="fila-titulo" href="index.html">Inicio</a> <span class="estado-fila">— Portada</span>
+          <div class="acciones-fila"><a href="#">Editar</a> | <a href="#">Edición rápida</a> | <a class="papelera" href="#">Papelera</a> | <a class="ver" href="index.html">Ver</a></div></td>
+        <td>Carolina</td><td>Publicada<br>12/11/2026 a las 10:20</td>
+      </tr>
+      <tr>
+        <td class="check"><input type="checkbox" aria-label="Seleccionar Servicios"></td>
+        <td class="titulo"><a class="fila-titulo" href="servicios.html">Servicios</a>
+          <div class="acciones-fila"><a href="#">Editar</a> | <a href="#">Edición rápida</a> | <a class="papelera" href="#">Papelera</a> | <a class="ver" href="servicios.html">Ver</a></div></td>
+        <td>Carolina</td><td>Publicada<br>12/11/2026 a las 10:22</td>
+      </tr>
+      <tr>
+        <td class="check"><input type="checkbox" aria-label="Seleccionar Tienda"></td>
+        <td class="titulo"><a class="fila-titulo" href="tienda.html">Tienda</a> <span class="estado-fila">— Página de la tienda</span>
+          <div class="acciones-fila"><a href="#">Editar</a> | <a href="#">Edición rápida</a> | <a class="papelera" href="#">Papelera</a> | <a class="ver" href="tienda.html">Ver</a></div></td>
+        <td>Carolina</td><td>Publicada<br>12/11/2026 a las 10:23</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="aviso-demo">Panel de ejemplo para el tutorial: solo funciona «Ver».</p>
+</main>
+<script>
+  // En la demo, los enlaces que no llevan a una página del sitio no hacen nada.
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest("a");
+    if (a && a.getAttribute("href") === "#") e.preventDefault();
+  });
+</script>
+</body>
+</html>
